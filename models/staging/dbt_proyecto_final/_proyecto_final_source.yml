@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: proyecto_final # name of the source
+  - name: dbt_proyecto_final # name of the source
     schema: dbt_proyecto_final # this is the schema our raw data lives in
     database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB" # this is the name of our database
 
