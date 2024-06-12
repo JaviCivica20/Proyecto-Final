@@ -36,7 +36,24 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
+  +transient: false
   proyecto_final:
     # Applies to all files under models/example/
-    example:
+
+    staging:
+      +materialized: view
+      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
+        +schema: dbt_proyecto_final
+      
+    marts:
       +materialized: table
+      +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
+      core:
+        +schema: dbt_core_proyecto_final
+seeds:
+  +schema: seed_data
+  +database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB"        
+snapshots:
+  +transient: false
+  +target_database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
+  +target_schema: snapshots
