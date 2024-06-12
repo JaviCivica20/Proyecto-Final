@@ -1,0 +1,143 @@
+version: 2
+
+sources:
+  - name: dbt_proyecto_final # name of the source
+    schema: dbt_proyecto_final # this is the schema our raw data lives in
+    database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB" # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    #freshness:
+      #warn_after: { count: 24, period: hour }
+      #error_after: { count: 48, period: hour }
+
+    tables:
+      - name: actor
+        columns:
+          - name: actor_id
+            tests: 
+              - unique
+              - not_null
+          - name: first_name
+          - name: last_name
+          - name: last_update
+
+      - name: address
+        columns:
+          - name: address_id
+            tests: 
+              - unique
+              - not_null
+          - name: address
+          - name: country
+          - name: city
+          - name: postal_code
+          - name: phone
+          - name: last_update
+
+      - name: category
+        columns:
+          - name: category_id
+            tests: 
+              - unique
+              - not_null
+          - name: name
+          - name: last_update
+          
+      - name: customer
+        columns:
+          - name: customer_id
+            tests: 
+              - unique
+              - not_null
+          - name: first_name
+          - name: last_name
+          - name: email
+          - name: address_id
+          - name: active
+          - name: create_date
+          - name: last_update
+
+      - name: film
+        columns:
+          - name: film_id
+            tests: 
+              - unique
+              - not_null
+          - name: title
+          - name: description
+          - name: release_year
+          - name: language_id
+          - name: rental_duration
+          - name: rental_rate
+          - name: length
+          - name: replacement_cost
+          - name: rating
+          - name: special_features
+          - name: last_update
+
+      - name: film_actor
+        columns:
+          - name: actor_id
+          - name: film_id
+          - name: last_update
+
+      - name: film_category
+        columns:
+          - name: film_id
+          - name: category_id
+          - name: last_update
+            
+      - name: language
+        columns:
+          - name: language_id
+            tests: 
+              - unique
+              - not_null
+          - name: name
+          - name: last_update
+      
+      - name: payment
+        columns:
+          - name: payment_id
+            tests: 
+              - unique
+              - not_null
+          - name: customer_id
+          - name: staff_id
+          - name: rental_id
+          - name: amount
+          - name: payment_date
+          - name: last_update
+
+      - name: rental
+        columns:
+          - name: rental_id
+            tests: 
+              - unique
+              - not_null
+          - name: rental_date
+          - name: customer_id
+          - name: return_date
+          - name: staff_id
+          - name: last_update
+
+      - name: staff
+        columns:
+          - name: staff_id
+            tests: 
+              - unique
+              - not_null
+          - name: first_name
+          - name: last_name
+          - name: address_id
+          - name: email
+          - name: active
+          - name: username
+          - name: password
+          - name: last_update
+
+   
