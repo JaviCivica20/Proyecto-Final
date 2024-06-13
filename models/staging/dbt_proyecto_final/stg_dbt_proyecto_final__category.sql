@@ -4,9 +4,10 @@ with src_category as (
 
 renamed_casted as (
     select
-        category_id,
-        name,
-        last_update
+        category_id::number(10) as category_id,
+        name::varchar(50) as name,
+        DATE(last_update) as last_update_date,
+        TIME(last_update) as last_update_time
     from src_category
 )
 

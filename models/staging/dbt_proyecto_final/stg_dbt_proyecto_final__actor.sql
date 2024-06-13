@@ -4,10 +4,11 @@ with src_actor as (
 
 renamed_casted as (
     select
-        actor_id,
-        first_name,
-        last_name,
-        last_update
+        actor_id::number(10) as actor_id,
+        first_name::varchar(50) as first_name,
+        last_name::varchar(50) as last_name,
+        DATE(last_update) as last_update_date,
+        TIME(last_update) as last_update_time
     from src_actor
 )
 

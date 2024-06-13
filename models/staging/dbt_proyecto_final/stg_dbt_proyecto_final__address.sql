@@ -4,13 +4,13 @@ with src_address as (
 
 renamed_casted as (
     select
-        address_id,
-        address,
-        country,
-        city,
-        postal_code,
-        phone,
-        last_update
+        address_id::number(10) as address_id,
+        address::varchar(100) as address,
+        country::varchar(50) as country,
+        city::varchar(50) as city,
+        IFF(postal_code = '', NULL, postal_code::number(10)) as postal_code,
+        DATE(last_update) as last_update_date,
+        TIME(last_update) as last_update_time
     from src_address
 )
 

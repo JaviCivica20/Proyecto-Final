@@ -35,7 +35,6 @@ sources:
           - name: country
           - name: city
           - name: postal_code
-          - name: phone
           - name: last_update
 
       - name: category
@@ -53,10 +52,19 @@ sources:
             tests: 
               - unique
               - not_null
+          - name: store_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','store')
+                field: store_id
           - name: first_name
           - name: last_name
           - name: email
           - name: address_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','address')
+                field: address_id
           - name: active
           - name: create_date
           - name: last_update
@@ -71,6 +79,10 @@ sources:
           - name: description
           - name: release_year
           - name: language_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','language')
+                field: language_id
           - name: rental_duration
           - name: rental_rate
           - name: length
@@ -82,13 +94,29 @@ sources:
       - name: film_actor
         columns:
           - name: actor_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','actor')
+                field: actor_id
           - name: film_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','film')
+                field: film_id
           - name: last_update
 
       - name: film_category
         columns:
           - name: film_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','film')
+                field: film_id
           - name: category_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','category')
+                field: category_id
           - name: last_update
             
       - name: language
@@ -107,8 +135,20 @@ sources:
               - unique
               - not_null
           - name: customer_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','customer')
+                field: customer_id
           - name: staff_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','staff')
+                field: staff_id
           - name: rental_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','rental')
+                field: rental_id
           - name: amount
           - name: payment_date
           - name: last_update
@@ -121,8 +161,16 @@ sources:
               - not_null
           - name: rental_date
           - name: customer_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','customer')
+                field: customer_id
           - name: return_date
           - name: staff_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','staff')
+                field: staff_id
           - name: last_update
 
       - name: staff
@@ -134,10 +182,37 @@ sources:
           - name: first_name
           - name: last_name
           - name: address_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','address')
+                field: address_id
           - name: email
+          - name: store_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','store')
+                field: store_id
           - name: active
           - name: username
           - name: password
+          - name: last_update
+      
+      - name: store
+        columns:
+          - name: store_id
+            tests: 
+              - unique
+              - not_null
+          - name: manager_staff_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','staff')
+                field: staff_id
+          - name: address_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','address')
+                field: address_id
           - name: last_update
 
    
