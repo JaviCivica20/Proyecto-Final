@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_sql_server__addresses
+    description: ""
+    columns:
+      - name: address_id
+        data_type: varchar
+        description: ""

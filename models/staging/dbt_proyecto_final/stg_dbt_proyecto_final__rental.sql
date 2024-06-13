@@ -4,7 +4,7 @@ with src_rental as (
 
 renamed_casted as (
     select
-        rental_id::number(10),
+        rental_id::number(10) as rental_id,
         DATE(rental_date) as rental_date,
         TIME(rental_date) as rental_time,
         customer_id::number(10) as customer_id,
