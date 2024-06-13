@@ -4,12 +4,14 @@ with src_rental as (
 
 renamed_casted as (
     select
-        rental_id,
-        rental_date,
-        customer_id,
+        rental_id::number(10),
+        DATE(rental_date) as rental_date,
+        TIME(rental_date) as rental_time,
+        customer_id::number(10) as customer_id,
         return_date,
-        staff_id,
-        last_update
+        staff_id::number(10) as staff_id,
+        DATE(last_update) as last_update_date,
+        TIME(last_update) as last_update_time
     from src_rental
 )
 

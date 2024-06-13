@@ -4,9 +4,10 @@ with src_language as (
 
 renamed_casted as (
     select
-        language_id,
-        name,
-        last_update
+        language_id::number(10) as language_id,
+        name::varchar(50) as language,
+        DATE(last_update) as last_update_date,
+        TIME(last_update) as last_update_time
     from src_language
 )
 

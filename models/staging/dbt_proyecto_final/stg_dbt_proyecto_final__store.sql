@@ -4,10 +4,11 @@ with src_store as (
 
 renamed_casted as (
     select
-        store_id,
-        manager_staff_id,
-        address_id,
-        last_update
+        store_id::number(10) as store_id,
+        manager_staff_id::number(10) as manager_staff_id,
+        address_id::number(10) as address_id,
+        DATE(last_update) as last_update_date,
+        TIME(last_update) as last_update_time
     from src_store
 )
 
