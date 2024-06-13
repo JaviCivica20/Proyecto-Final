@@ -9,7 +9,6 @@ renamed_casted as (
         country,
         city,
         postal_code,
-        phone,
         last_update
     from src_address
 )

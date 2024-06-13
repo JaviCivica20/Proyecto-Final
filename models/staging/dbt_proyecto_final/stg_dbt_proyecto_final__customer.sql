@@ -5,6 +5,7 @@ with src_customer as (
 renamed_casted as (
     select
         customer_id,
+        store_id,
         first_name,
         last_name,
         email,

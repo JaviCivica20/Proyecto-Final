@@ -9,6 +9,7 @@ renamed_casted as (
         last_name,
         address_id,
         email,
+        store_id,
         active,
         username,
         password,

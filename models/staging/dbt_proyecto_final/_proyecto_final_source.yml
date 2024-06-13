@@ -35,7 +35,6 @@ sources:
           - name: country
           - name: city
           - name: postal_code
-          - name: phone
           - name: last_update
 
       - name: category
