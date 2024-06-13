@@ -6,8 +6,7 @@ renamed_casted as (
     select
         actor_id::number(10) as actor_id,
         film_id::number(10) as film_id,
-        DATE(last_update) as last_update_date,
-        TIME(last_update) as last_update_time
+        last_update
     from src_film_actor
 )
 

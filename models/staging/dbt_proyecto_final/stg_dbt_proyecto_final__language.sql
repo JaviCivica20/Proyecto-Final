@@ -6,8 +6,7 @@ renamed_casted as (
     select
         language_id::number(10) as language_id,
         name::varchar(50) as language,
-        DATE(last_update) as last_update_date,
-        TIME(last_update) as last_update_time
+        last_update
     from src_language
 )
 

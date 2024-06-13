@@ -10,12 +10,13 @@ sources:
       schema: false
       identifier: false
 
-    #freshness:
-      #warn_after: { count: 24, period: hour }
-      #error_after: { count: 48, period: hour }
+    freshness:
+      warn_after: { count: 24, period: hour }
+      error_after: { count: 48, period: hour }
 
     tables:
       - name: actor
+        loaded_at_field: last_update
         columns:
           - name: actor_id
             tests: 
@@ -26,6 +27,7 @@ sources:
           - name: last_update
 
       - name: address
+        loaded_at_field: last_update
         columns:
           - name: address_id
             tests: 
@@ -38,6 +40,7 @@ sources:
           - name: last_update
 
       - name: category
+        loaded_at_field: last_update
         columns:
           - name: category_id
             tests: 
@@ -47,6 +50,7 @@ sources:
           - name: last_update
           
       - name: customer
+        loaded_at_field: last_update
         columns:
           - name: customer_id
             tests: 
@@ -70,6 +74,7 @@ sources:
           - name: last_update
 
       - name: film
+        loaded_at_field: last_update
         columns:
           - name: film_id
             tests: 
@@ -92,6 +97,7 @@ sources:
           - name: last_update
 
       - name: film_actor
+        loaded_at_field: last_update
         columns:
           - name: actor_id
             tests:
@@ -106,6 +112,7 @@ sources:
           - name: last_update
 
       - name: film_category
+        loaded_at_field: last_update
         columns:
           - name: film_id
             tests:
@@ -120,6 +127,7 @@ sources:
           - name: last_update
             
       - name: language
+        loaded_at_field: last_update
         columns:
           - name: language_id
             tests: 
@@ -129,6 +137,7 @@ sources:
           - name: last_update
       
       - name: payment
+        loaded_at_field: last_update
         columns:
           - name: payment_id
             tests: 
@@ -154,6 +163,7 @@ sources:
           - name: last_update
 
       - name: rental
+        loaded_at_field: last_update
         columns:
           - name: rental_id
             tests: 
@@ -174,6 +184,7 @@ sources:
           - name: last_update
 
       - name: staff
+        loaded_at_field: last_update
         columns:
           - name: staff_id
             tests: 
@@ -198,6 +209,7 @@ sources:
           - name: last_update
       
       - name: store
+        loaded_at_field: last_update
         columns:
           - name: store_id
             tests: 

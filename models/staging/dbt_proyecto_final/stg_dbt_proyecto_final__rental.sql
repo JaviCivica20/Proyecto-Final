@@ -8,10 +8,10 @@ renamed_casted as (
         DATE(rental_date) as rental_date,
         TIME(rental_date) as rental_time,
         customer_id::number(10) as customer_id,
+        film_id::number(10) as film_id,
         return_date,
         staff_id::number(10) as staff_id,
-        DATE(last_update) as last_update_date,
-        TIME(last_update) as last_update_time
+        last_update
     from src_rental
 )
 

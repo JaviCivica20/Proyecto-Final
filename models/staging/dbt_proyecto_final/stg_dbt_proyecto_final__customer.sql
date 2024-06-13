@@ -13,8 +13,7 @@ renamed_casted as (
         active::number(1) as active,
         DATE(create_date::timestamp_ntz(9)) as create_date,
         TIME(create_date::timestamp_ntz(9)) as create_time,
-        DATE(last_update::timestamp_ntz(9)) as last_update_date,
-        TIME(last_update::timestamp_ntz(9)) as create_date_time,
+        last_update::timestamp_ntz(9) as last_update
     from src_customer
 )
 

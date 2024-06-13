@@ -7,8 +7,7 @@ renamed_casted as (
         actor_id::number(10) as actor_id,
         first_name::varchar(50) as first_name,
         last_name::varchar(50) as last_name,
-        DATE(last_update) as last_update_date,
-        TIME(last_update) as last_update_time
+        last_update
     from src_actor
 )
 
