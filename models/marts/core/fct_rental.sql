@@ -13,13 +13,12 @@ final as (
         r.rental_id,
         r.rental_date,
         r.rental_time,
+        r.staff_id as rental_staff_id,
         r.customer_id,
         r.film_id,
         r.return_date,
-        r.staff_id as rental_staff_id,
         p.staff_id as payment_staff_id,
         p.amount,
-        p.payment_date,
         r.last_update
     from stg_payment p 
     join stg_rental r 
