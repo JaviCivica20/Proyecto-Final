@@ -27,7 +27,7 @@ final as (
         f.length_minutes,
         f.release_year,
         l.language,
-        f.rental_duration_days,
+        f.max_rental_days,
         f.rental_rate_price,
         f.replacement_cost,
         f.age_rating,
