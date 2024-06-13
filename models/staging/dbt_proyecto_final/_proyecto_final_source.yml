@@ -226,5 +226,26 @@ sources:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
           - name: last_update
+        
+      - name: purchases
+        loaded_at_field: last_update
+        columns:
+          - name: purchase_id
+            tests: 
+              - unique
+              - not_null
+          - name: film_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','film')
+                field: film_id
+          - name: store_id
+            tests:
+            - relationships:
+                to: source('dbt_proyecto_final','store')
+                field: store_id
+          - name: quantity
+          - name: amount
+          - name: purchase_date
 
    
