@@ -13,8 +13,7 @@ renamed_casted as (
         active::number(1) as active,
         username::varchar(50) as username,
         password::varchar(50) as password,
-        DATE(last_update) as last_update_date,
-        TIME(last_update) as last_update_time
+        last_update
     from src_staff
 )
 

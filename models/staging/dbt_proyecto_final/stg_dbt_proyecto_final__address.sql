@@ -9,8 +9,7 @@ renamed_casted as (
         country::varchar(50) as country,
         city::varchar(50) as city,
         IFF(postal_code = '', NULL, postal_code::number(10)) as postal_code,
-        DATE(last_update) as last_update_date,
-        TIME(last_update) as last_update_time
+        last_update
     from src_address
 )
 

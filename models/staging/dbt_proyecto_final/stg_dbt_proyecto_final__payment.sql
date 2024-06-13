@@ -10,8 +10,7 @@ renamed_casted as (
         rental_id::number(10) as rental_id,
         amount::number(10,2) as amount,
         payment_date,
-        DATE(last_update) as last_update_date,
-        TIME(last_update) as last_update_time
+        last_update
     from src_payment
 )
 

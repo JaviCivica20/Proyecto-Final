@@ -15,8 +15,7 @@ renamed_casted as (
         replacement_cost::number(5,2) as replacement_cost,
         rating::varchar(10) as age_rating,
         special_features::varchar(100) as special_features,
-        DATE(last_update) as last_update_date,
-        TIME(last_update) as last_update_time
+        last_update
     from src_film
 )
 
