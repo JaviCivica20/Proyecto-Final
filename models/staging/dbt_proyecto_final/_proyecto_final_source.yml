@@ -18,8 +18,11 @@ sources:
 
     tables:
       - name: actor
+        description: ""
         columns:
           - name: actor_id
+            data_type: number
+            description: "Clave única identificativa de cada actor"
             tests: 
               - unique
               - not_null
@@ -68,6 +71,9 @@ sources:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
           - name: active
+            tests:
+              - accepted_values:
+                  values: [0,1]
           - name: create_date
           - name: _fivetran_synced
 
@@ -89,7 +95,12 @@ sources:
           - name: rental_rate
           - name: length
           - name: replacement_cost
+            tests:
+              - positive_values
           - name: rating
+            tests:
+              - accepted_values:
+                  values: ['PG','G','NC-17','PG-13','R']
           - name: special_features
           - name: _fivetran_synced
 
@@ -152,6 +163,8 @@ sources:
                 to: source('dbt_proyecto_final','rental')
                 field: rental_id
           - name: amount
+            tests: 
+              - positive_values
           - name: payment_date
           - name: _fivetran_synced
 
@@ -195,6 +208,9 @@ sources:
                 to: source('dbt_proyecto_final','store')
                 field: store_id
           - name: active
+            tests:
+              - accepted_values:
+                  values: [0,1]
           - name: username
           - name: password
           - name: _fivetran_synced
