@@ -6,7 +6,7 @@ renamed_casted as (
     select
         language_id::number(10) as language_id,
         name::varchar(50) as language,
-        last_update
+        _fivetran_synced
     from src_language
 )
 

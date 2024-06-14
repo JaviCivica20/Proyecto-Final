@@ -18,7 +18,7 @@ final as (
         st.last_name,
         concat(st.first_name,' ',st.last_name) as full_name,
         s.address_id,
-        s.last_update
+        s._fivetran_synced
     from stg_store s
     join stg_staff st on s.manager_staff_id = st.staff_id
      

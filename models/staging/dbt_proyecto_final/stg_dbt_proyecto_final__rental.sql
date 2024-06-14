@@ -21,7 +21,7 @@ final as (
         p.amount,
         p.payment_date,
         {{ add_returned_column('PAYMENT_DATE') }},
-        r.last_update
+        r._fivetran_synced
     from base_rental r  
     left join base_payment p
     on p.rental_id = r.rental_id

@@ -16,7 +16,7 @@ final as (
         amount,
         payment_date,
         returned,
-        last_update
+        _fivetran_synced
     from stg_rental 
 )
 

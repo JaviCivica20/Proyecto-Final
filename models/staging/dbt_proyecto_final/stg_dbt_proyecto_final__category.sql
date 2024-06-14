@@ -6,7 +6,7 @@ renamed_casted as (
     select
         category_id::number(10) as category_id,
         name::varchar(50) as name,
-        last_update
+        _fivetran_synced
     from src_category
 )
 

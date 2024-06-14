@@ -11,7 +11,7 @@ renamed_casted as (
         film_id::number(10) as film_id,
         return_date,
         staff_id::number(10) as staff_id,
-        last_update
+        _fivetran_synced
     from src_rental
 )
 

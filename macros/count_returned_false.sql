@@ -1,3 +1,5 @@
+-- Cuenta cúantas películas sin devolver tiene cada cliente
+
 {% macro count_returned_false(source_table, user_id_column, returned_column) %}
     SELECT 
         {{ user_id_column }} AS customer_id,

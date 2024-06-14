@@ -25,7 +25,7 @@ final as (
         {{add_warning_column('no_returns')}},
         create_date,
         create_time,
-        last_update
+        _fivetran_synced
     from stg_customer c
     LEFT JOIN user_returned_counts u ON c.customer_id = u.customer_id
 )

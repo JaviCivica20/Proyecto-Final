@@ -9,7 +9,8 @@ renamed_casted as (
         store_id::number(10) as store_id,
         quantity::number(10) as quantity,
         amount::number(10,2) as amount,
-        purchase_date
+        purchase_date,
+        _fivetran_synced
     from src_purchases
 )
 

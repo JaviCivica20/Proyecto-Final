@@ -14,7 +14,7 @@ final as (
         active,
         username,
         password,
-        last_update
+        _fivetran_synced
     from stg_staff s 
 )
 

@@ -12,8 +12,7 @@ stg_film_category as (
     select 
         fc.film_id,
         fc.category_id,
-        c.name,
-        fc.last_update 
+        c.name
     from {{ref('stg_dbt_proyecto_final__film_category')}} fc 
     join {{ref('stg_dbt_proyecto_final__category')}} c
     on fc.category_id = c.category_id
@@ -33,7 +32,7 @@ final as (
         f.age_rating,
         f.special_features,
         fc.name as category,
-        f.last_update
+        f._fivetran_synced
     from stg_film_category fc 
     join stg_film f on f.film_id = fc.film_id
     join stg_language l on f.language_id = l.language_id

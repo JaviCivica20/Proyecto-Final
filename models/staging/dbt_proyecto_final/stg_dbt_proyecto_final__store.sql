@@ -7,7 +7,7 @@ renamed_casted as (
         store_id::number(10) as store_id,
         manager_staff_id::number(10) as manager_staff_id,
         address_id::number(10) as address_id,
-        last_update
+        _fivetran_synced
     from src_store
 )
 

@@ -11,12 +11,13 @@ sources:
       identifier: false
 
     freshness:
-      warn_after: { count: 24, period: hour }
-      error_after: { count: 48, period: hour }
+      warn_after: { count: 50, period: hour }
+      error_after: { count: 100, period: hour }
+
+    loaded_at_field: _fivetran_synced
 
     tables:
       - name: actor
-        loaded_at_field: last_update
         columns:
           - name: actor_id
             tests: 
@@ -24,10 +25,9 @@ sources:
               - not_null
           - name: first_name
           - name: last_name
-          - name: last_update
+          - name: _fivetran_synced
 
       - name: address
-        loaded_at_field: last_update
         columns:
           - name: address_id
             tests: 
@@ -37,20 +37,18 @@ sources:
           - name: country
           - name: city
           - name: postal_code
-          - name: last_update
+          - name: _fivetran_synced
 
       - name: category
-        loaded_at_field: last_update
         columns:
           - name: category_id
             tests: 
               - unique
               - not_null
           - name: name
-          - name: last_update
+          - name: _fivetran_synced
           
       - name: customer
-        loaded_at_field: last_update
         columns:
           - name: customer_id
             tests: 
@@ -71,10 +69,9 @@ sources:
                 field: address_id
           - name: active
           - name: create_date
-          - name: last_update
+          - name: _fivetran_synced
 
       - name: film
-        loaded_at_field: last_update
         columns:
           - name: film_id
             tests: 
@@ -94,10 +91,9 @@ sources:
           - name: replacement_cost
           - name: rating
           - name: special_features
-          - name: last_update
+          - name: _fivetran_synced
 
       - name: film_actor
-        loaded_at_field: last_update
         columns:
           - name: actor_id
             tests:
@@ -109,10 +105,9 @@ sources:
             - relationships:
                 to: source('dbt_proyecto_final','film')
                 field: film_id
-          - name: last_update
+          - name: _fivetran_synced
 
       - name: film_category
-        loaded_at_field: last_update
         columns:
           - name: film_id
             tests:
@@ -124,20 +119,18 @@ sources:
             - relationships:
                 to: source('dbt_proyecto_final','category')
                 field: category_id
-          - name: last_update
+          - name: _fivetran_synced
             
       - name: language
-        loaded_at_field: last_update
         columns:
           - name: language_id
             tests: 
               - unique
               - not_null
           - name: name
-          - name: last_update
+          - name: _fivetran_synced
       
       - name: payment
-        loaded_at_field: last_update
         columns:
           - name: payment_id
             tests: 
@@ -160,10 +153,9 @@ sources:
                 field: rental_id
           - name: amount
           - name: payment_date
-          - name: last_update
+          - name: _fivetran_synced
 
       - name: rental
-        loaded_at_field: last_update
         columns:
           - name: rental_id
             tests: 
@@ -181,10 +173,9 @@ sources:
             - relationships:
                 to: source('dbt_proyecto_final','staff')
                 field: staff_id
-          - name: last_update
+          - name: _fivetran_synced
 
       - name: staff
-        loaded_at_field: last_update
         columns:
           - name: staff_id
             tests: 
@@ -206,10 +197,9 @@ sources:
           - name: active
           - name: username
           - name: password
-          - name: last_update
+          - name: _fivetran_synced
       
       - name: store
-        loaded_at_field: last_update
         columns:
           - name: store_id
             tests: 
@@ -225,10 +215,9 @@ sources:
             - relationships:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
-          - name: last_update
+          - name: _fivetran_synced
         
       - name: purchases
-        loaded_at_field: last_update
         columns:
           - name: purchase_id
             tests: 
@@ -246,6 +235,6 @@ sources:
                 field: store_id
           - name: quantity
           - name: amount
-          - name: purchase_date
+          - name: _fivetran_synced
 
    

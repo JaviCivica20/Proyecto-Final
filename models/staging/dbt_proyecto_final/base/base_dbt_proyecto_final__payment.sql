@@ -10,7 +10,7 @@ renamed_casted as (
         rental_id::number(10) as rental_id,
         amount::number(10,2) as amount,
         payment_date,
-        last_update
+        _fivetran_synced
     from src_payment
 )
 
