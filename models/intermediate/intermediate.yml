@@ -1,0 +1,86 @@
+
+version: 2
+
+models:
+  - name: int_actors_films
+    description: ""
+    columns:
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: title
+        data_type: varchar
+        description: ""
+
+      - name: category
+        data_type: varchar
+        description: ""
+
+      - name: description
+        data_type: varchar
+        description: ""
+
+      - name: release_year
+        data_type: number
+        description: ""
+
+      - name: language
+        data_type: varchar
+        description: ""
+
+      - name: max_rental_days
+        data_type: number
+        description: ""
+
+      - name: rental_rate_price
+        data_type: number
+        description: ""
+
+      - name: length_minutes
+        data_type: number
+        description: ""
+
+      - name: replacement_cost
+        data_type: number
+        description: ""
+
+      - name: age_rating
+        data_type: varchar
+        description: ""
+
+      - name: trailers
+        data_type: boolean
+        description: ""
+
+      - name: commentaries
+        data_type: boolean
+        description: ""
+
+      - name: behind_the_scenes
+        data_type: boolean
+        description: ""
+
+      - name: deleted_scenes
+        data_type: boolean
+        description: ""
+
+      - name: actor_id
+        data_type: number
+        description: ""
+
+      - name: actor_full_name
+        data_type: varchar
+        description: ""
+
+      - name: actor_first_name
+        data_type: varchar
+        description: ""
+
+      - name: actor_last_name
+        data_type: varchar
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""

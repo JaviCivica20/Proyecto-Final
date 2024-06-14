@@ -1,9 +1,362 @@
 version: 2
 
 models:
-  - name: stg_sql_server__addresses
+  - name: stg_dbt_proyecto_final__purchases
+    description: ""
+    columns:
+      - name: purchase_id
+        data_type: number
+        description: ""
+
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: store_id
+        data_type: number
+        description: ""
+
+      - name: quantity
+        data_type: number
+        description: ""
+
+      - name: amount
+        data_type: number
+        description: ""
+
+      - name: purchase_date
+        data_type: date
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__store
+    description: ""
+    columns:
+      - name: store_id
+        data_type: number
+        description: ""
+
+      - name: manager_staff_id
+        data_type: number
+        description: ""
+
+      - name: address_id
+        data_type: number
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__language
+    description: ""
+    columns:
+      - name: language_id
+        data_type: number
+        description: ""
+
+      - name: language
+        data_type: varchar
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__rental
+    description: ""
+    columns:
+      - name: rental_id
+        data_type: number
+        description: ""
+
+      - name: rental_date
+        data_type: date
+        description: ""
+
+      - name: rental_time
+        data_type: time
+        description: ""
+
+      - name: rental_staff_id
+        data_type: number
+        description: ""
+
+      - name: customer_id
+        data_type: number
+        description: ""
+
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: target_return_date
+        data_type: date
+        description: ""
+
+      - name: payment_staff_id
+        data_type: number
+        description: ""
+
+      - name: amount
+        data_type: number
+        description: ""
+
+      - name: payment_date
+        data_type: date
+        description: ""
+
+      - name: returned
+        data_type: boolean
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__category
+    description: ""
+    columns:
+      - name: category_id
+        data_type: number
+        description: ""
+
+      - name: name
+        data_type: varchar
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__film_category
+    description: ""
+    columns:
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: category_id
+        data_type: number
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__film_actor
+    description: ""
+    columns:
+      - name: actor_id
+        data_type: number
+        description: ""
+
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__actor
+    description: ""
+    columns:
+      - name: actor_id
+        data_type: number
+        description: ""
+
+      - name: first_name
+        data_type: varchar
+        description: ""
+
+      - name: last_name
+        data_type: varchar
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__customer
+    description: ""
+    columns:
+      - name: customer_id
+        data_type: number
+        description: ""
+
+      - name: store_id
+        data_type: number
+        description: ""
+
+      - name: first_name
+        data_type: varchar
+        description: ""
+
+      - name: last_name
+        data_type: varchar
+        description: ""
+
+      - name: email
+        data_type: varchar
+        description: ""
+
+      - name: address_id
+        data_type: number
+        description: ""
+
+      - name: active
+        data_type: number
+        description: ""
+
+      - name: create_date
+        data_type: date
+        description: ""
+
+      - name: create_time
+        data_type: time
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__address
     description: ""
     columns:
       - name: address_id
+        data_type: number
+        description: ""
+
+      - name: address
         data_type: varchar
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+      - name: city
+        data_type: varchar
+        description: ""
+
+      - name: postal_code
+        data_type: number
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__staff
+    description: ""
+    columns:
+      - name: staff_id
+        data_type: number
+        description: ""
+
+      - name: first_name
+        data_type: varchar
+        description: ""
+
+      - name: last_name
+        data_type: varchar
+        description: ""
+
+      - name: address_id
+        data_type: number
+        description: ""
+
+      - name: email
+        data_type: varchar
+        description: ""
+
+      - name: store_id
+        data_type: number
+        description: ""
+
+      - name: active
+        data_type: number
+        description: ""
+
+      - name: username
+        data_type: varchar
+        description: ""
+
+      - name: password
+        data_type: varchar
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: stg_dbt_proyecto_final__film
+    description: ""
+    columns:
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: title
+        data_type: varchar
+        description: ""
+
+      - name: description
+        data_type: varchar
+        description: ""
+
+      - name: release_year
+        data_type: number
+        description: ""
+
+      - name: language_id
+        data_type: number
+        description: ""
+
+      - name: max_rental_days
+        data_type: number
+        description: ""
+
+      - name: rental_rate_price
+        data_type: number
+        description: ""
+
+      - name: length_minutes
+        data_type: number
+        description: ""
+
+      - name: replacement_cost
+        data_type: number
+        description: ""
+
+      - name: age_rating
+        data_type: varchar
+        description: ""
+
+      - name: special_features
+        data_type: varchar
+        description: ""
+
+      - name: trailers
+        data_type: boolean
+        description: ""
+
+      - name: commentaries
+        data_type: boolean
+        description: ""
+
+      - name: behind_the_scenes
+        data_type: boolean
+        description: ""
+
+      - name: deleted_scenes
+        data_type: boolean
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
         description: ""
