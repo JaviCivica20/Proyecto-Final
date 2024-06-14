@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized='incremental',
+    unique_key='rental_id',
+  )
+}}
+
 with base_payment as (
     select *
     from {{ref('base_dbt_proyecto_final__payment')}}
@@ -28,3 +35,10 @@ final as (
 )
 
 select * from final 
+
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
