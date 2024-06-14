@@ -6,7 +6,7 @@ with stg_customer as (
 user_returned_counts AS (
     
     {{ count_returned_false(
-        source_table=ref('fct_rental'),  
+        source_table=ref('stg_dbt_proyecto_final__rental'),  
         user_id_column='customer_id',      
         returned_column='RETURNED'      
     ) }}
