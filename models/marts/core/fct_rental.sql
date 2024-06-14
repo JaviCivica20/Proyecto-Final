@@ -1,28 +1,37 @@
-with stg_payment as (
-    select *
-    from {{ref('stg_dbt_proyecto_final__payment')}}
-),
+{{
+  config(
+    materialized='incremental',
+    unique_key='rental_id',
+  )
+}}
 
-stg_rental as (
+with stg_rental as (
     select *
     from {{ref('stg_dbt_proyecto_final__rental')}}
 ),
 
 final as (
     select 
-        r.rental_id,
-        r.rental_date,
-        r.rental_time,
-        r.staff_id as rental_staff_id,
-        r.customer_id,
-        r.film_id,
-        r.return_date,
-        p.staff_id as payment_staff_id,
-        p.amount,
-        r.last_update
-    from stg_payment p 
-    join stg_rental r 
-    on p.rental_id = r.rental_id
+        rental_id,
+        rental_date,
+        rental_time,
+        rental_staff_id,
+        customer_id,
+        film_id,
+        target_return_date,
+        payment_staff_id,
+        amount,
+        payment_date,
+        returned,
+        _fivetran_synced
+    from stg_rental 
 )
 
 select * from final 
+
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}

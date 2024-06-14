@@ -9,7 +9,7 @@ renamed_casted as (
         country::varchar(50) as country,
         city::varchar(50) as city,
         IFF(postal_code = '', NULL, postal_code::number(10)) as postal_code,
-        last_update
+        _fivetran_synced
     from src_address
 )
 
