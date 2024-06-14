@@ -9,12 +9,7 @@ stg_film_actor as (
 ),
 
 stg_film as (
-    select *
-    from {{ref('stg_dbt_proyecto_final__film')}}
-),
-
-final as (
-    select
+    select 
         f.film_id,
         f.title,
         f.description,
@@ -26,15 +21,44 @@ final as (
         f.replacement_cost,
         f.age_rating,
         f.special_features,
+        c.name as category
+    from {{ref('stg_dbt_proyecto_final__film')}} f
+    join {{ref('stg_dbt_proyecto_final__film_category')}} fc on f.film_id = fc.film_id
+    join {{ref('stg_dbt_proyecto_final__category')}} c on fc.category_id = c.category_id
+),
+
+stg_language as (
+    select
+        f.film_id,
+        f.language_id,
+        l.language
+    from {{ref('stg_dbt_proyecto_final__film')}} f
+    join {{ref('stg_dbt_proyecto_final__language')}} l on f.language_id = l.language_id
+),
+
+final as (
+    select
+        f.film_id,
+        f.title,
+        f.category,
+        f.description,
+        f.release_year,
+        l.language,
+        f.max_rental_days,
+        f.rental_rate_price,
+        f.length_minutes,
+        f.replacement_cost,
+        f.age_rating,
+        f.special_features,
         a.actor_id,
         concat(a.first_name,' ',a.last_name) as actor_full_name,
         a.first_name as actor_first_name,
         a.last_name as actor_last_name,
-        
         a._fivetran_synced
     from stg_actor a 
     join stg_film_actor fa on a.actor_id = fa.actor_id
     join stg_film f on f.film_id = fa.film_id
+    join stg_language l on f.film_id = l.film_id
     order by 1
 )
 

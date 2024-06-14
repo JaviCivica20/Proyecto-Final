@@ -4,8 +4,9 @@ with
         from {{ ref("fct_rental") }}),
 
     int_actors_films as (
-        select * 
-        from {{ ref("int_actors_films") }}),
+        select *
+        from {{ ref("int_actors_films") }}
+    ),
 
     actor_counts as (
         select
