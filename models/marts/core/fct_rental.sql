@@ -1,5 +1,5 @@
 with stg_payment as (
-    select *
+    select *,
     from {{ref('stg_dbt_proyecto_final__payment')}}
 ),
 
@@ -19,9 +19,11 @@ final as (
         r.return_date,
         p.staff_id as payment_staff_id,
         p.amount,
+        p.payment_date,
+        {{ add_returned_column('PAYMENT_DATE') }},
         r.last_update
-    from stg_payment p 
-    join stg_rental r 
+    from stg_rental r  
+    left join stg_payment p
     on p.rental_id = r.rental_id
 )
 
