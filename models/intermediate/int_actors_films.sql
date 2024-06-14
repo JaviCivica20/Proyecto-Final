@@ -17,9 +17,20 @@ final as (
     select
         f.film_id,
         f.title,
-        concat(a.first_name,' ',a.last_name) as full_name,
-        a.first_name,
-        a.last_name,
+        f.description,
+        f.release_year,
+        f.language_id,
+        f.max_rental_days,
+        f.rental_rate_price,
+        f.length_minutes,
+        f.replacement_cost,
+        f.age_rating,
+        f.special_features,
+        a.actor_id,
+        concat(a.first_name,' ',a.last_name) as actor_full_name,
+        a.first_name as actor_first_name,
+        a.last_name as actor_last_name,
+        
         a._fivetran_synced
     from stg_actor a 
     join stg_film_actor fa on a.actor_id = fa.actor_id
