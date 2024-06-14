@@ -1,3 +1,10 @@
+{{
+  config(
+    materialized='incremental',
+    unique_key='customer_id',
+  )
+}}
+
 with fct_rental as (
         select * 
         from {{ ref("fct_rental") }}
@@ -73,3 +80,8 @@ with fct_rental as (
     where ra.rank = 1 and rc.rank = 1
     order by 1
 
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
