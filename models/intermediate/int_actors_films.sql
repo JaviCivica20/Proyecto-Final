@@ -20,7 +20,10 @@ stg_film as (
         f.length_minutes,
         f.replacement_cost,
         f.age_rating,
-        f.special_features,
+        f.trailers,
+        f.commentaries,
+        f.behind_the_scenes,
+        f.deleted_scenes,
         c.name as category
     from {{ref('stg_dbt_proyecto_final__film')}} f
     join {{ref('stg_dbt_proyecto_final__film_category')}} fc on f.film_id = fc.film_id
@@ -49,7 +52,10 @@ final as (
         f.length_minutes,
         f.replacement_cost,
         f.age_rating,
-        f.special_features,
+        f.trailers,
+        f.commentaries,
+        f.behind_the_scenes,
+        f.deleted_scenes,
         a.actor_id,
         concat(a.first_name,' ',a.last_name) as actor_full_name,
         a.first_name as actor_first_name,

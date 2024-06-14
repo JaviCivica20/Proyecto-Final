@@ -1,18 +1,15 @@
-{% set special_features = ['trailers', 'commentaries', 'behind_the_scenes','deleted_scenes'] %}
-WITH stg_film AS (
-    SELECT * 
-    FROM {{ ref('stg_dbt_proyecto_final__film') }}
-),
+-- macros/split_special_features.sql
 
-final AS (
-    SELECT
+{% macro split_special_features() %}
+{% set features = ['trailers', 'commentaries', 'behind the scenes', 'deleted scenes'] %}
+
+with special_features_cte as (
+    select
         film_id,
-        {%- for fea in special_features   %}
-        case when '{{fea}}' ilike '%{{fea}}%' then true else false end as {{fea}}
-        {%- if not loop.last %},{% endif -%}
+        {% for feature in features %}
+            case when feature like '%{{ feature }}%' then true else false end as {{ feature | replace(' ', '_') }}{% if not loop.last %},{% endif %}
         {% endfor %}
-    FROM stg_film
-    GROUP BY 1
-    )
-
-SELECT * FROM final
+    from {{ this }}
+)
+select * from special_features_cte
+{% endmacro %}
