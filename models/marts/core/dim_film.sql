@@ -15,7 +15,10 @@ final as (
         rental_rate_price,
         replacement_cost,
         age_rating,
-        special_features,
+        trailers,
+        commentaries,
+        behind_the_scenes,
+        deleted_scenes,
         category,
         _fivetran_synced
     from int_actors_films

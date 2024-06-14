@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: base_dbt_proyecto_final__rental
+    description: ""
+    columns:
+      - name: rental_id
+        data_type: number
+        description: ""
+
+      - name: rental_date
+        data_type: date
+        description: ""
+
+      - name: rental_time
+        data_type: time
+        description: ""
+
+      - name: customer_id
+        data_type: number
+        description: ""
+
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: return_date
+        data_type: date
+        description: ""
+
+      - name: staff_id
+        data_type: number
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: base_dbt_proyecto_final__payment
+    description: ""
+    columns:
+      - name: payment_id
+        data_type: number
+        description: ""
+
+      - name: customer_id
+        data_type: number
+        description: ""
+
+      - name: staff_id
+        data_type: number
+        description: ""
+
+      - name: rental_id
+        data_type: number
+        description: ""
+
+      - name: amount
+        data_type: number
+        description: ""
+
+      - name: payment_date
+        data_type: date
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
