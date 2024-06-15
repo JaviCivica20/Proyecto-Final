@@ -6,12 +6,14 @@
 }}
 
 with base_payment as (
-    select *
+    select *,
+        _fivetran_synced as payment_synced
     from {{ref('base_dbt_proyecto_final__payment')}}
 ),
 
 base_rental as (
-    select *
+    select *,
+        _fivetran_synced as rental_synced
     from {{ref('base_dbt_proyecto_final__rental')}}
 ),
 
@@ -28,14 +30,14 @@ final as (
         p.amount,
         p.payment_date,
         {{ add_returned_column('PAYMENT_DATE') }},
-        r._fivetran_synced
-    from base_rental r  
+        greatest(r.rental_synced, p.payment_synced) as _fivetran_synced
+    from base_rental r
     left join base_payment p
     on p.rental_id = r.rental_id
     
 {% if is_incremental() %}
 
-	where r._fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+	where greatest(r.rental_synced, p.payment_synced) > (select max(_fivetran_synced) from {{ this }})
 
 {% endif %}
     
