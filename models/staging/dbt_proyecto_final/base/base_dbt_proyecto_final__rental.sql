@@ -1,12 +1,20 @@
-/*{{
+{{
   config(
     materialized='incremental',
     unique_key='rental_id',
   )
-}}*/
+}}
 
 with src_rental as (
     select * from {{ source('dbt_proyecto_final', 'rental') }}
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
+
+
 ),
 
 renamed_casted as (
@@ -25,8 +33,3 @@ renamed_casted as (
 select * from renamed_casted ORDER BY rental_id DESC
 
 
-/*{% if is_incremental() %}
-
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-
-{% endif %}*/

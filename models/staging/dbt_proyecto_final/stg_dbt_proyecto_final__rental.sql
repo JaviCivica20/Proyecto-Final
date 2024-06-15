@@ -1,9 +1,9 @@
-/*{{
+{{
   config(
     materialized='incremental',
     unique_key='rental_id',
   )
-}}*/
+}}
 
 with base_payment as (
     select *
@@ -32,13 +32,15 @@ final as (
     from base_rental r  
     left join base_payment p
     on p.rental_id = r.rental_id
+    
+{% if is_incremental() %}
+
+	where r._fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
+    
 )
 
 select * from final ORDER BY rental_id DESC
 
 
-/*{% if is_incremental() %}
-
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-
-{% endif %}*/
