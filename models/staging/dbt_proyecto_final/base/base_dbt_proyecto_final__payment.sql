@@ -7,6 +7,13 @@
 
 with src_payment as (
     select * from {{ source('dbt_proyecto_final', 'payment') }}
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
+
 ),
 
 renamed_casted as (
@@ -21,11 +28,7 @@ renamed_casted as (
     from src_payment
 )
 
-select * from renamed_casted
+select * from renamed_casted order by payment_id desc
 
 
-{% if is_incremental() %}
 
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-
-{% endif %}

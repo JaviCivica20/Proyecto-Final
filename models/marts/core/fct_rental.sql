@@ -8,6 +8,14 @@
 with stg_rental as (
     select *
     from {{ref('stg_dbt_proyecto_final__rental')}}
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+    or rental_synced > (select max(_fivetran_synced) from {{ this }})
+    or payment_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
 ),
 
 final as (
@@ -23,15 +31,12 @@ final as (
         amount,
         payment_date,
         returned,
-        _fivetran_synced
+        rental_synced,
+        payment_synced,
+        GREATEST(rental_synced, payment_synced) as _fivetran_synced
     from stg_rental 
 )
 
-select * from final 
+select * from final order by rental_id desc
 
 
-{% if is_incremental() %}
-
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-
-{% endif %}

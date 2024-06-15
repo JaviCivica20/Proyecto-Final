@@ -7,6 +7,13 @@
 
 with src_purchases as (
     select * from {{ source('dbt_proyecto_final', 'purchases') }}
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
+
 ),
 
 renamed_casted as (
@@ -24,8 +31,4 @@ renamed_casted as (
 select * from renamed_casted
  
 
- {% if is_incremental() %}
 
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-
-{% endif %}
