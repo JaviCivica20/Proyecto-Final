@@ -7,6 +7,13 @@
 
 with stg_purchases as (
     select * from {{ ref('stg_dbt_proyecto_final__purchases') }}
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+
+{% endif %}
+
 ),
 
 final as (
@@ -24,8 +31,3 @@ final as (
 select * from final
 
 
-{% if is_incremental() %}
-
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-
-{% endif %}

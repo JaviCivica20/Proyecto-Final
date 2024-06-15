@@ -1,9 +1,9 @@
-{{
+/*{{
   config(
     materialized='incremental',
-    unique_key='rental_id',
+    unique_key='rental_key',
   )
-}}
+}}*/
 
 with stg_rental as (
     select *
@@ -12,6 +12,7 @@ with stg_rental as (
 
 final as (
     select 
+        {{dbt_utils.generate_surrogate_key(['rental_id'])}} as rental_key,
         rental_id,
         rental_date,
         rental_time,
@@ -27,11 +28,11 @@ final as (
     from stg_rental 
 )
 
-select * from final 
+select * from final order by rental_id desc
 
 
-{% if is_incremental() %}
+/*{% if is_incremental() %}
 
 	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
 
-{% endif %}
+{% endif %}*/
