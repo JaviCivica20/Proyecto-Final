@@ -21,11 +21,10 @@ final as (
         address_id,
         email,
         active,
-        coalesce(returned_false_count,0) as no_returns,
-        {{add_warning_column('no_returns')}},
+        --coalesce(returned_false_count,0) as no_returns,
+        --{{add_warning_column('no_returns')}},
         create_date,
         create_time,
-        _fivetran_synced
     from stg_customer c
     LEFT JOIN user_returned_counts u ON c.customer_id = u.customer_id
 )
