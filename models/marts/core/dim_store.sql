@@ -14,9 +14,9 @@ stg_staff as (
 final as (
     select  
         s.store_id,
-        st.first_name,
-        st.last_name,
-        concat(st.first_name,' ',st.last_name) as full_name,
+        st.first_name as manager_first_name,
+        st.last_name as manager_last_name,
+        concat(st.first_name,' ',st.last_name) as manager_full_name,
         s.address_id,
         s._fivetran_synced
     from stg_store s

@@ -13,7 +13,7 @@ renamed_casted as (
         active::number(1) as active,
         username::varchar(50) as username,
         password::varchar(50) as password,
-        _fivetran_synced
+        _fivetran_synced as data_load
     from src_staff
 )
 

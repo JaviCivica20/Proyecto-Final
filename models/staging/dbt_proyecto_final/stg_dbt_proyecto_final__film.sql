@@ -15,11 +15,13 @@ renamed_casted as (
         replacement_cost::number(5,2) as replacement_cost,
         rating::varchar(10) as age_rating,
         special_features::varchar(100) as special_features,
+
         CASE WHEN special_features ILIKE '%trailers%' THEN TRUE ELSE FALSE END AS trailers,
         CASE WHEN special_features ILIKE '%commentaries%' THEN TRUE ELSE FALSE END AS commentaries,
         CASE WHEN special_features ILIKE '%behind the scenes%' THEN TRUE ELSE FALSE END AS behind_the_scenes,
         CASE WHEN special_features ILIKE '%deleted scenes%' THEN TRUE ELSE FALSE END AS deleted_scenes,
-        _fivetran_synced
+        
+        _fivetran_synced as data_load
     from src_film
 )
 

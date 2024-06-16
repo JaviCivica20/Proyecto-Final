@@ -2,54 +2,33 @@
   config(
     materialized='incremental',
     unique_key='rental_id',
-    incremental_strategy='merge'
   )
 }}
 
-with base_payment as (
-    select *,
-           _fivetran_synced as payment_synced
-    from {{ ref('base_dbt_proyecto_final__payment') }}
-    {% if is_incremental() %}
-    where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-    {% endif %}
+with src_rental as (
+    select * from {{ source('dbt_proyecto_final', 'rental') }}
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(data_load) from {{ this }})
+
+{% endif %}
+
 ),
 
-base_rental as (
-    select *,
-           _fivetran_synced as rental_synced
-    from {{ ref('base_dbt_proyecto_final__rental') }}
-    {% if is_incremental() %}
-    where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-    {% endif %}
-),
-
-final as (
-    select 
-        r.rental_id,
-        r.rental_date,
-        r.rental_time,
-        r.staff_id as rental_staff_id,
-        r.customer_id,
-        r.film_id,
-        r.return_date as target_return_date,
-        p.staff_id as payment_staff_id,
-        p.amount,
-        p.payment_date,
-        {{ add_returned_column('PAYMENT_DATE') }},
-        rental_synced,
-        payment_synced,
-        GREATEST(rental_synced, payment_synced) as _fivetran_synced
-    from base_rental r  
-    left join base_payment p
-    on p.rental_id = r.rental_id
-    {% if is_incremental() %}
-    where rental_synced > (select max(_fivetran_synced) from {{ this }})
-       or payment_synced > (select max(_fivetran_synced) from {{ this }})
-    {% endif %}
+renamed_casted as (
+    select
+        rental_id::number(10) as rental_id,
+        staff_id::number(10) as rental_staff_id,
+        customer_id::number(10) as customer_id,
+        film_id::number(10) as film_id,
+        DATE(rental_date) as rental_date,
+        DATE_TRUNC('seconds',TIME(rental_date)) as rental_time,
+        return_date as target_return_date,
+        _fivetran_synced as data_load
+    from src_rental
 )
 
-select * from final
-order by rental_id desc
+select * from renamed_casted ORDER BY rental_id DESC
 
 

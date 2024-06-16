@@ -10,7 +10,7 @@ with src_payment as (
 
 {% if is_incremental() %}
 
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+	where _fivetran_synced > (select max(data_load) from {{ this }})
 
 {% endif %}
 
@@ -20,11 +20,11 @@ renamed_casted as (
     select
         payment_id::number(10) as payment_id,
         customer_id::number(10) as customer_id,
-        staff_id::number(10) as staff_id,
+        staff_id::number(10) as payment_staff_id,
         rental_id::number(10) as rental_id,
         amount::number(10,2) as amount,
         payment_date,
-        _fivetran_synced
+        _fivetran_synced as data_load
     from src_payment
 )
 
