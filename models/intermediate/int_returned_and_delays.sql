@@ -17,8 +17,8 @@ with rentals as (
             {{add_returned_column('payment_date')}},
 
             case when returned = false then
-            datediff(day, target_return_date, payment_date) 
-            else 0
+            datediff(day, target_return_date, current_date)    ------ Comprobar cuando Snowflake rule
+            else datediff(day, target_return_date, payment_date)
             end as return_delay_days
 
         from {{ ref('stg_dbt_proyecto_final__rental') }} r
