@@ -483,7 +483,7 @@ models:
 
       - name: film_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla películas y que hace referencia a la película que se compra"
         tests:
               - not_null
               - relationships:
@@ -492,7 +492,7 @@ models:
 
       - name: store_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub que compra la película"
         tests:
               - not_null
               - relationships:
