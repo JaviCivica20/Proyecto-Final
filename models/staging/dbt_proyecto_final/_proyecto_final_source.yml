@@ -18,240 +18,474 @@ sources:
 
     tables:
       - name: actor
-        description: ""
+        description: "Tabla que contiene una lista de actores"
         columns:
           - name: actor_id
             data_type: number
-            description: Clave única identificativa de cada actor
+            description: "Clave primaria de los actores"
             tests: 
               - unique
               - not_null
+
           - name: first_name
+            data_type: varchar
+            description: "Nombre del actor"
+
           - name: last_name
+            data_type: varchar
+            description: "Apellido del actor"
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
 
       - name: address
+        description: "Tabla de las direcciones de los clientes, empleados y videoclubs"
         columns:
           - name: address_id
+            data_type: number
+            description: "Clave primaria de la dirección"
             tests: 
               - unique
               - not_null
+
           - name: address
+            data_type: varchar
+            description: "Nombre de la dirección"
+
           - name: country
+            data_type: varchar
+            description: "País de la dirección"
+
           - name: city
+            data_type: varchar
+            description: "Ciudad de la dirección"
+
           - name: postal_code
+            data_type: number
+            description: "Código postal de la ciudad"
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
 
       - name: category
+        description: "Tabla con las diferentes categorías que puede tener una película"
         columns:
           - name: category_id
+            data_type: number
+            description: "Clave primaria de la categoría"
             tests: 
               - unique
               - not_null
+
           - name: name
+            data_type: varchar
+            description: "Nombre de la categoría"
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
           
       - name: customer
+        description: "Tabla que contiene los datos de todos los clientes"
         columns:
           - name: customer_id
+            data_type: number
+            description: "Clave primaria de los clientes"
             tests: 
               - unique
               - not_null
+
           - name: store_id
+            data_type: number
+            description: "Clave foránea de la tabla Store y que hace referencia al videoclub donde está registrado el cliente"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','store')
                 field: store_id
+
           - name: first_name
+            data_type: varchar
+            description: "Nombre del cliente"
+
           - name: last_name
+            data_type: varchar
+            description: "Apellido del cliente"
+
           - name: email
+            data_type: varchar
+            description: "Email del cliente"
+
           - name: address_id
+            data_type: number
+            description: "Clave foránea de la tabla Address y que hace referencia a la dirección del cliente"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
+
           - name: active
+            data_type: number
+            description: "Campo que indica si un cliente está activo o no en la base de datos con un 1 o un 0 respectivamente"
             tests:
               - accepted_values:
                   values: [0,1]
+
           - name: create_date
+            data_type: date
+            description: "Fecha en la que se registró el cliente en el videoclub"
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
 
       - name: film
+        description: "Tabla que contiene todas las películas disponibles en los videoclubs"
         columns:
           - name: film_id
+            data_type: number
+            description: "Clave primaria de las películas"
             tests: 
               - unique
               - not_null
+
           - name: title
+            data_type: varchar
+            description: "Título de la película"
+
           - name: description
+            data_type: varchar
+            description: "Descripción de la película"
+
           - name: release_year
+            data_type: number
+            description: "Año de lanzamiento de la película"
+
           - name: language_id
+            data_type: varchar
+            description: "Clave foránea de la tabla de language y que hace referencia al idioma original de la película"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','language')
                 field: language_id
+
           - name: rental_duration
-          - name: rental_rate
-          - name: length
-          - name: replacement_cost
+            data_type: number
+            description: "Duración máxima del alquiler"
             tests:
               - positive_values
+
+          - name: rental_rate
+            data_type: number
+            description: "Precio del alquiler por día"
+            tests:
+              - positive_values
+
+          - name: length
+            data_type: number
+            description: "Duración de la película en minutos"
+            tests:
+              - positive_values
+
+          - name: replacement_cost
+            data_type: number
+            description: "Coste de la compra de la película"
+            tests:
+              - positive_values
+
           - name: rating
+            data_type: varchar
             description: ""
             tests:
               - accepted_values:
                   values: ['PG','G','NC-17','PG-13','R']
+
           - name: special_features
+            data_type: varchar
+            description: "Campo que contiene los diferentes extras de la película, a ser: trailers, behind the scenes, deleted scenes y commentaries"
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
 
       - name: film_actor
+        description: "Tabla de unión entre las tablas de actores y películas y que contiene las ids de los actores que tiene cada película"
         columns:
           - name: actor_id
+            data_type: number
+            description: "Clave foránea de la tabla de actores"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','actor')
                 field: actor_id
+
           - name: film_id
+            data_type: number
+            description: "Clave foránea de la tabla de películas"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','film')
                 field: film_id
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
 
       - name: film_category
+        description: "Tabla de unión entre las tablas de actores y categorías y que contiene las ids de las categorías que tiene cada película"
         columns:
           - name: film_id
+            data_type: number
+            description: "Clave foránea de la tabla de películas"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','film')
                 field: film_id
+
           - name: category_id
+            data_type: number
+            description: "Clave foránea de la tabla de categorías"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','category')
                 field: category_id
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
             
       - name: language
+        description: "Tabla que contiene los diferentes idiomas que pueden tener las películas"
         columns:
           - name: language_id
+            data_type: number
+            description: "Clave primaria de los idiomas"
             tests: 
               - unique
               - not_null
+
           - name: name
+            data_type: varchar
+            description: "Idioma"
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
       
       - name: payment
+        description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve)"
         columns:
           - name: payment_id
+            data_type: number
+            description: "Clave primaria de los pagos"
             tests: 
               - unique
               - not_null
+
           - name: customer_id
+            data_type: number
+            description: "Clave foránea de la tabla clientes y que hace referencia al cliente que hace el pago"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','customer')
                 field: customer_id
+
           - name: staff_id
+            data_type: number
+            description: "Clave foránea de la tabla empleados y que hace referencia al empleado que realiza el cobro"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','staff')
                 field: staff_id
+
           - name: rental_id
+            data_type: number
+            description: "Clave foránea de la tabla alquier y que hace referencia al alquiler que se devuelve y se paga"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','rental')
                 field: rental_id
+
           - name: amount
+            data_type: number
+            description: "Cantidad pagada por el alquiler"
             tests: 
               - positive_values
+
           - name: payment_date
+            data_type: date
+            description: "Fecha del pago"
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
 
       - name: rental
+        description: "Tabla que contiene los alquieres de películas"
         columns:
           - name: rental_id
+            data_type: number
+            description: "Clave primaria de los alquileres"
             tests: 
               - unique
               - not_null
+
           - name: rental_date
+            data_type: date
+            description: "Fecha en la que se realiza el alquiler"
+
           - name: customer_id
+            data_type: number
+            description: "Clave foránea de la tabla de clientes y que hace referencia al cliente que realiza el alquiler"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','customer')
                 field: customer_id
+
           - name: return_date
+            data_type: date
+            description: "Fecha en la que se debe realizar la devolución de la película"
+
           - name: staff_id
+            data_type: number
+            description: "Clave foránea de la tabla empleados que hace referencia al empleado que tramita el alquiler"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','staff')
                 field: staff_id
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
 
       - name: staff
+        description: "Tabla que contiene los datos de todos los empleados"
         columns:
           - name: staff_id
+            data_type: number
+            description: "Clave primaria de los empleados"
             tests: 
               - unique
               - not_null
+
           - name: first_name
+            data_type: varchar
+            description: "Nombre del empleado"
+
           - name: last_name
+            data_type: varchar
+            description: "Apellido del empleado"
+
           - name: address_id
+            data_type: number
+            description: "Clave foránea de la tabla de dirección y que hace referencia a la dirección del empleado"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
+
           - name: email
+            data_type: varchar
+            description: "Email de los empleados"
+
           - name: store_id
+            data_type: number
+            description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub en el que trabaja el empleado"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','store')
                 field: store_id
+
           - name: active
+            data_type: number
+            description: "Campo que indica si un empleado está activo o no en la base de datos con un 1 o un 0 respectivamente"
             tests:
               - accepted_values:
                   values: [0,1]
+
           - name: username
+            data_type: varchar
+            description: "Nombre de usuario del empleado"
+
           - name: password
+            data_type: number
+            description: "Contraseña del empleado"
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
       
       - name: store
+        description: "Tabla que contiene los diferentes videoclubs"
         columns:
           - name: store_id
+            data_type: number
+            description: "Clave primaria del videoclub"
             tests: 
               - unique
               - not_null
+
           - name: manager_staff_id
+            data_type: number
+            description: "Clave foránea de la tabla de empleados y que hace referencia al empleado que es el manager del videoclub"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','staff')
                 field: staff_id
+
           - name: address_id
+            data_type: number
+            description: "Clave foránea de la tabla de dirección y que hace referencia a la dirección del videoclub"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
         
       - name: purchases
+        description: "Tabla que contiene las compras de películas que realiza el videoclub"
         columns:
           - name: purchase_id
+            data_type: number
+            description: "Clave primaria de las compras"
             tests: 
               - unique
               - not_null
+
           - name: film_id
+            data_type: number
+            description: "Clave foránea de la tabla películas y que hace referencia a la película que se compra"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','film')
                 field: film_id
+
           - name: store_id
+            data_type: number
+            description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub que compra la película"
             tests:
             - relationships:
                 to: source('dbt_proyecto_final','store')
                 field: store_id
+
           - name: quantity
+            data_type: number
+            description: "Cantidad de películas que se compran"
+            tests:
+              - positive_values
+
           - name: amount
+            data_type: number
+            description: "Precio total de las películas"
+            tests:
+              - positive_values
+
           - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
 
    
