@@ -22,7 +22,7 @@ sources:
         columns:
           - name: actor_id
             data_type: number
-            description: "Clave única identificativa de cada actor"
+            description: Clave única identificativa de cada actor
             tests: 
               - unique
               - not_null
@@ -98,6 +98,7 @@ sources:
             tests:
               - positive_values
           - name: rating
+            description: ""
             tests:
               - accepted_values:
                   values: ['PG','G','NC-17','PG-13','R']
