@@ -18,7 +18,7 @@ sources:
 
     tables:
       - name: actor
-        description: "Tabla que contiene una lista de actores"
+        description: "Tabla que contiene una lista de actores directa desde la fuente"
         columns:
           - name: actor_id
             data_type: number
@@ -40,7 +40,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
 
       - name: address
-        description: "Tabla de las direcciones de los clientes, empleados y videoclubs"
+        description: "Tabla de las direcciones de los clientes, empleados y videoclubs directa desde la fuente"
         columns:
           - name: address_id
             data_type: number
@@ -70,7 +70,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
 
       - name: category
-        description: "Tabla con las diferentes categorías que puede tener una película"
+        description: "Tabla con las diferentes categorías que puede tener una película directa desde la fuente"
         columns:
           - name: category_id
             data_type: number
@@ -88,7 +88,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
           
       - name: customer
-        description: "Tabla que contiene los datos de todos los clientes"
+        description: "Tabla que contiene los datos de todos los clientes directa desde la fuente"
         columns:
           - name: customer_id
             data_type: number
@@ -101,6 +101,7 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla Store y que hace referencia al videoclub donde está registrado el cliente"
             tests:
+            - not_null
             - relationships:
                 to: source('dbt_proyecto_final','store')
                 field: store_id
@@ -121,7 +122,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla Address y que hace referencia a la dirección del cliente"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
 
@@ -141,7 +143,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
 
       - name: film
-        description: "Tabla que contiene todas las películas disponibles en los videoclubs"
+        description: "Tabla que contiene todas las películas disponibles en los videoclubs directa desde la fuente"
         columns:
           - name: film_id
             data_type: number
@@ -166,7 +168,8 @@ sources:
             data_type: varchar
             description: "Clave foránea de la tabla de language y que hace referencia al idioma original de la película"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','language')
                 field: language_id
 
@@ -210,13 +213,14 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
 
       - name: film_actor
-        description: "Tabla de unión entre las tablas de actores y películas y que contiene las ids de los actores que tiene cada película"
+        description: "Tabla de unión entre las tablas de actores y películas y que contiene las ids de los actores que tiene cada película directa desde la fuente"
         columns:
           - name: actor_id
             data_type: number
             description: "Clave foránea de la tabla de actores"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','actor')
                 field: actor_id
 
@@ -224,7 +228,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla de películas"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','film')
                 field: film_id
 
@@ -233,13 +238,14 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
 
       - name: film_category
-        description: "Tabla de unión entre las tablas de actores y categorías y que contiene las ids de las categorías que tiene cada película"
+        description: "Tabla de unión entre las tablas de actores y categorías y que contiene las ids de las categorías que tiene cada película directa desde la fuente"
         columns:
           - name: film_id
             data_type: number
             description: "Clave foránea de la tabla de películas"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','film')
                 field: film_id
 
@@ -247,7 +253,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla de categorías"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','category')
                 field: category_id
 
@@ -256,7 +263,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
             
       - name: language
-        description: "Tabla que contiene los diferentes idiomas que pueden tener las películas"
+        description: "Tabla que contiene los diferentes idiomas que pueden tener las películas directa desde la fuente"
         columns:
           - name: language_id
             data_type: number
@@ -274,7 +281,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
       
       - name: payment
-        description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve)"
+        description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve) directa desde la fuente"
         columns:
           - name: payment_id
             data_type: number
@@ -287,7 +294,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla clientes y que hace referencia al cliente que hace el pago"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','customer')
                 field: customer_id
 
@@ -295,7 +303,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla empleados y que hace referencia al empleado que realiza el cobro"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','staff')
                 field: staff_id
 
@@ -303,7 +312,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla alquier y que hace referencia al alquiler que se devuelve y se paga"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','rental')
                 field: rental_id
 
@@ -322,7 +332,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
 
       - name: rental
-        description: "Tabla que contiene los alquieres de películas"
+        description: "Tabla que contiene los alquieres de películas directa desde la fuente"
         columns:
           - name: rental_id
             data_type: number
@@ -339,7 +349,17 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla de clientes y que hace referencia al cliente que realiza el alquiler"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
+                to: source('dbt_proyecto_final','customer')
+                field: customer_id
+          
+          - name: film_id
+            data_type: number
+            description: "Clave foránea de la tabla de películas y que hace referencia a la película alquilada"
+            tests:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','customer')
                 field: customer_id
 
@@ -351,7 +371,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla empleados que hace referencia al empleado que tramita el alquiler"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','staff')
                 field: staff_id
 
@@ -360,7 +381,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
 
       - name: staff
-        description: "Tabla que contiene los datos de todos los empleados"
+        description: "Tabla que contiene los datos de todos los empleados directa desde la fuente"
         columns:
           - name: staff_id
             data_type: number
@@ -381,7 +402,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla de dirección y que hace referencia a la dirección del empleado"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
 
@@ -393,7 +415,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub en el que trabaja el empleado"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','store')
                 field: store_id
 
@@ -417,7 +440,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
       
       - name: store
-        description: "Tabla que contiene los diferentes videoclubs"
+        description: "Tabla que contiene los diferentes videoclubs directa desde la fuente"
         columns:
           - name: store_id
             data_type: number
@@ -430,7 +453,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla de empleados y que hace referencia al empleado que es el manager del videoclub"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','staff')
                 field: staff_id
 
@@ -438,7 +462,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla de dirección y que hace referencia a la dirección del videoclub"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','address')
                 field: address_id
 
@@ -447,7 +472,7 @@ sources:
             description: "Campo con la fecha de ingesta de cada dato"
         
       - name: purchases
-        description: "Tabla que contiene las compras de películas que realiza el videoclub"
+        description: "Tabla que contiene las compras de películas que realiza el videoclub directa desde la fuente"
         columns:
           - name: purchase_id
             data_type: number
@@ -460,7 +485,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla películas y que hace referencia a la película que se compra"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','film')
                 field: film_id
 
@@ -468,7 +494,8 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub que compra la película"
             tests:
-            - relationships:
+              - not_null
+              - relationships:
                 to: source('dbt_proyecto_final','store')
                 field: store_id
 
