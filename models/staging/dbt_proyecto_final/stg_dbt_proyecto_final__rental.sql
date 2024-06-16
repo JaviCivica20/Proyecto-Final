@@ -2,7 +2,6 @@
   config(
     materialized='incremental',
     unique_key='rental_id',
-    incremental_strategy='merge'
   )
 }}
 
@@ -44,8 +43,8 @@ final as (
     left join base_payment p
     on p.rental_id = r.rental_id
     {% if is_incremental() %}
-    where rental_synced > (select max(_fivetran_synced) from {{ this }})
-       or payment_synced > (select max(_fivetran_synced) from {{ this }})
+    where rental_synced > (select max(_fivetran_synced) from {{ this }}) 
+    --or payment_synced > (select max(_fivetran_synced) from {{ this }})
     {% endif %}
 )
 
