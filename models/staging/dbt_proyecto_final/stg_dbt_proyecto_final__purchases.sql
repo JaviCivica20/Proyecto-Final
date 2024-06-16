@@ -1,18 +1,8 @@
-{{
-  config(
-    materialized='incremental',
-    unique_key='purchase_id',
-  )
-}}
+
 
 with src_purchases as (
     select * from {{ source('dbt_proyecto_final', 'purchases') }}
 
-{% if is_incremental() %}
-
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
-
-{% endif %}
 
 ),
 
@@ -24,7 +14,7 @@ renamed_casted as (
         quantity::number(10) as quantity,
         amount::number(10,2) as amount,
         purchase_date,
-        _fivetran_synced
+        _fivetran_synced as data_load
     from src_purchases
 )
 
