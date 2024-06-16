@@ -1,5 +1,4 @@
-
-   with int_actors_films as (
+    with int_actors_films as (
         select *
         from {{ ref("int_actors_films") }}
     ),

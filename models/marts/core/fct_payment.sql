@@ -1,12 +1,24 @@
+{{
+  config(
+    materialized='incremental',
+    unique_key='payment_id',
+  )
+}}
+
 with stg_payment as (
     select *
     from {{ref('stg_dbt_proyecto_final__payment')}}
+
+{% if is_incremental() %}
+
+	where data_load > (select max(data_load) from {{ this }})
+
+{% endif %}
 ),
 
 int_returned_and_delays as (
     select
         rental_id,
-        returned,
         return_delay_days
     from {{ref('int_returned_and_delays')}}
 ),

@@ -4,7 +4,6 @@
   )
 }}
 
-
 with rentals as (
         select
             r.rental_id,

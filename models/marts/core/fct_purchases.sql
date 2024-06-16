@@ -10,7 +10,7 @@ with stg_purchases as (
 
 {% if is_incremental() %}
 
-	where _fivetran_synced > (select max(_fivetran_synced) from {{ this }})
+	where data_load > (select max(data_load) from {{ this }})
 
 {% endif %}
 
@@ -24,7 +24,7 @@ final as (
         quantity,
         amount,
         purchase_date,
-        _fivetran_synced
+        data_load
     from stg_purchases
 )
 
