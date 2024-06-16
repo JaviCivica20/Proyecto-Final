@@ -38,7 +38,9 @@ final as (
         {{ add_returned_column('PAYMENT_DATE') }},
         rental_synced,
         payment_synced,
-        GREATEST(rental_synced, payment_synced) as _fivetran_synced
+        
+        
+        --GREATEST(rental_synced, payment_synced) as _fivetran_synced
     from base_rental r  
     left join base_payment p
     on p.rental_id = r.rental_id
