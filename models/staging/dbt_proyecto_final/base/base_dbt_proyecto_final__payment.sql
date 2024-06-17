@@ -3,8 +3,6 @@
 with src_payment as (
     select * from {{ source('dbt_proyecto_final', 'payment') }}
 
-
-
 ),
 
 renamed_casted as (

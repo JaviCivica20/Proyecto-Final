@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: finances
+    description: ""
+    columns:
+      - name: store_id
+        data_type: number
+        description: ""
+
+      - name: year
+        data_type: number
+        description: ""
+
+      - name: total_earnings
+        data_type: number
+        description: ""
+
+      - name: total_expenses
+        data_type: number
+        description: ""
+
+      - name: total_profits
+        data_type: number
+        description: ""
+
+      - name: total_rentals
+        data_type: number
+        description: ""
+
+      - name: total_purchases
+        data_type: number
+        description: ""
