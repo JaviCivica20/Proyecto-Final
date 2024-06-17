@@ -15,7 +15,6 @@ with rentals as (
             rental_date,
             rental_time,
             target_return_date,
-            rental_state,
             payment_id,
             payment_staff_id,
             payment_date, 
