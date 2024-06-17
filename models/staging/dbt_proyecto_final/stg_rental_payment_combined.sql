@@ -25,8 +25,8 @@ with rentals as (
 
             greatest(r.data_load, coalesce(p.data_load, '1970-01-01')) as data_load
 
-        from {{ ref('stg_dbt_proyecto_final__rental') }} r
-        left join {{ ref('stg_dbt_proyecto_final__payment') }} p
+        from {{ ref('base_dbt_proyecto_final__rental') }} r
+        left join {{ ref('base_dbt_proyecto_final__payment') }} p
         on r.rental_id = p.rental_id
 
     
