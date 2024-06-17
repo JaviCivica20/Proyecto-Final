@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: customers_statistics
+    description: ""
+    columns:
+      - name: customer_id
+        data_type: number
+        description: ""
+
+      - name: favourite_actor
+        data_type: varchar
+        description: ""
+
+      - name: favourite_category
+        data_type: varchar
+        description: ""
+
+      - name: total_films_rented
+        data_type: number
+        description: ""
+
+      - name: total_spent
+        data_type: number
+        description: ""
+
+      - name: total_no_returns
+        data_type: number
+        description: ""
+
+      - name: user_warning
+        data_type: boolean
+        description: ""
+
+      - name: last_time_rented
+        data_type: date
+        description: ""
+
+      - name: last_payment
+        data_type: date
+        description: ""

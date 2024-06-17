@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='ephemeral'
-  )
-}}
-
 with stg_actor as (
     select *
     from {{ref('stg_dbt_proyecto_final__actor')}}
