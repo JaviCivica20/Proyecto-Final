@@ -28,7 +28,7 @@ with rentals as (
 
     {% if is_incremental() %}
 
-	where data_load > (select max(data_load) from {{ this }})
+	where date_load > (select max(date_load) from {{ this }})
 
     {% endif %}
     
