@@ -2,8 +2,8 @@ with stg_purchase as (
     select
         store_id,
         film_id,
-        count(film_id) as film_stock 
-    from {{ref('stg_dbt_proyecto_final__purchases')}}
+        count(film_id) as film_stock
+    from {{ref('fct_purchases')}}
     group by 1, 2
     order by 1, 2
 ),
@@ -11,9 +11,7 @@ with stg_purchase as (
 int_actors_films as (
     select
         film_id,
-        title,
-        release_year,
-        original_language
+        title
     from {{ref('int_actors_films')}}
 ),
 
@@ -22,8 +20,6 @@ final as (
         p.store_id,
         p.film_id,
         af.title,
-        af.release_year,
-        af.original_language,
         p.film_stock
 
     from stg_purchase p

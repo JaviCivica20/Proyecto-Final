@@ -2,59 +2,82 @@ version: 2
 
 models:
   - name: fct_rentals_returns
-    description: ""
+    description: "Tabla de hechos que contiene toda la información del alquiler y de los pagos cuando se realizan"
     columns:
       - name: rental_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la tabla"
+        tests:
+          - unique 
+          - not_null
 
       - name: customer_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla clientes que identifica al cliente que realiza el alquiler"
+        tests:
+          - not_null 
+          - relationships:
+              field: customer_id
+              to: ref('dim_customer')
 
       - name: film_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla películas que identifica la película alquilada"
+        tests:
+          - not_null 
+          - relationships:
+              field: film_id
+              to: ref('dim_film')
 
       - name: rental_date
         data_type: date
-        description: ""
+        description: "Fecha del alquiler"
+        tests:
+          - not_null
 
       - name: rental_time
         data_type: time
-        description: ""
+        description: "Hora del alquiler"
+        tests:
+          - not_null
 
       - name: target_return_date
         data_type: date
-        description: ""
-
-      - name: rental_state
-        data_type: varchar
-        description: ""
+        description: "Fecha en la que se debe devolver la película"
+        tests:
+          - not_null
 
       - name: payment_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla de pagos y que identifica el pago"
+        tests:
+          - relationships:
+              field: payment_id
+              to: ref('stg_rental_payment_combined')
 
       - name: payment_date
         data_type: date
-        description: ""
+        description: "Fecha del pago"
 
       - name: amount
         data_type: number
-        description: ""
+        description: "Cantidad del pago"
 
       - name: returned
         data_type: boolean
-        description: ""
+        description: "True si la película ha sido devuelta y false si aún la tiene el cliente"
+        tests:
+          - not_null
 
       - name: return_delay_days
         data_type: number
-        description: ""
+        description: "Días de retraso del alquiler"
+        tests:
+          - not_null
 
       - name: data_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha en la que se cargaron los datos"
 
   - name: fct_purchases
     description: ""

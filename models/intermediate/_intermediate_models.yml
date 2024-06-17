@@ -2,84 +2,128 @@ version: 2
 
 models:
   - name: int_actors_films
-    description: ""
+    description: "Tabla intermedia que une todas las tablas relacionadas con actores y películas"
     columns:
       - name: film_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla películas que identifica la película"
+        tests: 
+          - not_null
 
       - name: title
         data_type: varchar
-        description: ""
+        description: "Título de la película"
+        tests: 
+          - not_null
 
       - name: category
         data_type: varchar
-        description: ""
+        description: "Categoría de la película"
+        tests: 
+          - not_null
 
       - name: description
         data_type: varchar
-        description: ""
+        description: "Descripción de la película"
+        tests: 
+          - not_null
 
       - name: release_year
         data_type: number
-        description: ""
+        description: "Año de lanzamiento de la película"
+        tests: 
+          - not_null
 
       - name: original_language
         data_type: varchar
-        description: ""
+        description: "Idioma original de la película"
+        tests: 
+          - not_null
 
       - name: max_rental_days
         data_type: number
-        description: ""
+        description: "Máximo número de días que se puede alquilar una película"
+        tests: 
+          - not_null
+          - positive_values
 
       - name: rental_rate_price
         data_type: number
-        description: ""
+        description: "Precio del alquiler de la película por día"
+        tests: 
+          - not_null
+          - positive_values
 
       - name: length_minutes
         data_type: number
-        description: ""
+        description: "Duración de la película en minutos"
+        tests: 
+          - not_null
+          - positive_values
 
       - name: replacement_cost
         data_type: number
-        description: ""
+        description: "Coste de la compra de la película"
+        tests: 
+          - not_null
+          - positive_values
 
       - name: age_rating
         data_type: varchar
-        description: ""
+        description: "{{ doc('age_codes') }}"
+        tests: 
+          - not_null
 
       - name: trailers
         data_type: boolean
-        description: ""
+        description: "Si la película contiene trailers"
+        tests: 
+          - not_null
 
       - name: commentaries
         data_type: boolean
-        description: ""
+        description: "Si la película contiene comentarios"
+        tests: 
+          - not_null
 
       - name: behind_the_scenes
         data_type: boolean
-        description: ""
+        description: "Si la película contiene contenido de detrás de las escenas"
+        tests: 
+          - not_null
 
       - name: deleted_scenes
         data_type: boolean
-        description: ""
+        description: "Si la película contiene escenas eliminadas"
+        tests: 
+          - not_null
 
       - name: actor_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla de actores y que lo identifixa"
+        tests: 
+          - not_null
 
       - name: actor_full_name
         data_type: varchar
-        description: ""
+        description: "Nombre completo del actor"
+        tests: 
+          - not_null
 
       - name: actor_first_name
         data_type: varchar
-        description: ""
+        description: "Nombre del actor"
+        tests: 
+          - not_null
 
       - name: actor_last_name
         data_type: varchar
-        description: ""
+        description: "Apellido del actor"
+        tests: 
+          - not_null
 
       - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha en la que se cargó el dato"
+        tests: 
+          - not_null
