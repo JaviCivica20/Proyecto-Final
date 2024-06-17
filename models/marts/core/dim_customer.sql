@@ -14,6 +14,7 @@ final as (
         active,
         create_date,
         create_time,
+        date_load
     from stg_customer
     
 )

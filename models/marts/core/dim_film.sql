@@ -20,7 +20,7 @@ final as (
         behind_the_scenes,
         deleted_scenes,
         category,
-        _fivetran_synced
+        _fivetran_synced as date_load
     from int_actors_films
 )
 

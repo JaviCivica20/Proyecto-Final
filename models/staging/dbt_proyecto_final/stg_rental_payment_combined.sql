@@ -25,7 +25,7 @@ with rentals as (
             else datediff(day, target_return_date, payment_date)
             end as return_delay_days,
 
-            greatest(r.data_load, coalesce(p.data_load, '1970-01-01')) as data_load
+            greatest(r.date_load, coalesce(p.date_load, '1970-01-01')) as date_load
 
         from {{ ref('base_dbt_proyecto_final__rental') }} r
         left join {{ ref('base_dbt_proyecto_final__payment') }} p

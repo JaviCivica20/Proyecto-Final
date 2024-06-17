@@ -7,7 +7,7 @@ renamed_casted as (
         actor_id::number(10) as actor_id,
         first_name::varchar(50) as first_name,
         last_name::varchar(50) as last_name,
-        _fivetran_synced as data_load
+        _fivetran_synced as date_load
     from src_actor
 )
 

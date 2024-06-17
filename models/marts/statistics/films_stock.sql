@@ -1,6 +1,11 @@
-with int_film_stock as (
-    select *
-    from {{ref('int_film_stock')}}
+with stg_purchase as (
+    select
+        store_id,
+        film_id,
+        count(film_id) as film_stock 
+    from {{ref('stg_dbt_proyecto_final__purchases')}}
+    group by 1, 2
+    order by 1, 2
 ),
 
 int_actors_films as (
@@ -14,16 +19,16 @@ int_actors_films as (
 
 final as (
     select distinct
-        fs.store_id,
-        fs.film_id,
+        p.store_id,
+        p.film_id,
         af.title,
         af.release_year,
         af.original_language,
-        fs.film_stock
+        p.film_stock
 
-    from int_film_stock fs
+    from stg_purchase p
     join int_actors_films af 
-    on fs.film_id = af.film_id
+    on p.film_id = af.film_id
 )
 
 select * from final order by store_id, film_id

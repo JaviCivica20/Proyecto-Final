@@ -22,7 +22,7 @@ with rentals as (
             amount,
             returned,
             return_delay_days,
-            data_load
+            date_load
 
         from {{ ref('stg_rental_payment_combined') }} 
 

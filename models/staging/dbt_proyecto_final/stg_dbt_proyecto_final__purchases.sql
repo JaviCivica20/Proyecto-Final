@@ -10,7 +10,7 @@ with src_purchases as (
 
 {% if is_incremental() %}
 
-	where _fivetran_synced > (select max(data_load) from {{ this }})
+	where _fivetran_synced > (select max(date_load) from {{ this }})
 
 {% endif %}
 
@@ -24,7 +24,7 @@ renamed_casted as (
         quantity::number(10) as quantity,
         amount::number(10,2) as amount,
         purchase_date,
-        _fivetran_synced as data_load
+        _fivetran_synced as date_load
     from src_purchases
 )
 
