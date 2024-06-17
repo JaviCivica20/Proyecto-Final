@@ -181,7 +181,7 @@ models:
         data_type: number
         description: "Coste de la película si se compra"
         tests:
-          - positve_values
+          - positive_values
 
       - name: age_rating
         data_type: varchar

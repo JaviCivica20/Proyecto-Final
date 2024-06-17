@@ -97,7 +97,7 @@ models:
         data_type: number
         description: "Cantidad pagada por el alquiler"
         tests:
-          - positve_values
+          - positive_values
 
       - name: payment_date
         data_type: date

@@ -117,6 +117,8 @@ sources:
           - name: email
             data_type: varchar
             description: "Email del cliente"
+            tests:
+              - correct_email
 
           - name: address_id
             data_type: number
@@ -410,6 +412,8 @@ sources:
           - name: email
             data_type: varchar
             description: "Email de los empleados"
+            tests:
+              - correct_email
 
           - name: store_id
             data_type: number
