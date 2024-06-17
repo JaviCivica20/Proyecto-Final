@@ -14,7 +14,7 @@ final as (
         active,
         username,
         password,
-        _fivetran_synced as date_load
+        date_load
     from stg_staff s 
 )
 

@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: films_stock
+    description: ""
+    columns:
+      - name: store_id
+        data_type: number
+        description: ""
+
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: title
+        data_type: varchar
+        description: ""
+
+      - name: release_year
+        data_type: number
+        description: ""
+
+      - name: original_language
+        data_type: varchar
+        description: ""
+
+      - name: film_stock
+        data_type: number
+        description: ""

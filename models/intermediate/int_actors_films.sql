@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='ephemeral'
-  )
-}}
-
 with stg_actor as (
     select *
     from {{ref('stg_dbt_proyecto_final__actor')}}
@@ -66,7 +60,7 @@ final as (
         concat(a.first_name,' ',a.last_name) as actor_full_name,
         a.first_name as actor_first_name,
         a.last_name as actor_last_name,
-        a._fivetran_synced as date_load
+        a.date_load
     from stg_actor a 
     join stg_film_actor fa on a.actor_id = fa.actor_id
     join stg_film f on f.film_id = fa.film_id
