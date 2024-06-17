@@ -52,7 +52,7 @@ final as (
         f.category,
         f.description,
         f.release_year,
-        l.language,
+        l.language as original_language,
         f.max_rental_days,
         f.rental_rate_price,
         f.length_minutes,
@@ -66,7 +66,7 @@ final as (
         concat(a.first_name,' ',a.last_name) as actor_full_name,
         a.first_name as actor_first_name,
         a.last_name as actor_last_name,
-        a._fivetran_synced
+        a._fivetran_synced as date_load
     from stg_actor a 
     join stg_film_actor fa on a.actor_id = fa.actor_id
     join stg_film f on f.film_id = fa.film_id

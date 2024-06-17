@@ -21,7 +21,7 @@ renamed_casted as (
         CASE WHEN special_features ILIKE '%behind the scenes%' THEN TRUE ELSE FALSE END AS behind_the_scenes,
         CASE WHEN special_features ILIKE '%deleted scenes%' THEN TRUE ELSE FALSE END AS deleted_scenes,
         
-        _fivetran_synced as data_load
+        _fivetran_synced as date_load
     from src_film
 )
 

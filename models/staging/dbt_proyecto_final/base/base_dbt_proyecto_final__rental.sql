@@ -15,7 +15,7 @@ renamed_casted as (
         DATE(rental_date) as rental_date,
         DATE_TRUNC('seconds',TIME(rental_date)) as rental_time,
         return_date as target_return_date,
-        _fivetran_synced as data_load
+        _fivetran_synced as date_load
     from src_rental
 )
 

@@ -13,7 +13,7 @@ renamed_casted as (
         active::number(1) as active,
         DATE(create_date::timestamp_ntz(9)) as create_date,
         TIME(create_date::timestamp_ntz(9)) as create_time,
-        _fivetran_synced as data_load
+        _fivetran_synced as date_load
     from src_customer
 )
 

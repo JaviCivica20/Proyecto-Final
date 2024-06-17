@@ -11,16 +11,18 @@ with rentals as (
             rental_id,
             customer_id,
             film_id,
+            rental_staff_id,
             rental_date,
             rental_time,
             target_return_date,
             rental_state,
             payment_id,
-            payment_date,
+            payment_staff_id,
+            payment_date, 
             amount,
             returned,
             return_delay_days,
-            data_load
+            date_load
 
         from {{ ref('stg_rental_payment_combined') }} 
 

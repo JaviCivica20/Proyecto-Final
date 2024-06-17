@@ -6,7 +6,7 @@ renamed_casted as (
     select
         film_id::number(10) as film_id,
         category_id::number(10) as category_id,
-        _fivetran_synced as data_load
+        _fivetran_synced as date_load
     from src_film_category
 )
 

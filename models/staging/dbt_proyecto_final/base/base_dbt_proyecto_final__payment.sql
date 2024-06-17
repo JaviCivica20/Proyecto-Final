@@ -15,7 +15,7 @@ renamed_casted as (
         rental_id::number(10) as rental_id,
         amount::number(10,2) as amount,
         payment_date,
-        _fivetran_synced as data_load
+        _fivetran_synced as date_load
     from src_payment
 )
 
