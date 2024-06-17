@@ -185,7 +185,7 @@ models:
 
       - name: age_rating
         data_type: varchar
-        description: ""
+        description: "{{ doc('age_codes') }}"
 
       - name: special_features
         data_type: varchar

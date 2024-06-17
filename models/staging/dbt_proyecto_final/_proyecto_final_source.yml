@@ -199,7 +199,7 @@ sources:
 
           - name: rating
             data_type: varchar
-            description: ""
+            description: "{{ doc('age_codes') }}"
             tests:
               - accepted_values:
                   values: ['PG','G','NC-17','PG-13','R']
