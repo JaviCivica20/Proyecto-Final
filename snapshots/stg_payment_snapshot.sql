@@ -1,4 +1,4 @@
-{% snapshot payment_snapshot %}
+{% snapshot stg_payment_snapshot %}
     {{
         config(
             target_schema='snapshots',

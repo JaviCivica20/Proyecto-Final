@@ -1,4 +1,4 @@
-{% snapshot rental_snapshot %}
+{% snapshot stg_rental_snapshot %}
     {{
         config(
             target_schema='snapshots',

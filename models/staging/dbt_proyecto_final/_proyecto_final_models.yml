@@ -83,10 +83,10 @@ models:
         data_type: number
         description: "Clave foránea de la tabla Store y que hace referencia al videoclub donde está registrado el cliente"
         tests:
-            - not_null
-            - relationships:
-                to: ref('stg_dbt_proyecto_final__store')
-                field: store_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__store')
+              field: store_id
 
       - name: first_name
         data_type: varchar
@@ -104,17 +104,17 @@ models:
         data_type: number
         description: "Clave foránea de la tabla Address y que hace referencia a la dirección del cliente"
         tests:
-            - not_null
-            - relationships:
-                to: ref('stg_dbt_proyecto_final__address')
-                field: address_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__address')
+              field: address_id
 
       - name: active
         data_type: number
         description: "Campo que indica si un cliente está activo o no en la base de datos con un 1 o un 0 respectivamente"
         tests:
-              - accepted_values:
-                  values: [0,1]
+          - accepted_values:
+              values: [0,1]
 
       - name: create_date
         data_type: date
@@ -154,10 +154,10 @@ models:
         data_type: number
         description: "Clave foránea de la tabla de language y que hace referencia al idioma original de la película"
         tests:
-            - not_null
-            - relationships:
-                to: ref('stg_dbt_proyecto_final__language')
-                field: language_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__language')
+              field: language_id
 
       - name: max_rental_days
         data_type: number
@@ -218,19 +218,19 @@ models:
         data_type: number
         description: "Clave foránea de la tabla de actores"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__actor')
-                field: actor_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__actor')
+              field: actor_id
 
       - name: film_id
         data_type: number
         description: "Clave foránea de la tabla de películas"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__film')
-                field: film_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
 
       - name: date_load
         data_type: timestamp_ntz
@@ -243,19 +243,19 @@ models:
         data_type: number
         description: "Clave foránea de la tabla de películas"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__film')
-                field: film_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
 
       - name: category_id
         data_type: number
         description: "Clave foránea de la tabla de categorías"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__category')
-                field: category_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__category')
+              field: category_id
 
       - name: date_load
         data_type: timestamp_ntz
@@ -293,28 +293,28 @@ models:
         data_type: number
         description: "Clave foránea de la tabla clientes y que hace referencia al cliente que hace el pago"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__customer')
-                field: customer_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__customer')
+              field: customer_id
 
       - name: payment_staff_id
         data_type: number
         description: "Clave foránea de la tabla empleados y que hace referencia al empleado que realiza el cobro"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__staff')
-                field: staff_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__staff')
+              field: staff_id
 
       - name: rental_id
         data_type: number
         description: "Clave foránea de la tabla alquier y que hace referencia al alquiler que se devuelve y se paga"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__rental')
-                field: rental_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__rental')
+              field: rental_id
 
       - name: amount
         data_type: number
@@ -344,28 +344,28 @@ models:
         data_type: number
         description: "Clave foránea de la tabla empleados que hace referencia al empleado que tramita el alquiler"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__staff')
-                field: staff_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__staff')
+              field: staff_id
         
       - name: customer_id
         data_type: number
         description: "Clave foránea de la tabla de clientes y que hace referencia al cliente que realiza el alquiler"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__customer')
-                field: customer_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__customer')
+              field: customer_id
 
       - name: film_id
         data_type: number
         description: "Clave foránea de la tabla de películas y que hace referencia a la película alquilada"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__film')
-                field: film_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
 
       - name: rental_date
         data_type: date
@@ -405,10 +405,10 @@ models:
         data_type: number
         description: "Clave foránea de la tabla de dirección y que hace referencia a la dirección del empleado"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__address')
-                field: address_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__address')
+              field: address_id
 
       - name: email
         data_type: varchar
@@ -418,17 +418,17 @@ models:
         data_type: number
         description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub en el que trabaja el empleado"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__store')
-                field: store_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__store')
+              field: store_id
 
       - name: active
         data_type: number
         description: "Campo que indica si un empleado está activo o no en la base de datos con un 1 o un 0 respectivamente"
         tests:
-              - accepted_values:
-                  values: [0,1]
+          - accepted_values:
+              values: [0,1]
 
       - name: username
         data_type: varchar
@@ -456,19 +456,19 @@ models:
         data_type: number
         description: "Clave foránea de la tabla de empleados y que hace referencia al empleado que es el manager del videoclub"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__staff')
-                field: staff_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__staff')
+              field: staff_id
 
       - name: address_id
         data_type: number
         description: "Clave foránea de la tabla de dirección y que hace referencia a la dirección del videoclub"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__address')
-                field: address_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__address')
+              field: address_id
 
       - name: date_load
         data_type: timestamp_ntz
@@ -485,19 +485,19 @@ models:
         data_type: number
         description: "Clave foránea de la tabla películas y que hace referencia a la película que se compra"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__film')
-                field: film_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
 
-      - name: store_id
+      - name  : store_id
         data_type: number
         description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub que compra la película"
         tests:
-              - not_null
-              - relationships:
-                to: ref('stg_dbt_proyecto_final__store')
-                field: store_id
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__store')
+              field: store_id
 
       - name: quantity
         data_type: number

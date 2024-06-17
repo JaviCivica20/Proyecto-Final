@@ -101,10 +101,10 @@ sources:
             data_type: number
             description: "Clave foránea de la tabla Store y que hace referencia al videoclub donde está registrado el cliente"
             tests:
-            - not_null
-            - relationships:
-                to: source('dbt_proyecto_final','store')
-                field: store_id
+              - not_null
+              - relationships:
+                  to: source('dbt_proyecto_final','store')
+                  field: store_id
 
           - name: first_name
             data_type: varchar
@@ -124,8 +124,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','address')
-                field: address_id
+                  to: source('dbt_proyecto_final','address')
+                  field: address_id
 
           - name: active
             data_type: number
@@ -170,8 +170,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','language')
-                field: language_id
+                  to: source('dbt_proyecto_final','language')
+                  field: language_id
 
           - name: rental_duration
             data_type: number
@@ -221,8 +221,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','actor')
-                field: actor_id
+                  to: source('dbt_proyecto_final','actor')
+                  field: actor_id
 
           - name: film_id
             data_type: number
@@ -230,8 +230,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','film')
-                field: film_id
+                  to: source('dbt_proyecto_final','film')
+                  field: film_id
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
@@ -246,8 +246,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','film')
-                field: film_id
+                  to: source('dbt_proyecto_final','film')
+                  field: film_id
 
           - name: category_id
             data_type: number
@@ -255,8 +255,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','category')
-                field: category_id
+                  to: source('dbt_proyecto_final','category')
+                  field: category_id
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
@@ -296,8 +296,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','customer')
-                field: customer_id
+                  to: source('dbt_proyecto_final','customer')
+                  field: customer_id
 
           - name: staff_id
             data_type: number
@@ -305,8 +305,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','staff')
-                field: staff_id
+                  to: source('dbt_proyecto_final','staff')
+                  field: staff_id
 
           - name: rental_id
             data_type: number
@@ -314,8 +314,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','rental')
-                field: rental_id
+                  to: source('dbt_proyecto_final','rental')
+                  field: rental_id
 
           - name: amount
             data_type: number
@@ -351,8 +351,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','customer')
-                field: customer_id
+                  to: source('dbt_proyecto_final','customer')
+                  field: customer_id
           
           - name: film_id
             data_type: number
@@ -360,8 +360,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','customer')
-                field: customer_id
+                  to: source('dbt_proyecto_final','customer')
+                  field: customer_id
 
           - name: return_date
             data_type: date
@@ -373,8 +373,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','staff')
-                field: staff_id
+                  to: source('dbt_proyecto_final','staff')
+                  field: staff_id
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
@@ -404,8 +404,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','address')
-                field: address_id
+                  to: source('dbt_proyecto_final','address')
+                  field: address_id
 
           - name: email
             data_type: varchar
@@ -417,8 +417,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','store')
-                field: store_id
+                  to: source('dbt_proyecto_final','store')
+                  field: store_id
 
           - name: active
             data_type: number
@@ -455,8 +455,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','staff')
-                field: staff_id
+                  to: source('dbt_proyecto_final','staff')
+                  field: staff_id
 
           - name: address_id
             data_type: number
@@ -464,8 +464,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','address')
-                field: address_id
+                  to: source('dbt_proyecto_final','address')
+                  field: address_id
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
@@ -487,8 +487,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','film')
-                field: film_id
+                  to: source('dbt_proyecto_final','film')
+                  field: film_id
 
           - name: store_id
             data_type: number
@@ -496,8 +496,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                to: source('dbt_proyecto_final','store')
-                field: store_id
+                  to: source('dbt_proyecto_final','store')
+                  field: store_id
 
           - name: quantity
             data_type: number
