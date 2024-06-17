@@ -5,6 +5,7 @@ with rentals as (
             r.rental_id,
             r.customer_id,
             r.film_id,
+            rental_staff_id,
             r.rental_date,
             r.rental_time,
             r.target_return_date,
@@ -14,6 +15,7 @@ with rentals as (
             end as rental_state,
 
             p.payment_id,
+            payment_staff_id,
             p.payment_date,
             p.amount,
             {{add_returned_column('payment_date')}},
