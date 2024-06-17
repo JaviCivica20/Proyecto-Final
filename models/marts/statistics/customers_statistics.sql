@@ -5,7 +5,7 @@
 
     int_returned_and_delays as (
         select *
-        from {{ ref("int_returned_and_delays")}}
+        from {{ ref("fct_rentals_returns")}}
     ),
 
     actor_counts as (

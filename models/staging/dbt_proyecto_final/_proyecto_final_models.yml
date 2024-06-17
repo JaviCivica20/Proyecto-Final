@@ -1,337 +1,187 @@
+
 version: 2
 
 models:
-  - name: stg_dbt_proyecto_final__purchases
-    description: ""
-    columns:
-      - name: purchase_id
-        data_type: number
-        description: ""
-
-      - name: film_id
-        data_type: number
-        description: ""
-
-      - name: store_id
-        data_type: number
-        description: ""
-
-      - name: quantity
-        data_type: number
-        description: ""
-
-      - name: amount
-        data_type: number
-        description: ""
-
-      - name: purchase_date
-        data_type: date
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: stg_dbt_proyecto_final__store
-    description: ""
-    columns:
-      - name: store_id
-        data_type: number
-        description: ""
-
-      - name: manager_staff_id
-        data_type: number
-        description: ""
-
-      - name: address_id
-        data_type: number
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: stg_dbt_proyecto_final__language
-    description: ""
-    columns:
-      - name: language_id
-        data_type: number
-        description: ""
-
-      - name: language
-        data_type: varchar
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: stg_dbt_proyecto_final__rental
-    description: ""
-    columns:
-      - name: rental_id
-        data_type: number
-        description: ""
-
-      - name: rental_date
-        data_type: date
-        description: ""
-
-      - name: rental_time
-        data_type: time
-        description: ""
-
-      - name: rental_staff_id
-        data_type: number
-        description: ""
-
-      - name: customer_id
-        data_type: number
-        description: ""
-
-      - name: film_id
-        data_type: number
-        description: ""
-
-      - name: target_return_date
-        data_type: date
-        description: ""
-
-      - name: payment_staff_id
-        data_type: number
-        description: ""
-
-      - name: amount
-        data_type: number
-        description: ""
-
-      - name: payment_date
-        data_type: date
-        description: ""
-
-      - name: returned
-        data_type: boolean
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: stg_dbt_proyecto_final__category
-    description: ""
-    columns:
-      - name: category_id
-        data_type: number
-        description: ""
-
-      - name: name
-        data_type: varchar
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: stg_dbt_proyecto_final__film_category
-    description: ""
-    columns:
-      - name: film_id
-        data_type: number
-        description: ""
-
-      - name: category_id
-        data_type: number
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: stg_dbt_proyecto_final__film_actor
-    description: ""
-    columns:
-      - name: actor_id
-        data_type: number
-        description: ""
-
-      - name: film_id
-        data_type: number
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
   - name: stg_dbt_proyecto_final__actor
-    description: ""
+    description: "Tabla que contiene una lista de actores"
     columns:
       - name: actor_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la tabla de actores"
+        tests: 
+          - unique
+          - not_null
 
       - name: first_name
         data_type: varchar
-        description: ""
+        description: "Nombre del actor"
 
       - name: last_name
         data_type: varchar
-        description: ""
+        description: "Apellido del actor"
 
-      - name: _fivetran_synced
+      - name: date_load
         data_type: timestamp_ntz
-        description: ""
-
-  - name: stg_dbt_proyecto_final__customer
-    description: ""
-    columns:
-      - name: customer_id
-        data_type: number
-        description: ""
-
-      - name: store_id
-        data_type: number
-        description: ""
-
-      - name: first_name
-        data_type: varchar
-        description: ""
-
-      - name: last_name
-        data_type: varchar
-        description: ""
-
-      - name: email
-        data_type: varchar
-        description: ""
-
-      - name: address_id
-        data_type: number
-        description: ""
-
-      - name: active
-        data_type: number
-        description: ""
-
-      - name: create_date
-        data_type: date
-        description: ""
-
-      - name: create_time
-        data_type: time
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
+        description: "Campo con la fecha de insertado de cada dato"
 
   - name: stg_dbt_proyecto_final__address
-    description: ""
+    description: "Tabla de las direcciones de los clientes, empleados y videoclubs"
     columns:
       - name: address_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la tabla de direcciones"
+        tests: 
+          - unique
+          - not_null
 
       - name: address
         data_type: varchar
-        description: ""
+        description: "Nombre de la dirección"
 
       - name: country
         data_type: varchar
-        description: ""
+        description: "País de la dirección"
 
       - name: city
         data_type: varchar
-        description: ""
+        description: "Ciudad de la dirección"
 
       - name: postal_code
         data_type: number
-        description: ""
+        description: "Código postal de la dirección"
 
-      - name: _fivetran_synced
+      - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Campo con la fecha de insertado de cada dato"
 
-  - name: stg_dbt_proyecto_final__staff
-    description: ""
+  - name: stg_dbt_proyecto_final__category
+    description: "Tabla con las diferentes categorías que puede tener una película"
     columns:
-      - name: staff_id
+      - name: category_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la categoría"
 
-      - name: first_name
+      - name: name
         data_type: varchar
-        description: ""
+        description: "Nombre de la categoría"
 
-      - name: last_name
-        data_type: varchar
-        description: ""
+      - name: date_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
 
-      - name: address_id
+  - name: stg_dbt_proyecto_final__customer
+    description: "Tabla que contiene los datos de todos los clientes"
+    columns:
+      - name: customer_id
         data_type: number
-        description: ""
-
-      - name: email
-        data_type: varchar
-        description: ""
+        description: "Clave primaria de los clientes"
+        tests: 
+              - unique
+              - not_null
 
       - name: store_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla Store y que hace referencia al videoclub donde está registrado el cliente"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__store')
+              field: store_id
+
+      - name: first_name
+        data_type: varchar
+        description: "Nombre completo del cliente"
+
+      - name: last_name
+        data_type: varchar
+        description: "Nombre del cliente"
+
+      - name: email
+        data_type: varchar
+        description: "Apellido del cliente"
+
+      - name: address_id
+        data_type: number
+        description: "Clave foránea de la tabla Address y que hace referencia a la dirección del cliente"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__address')
+              field: address_id
 
       - name: active
         data_type: number
-        description: ""
+        description: "Campo que indica si un cliente está activo o no en la base de datos con un 1 o un 0 respectivamente"
+        tests:
+          - accepted_values:
+              values: [0,1]
 
-      - name: username
-        data_type: varchar
-        description: ""
+      - name: create_date
+        data_type: date
+        description: "Fecha de registro del cliente"
 
-      - name: password
-        data_type: varchar
-        description: ""
+      - name: create_time
+        data_type: time
+        description: "Hora de registro del cliente"
 
-      - name: _fivetran_synced
+      - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Campo con la fecha de insertado de cada dato"
 
   - name: stg_dbt_proyecto_final__film
-    description: ""
+    description: "Tabla que contiene todas las películas disponibles en los videoclubs"
     columns:
       - name: film_id
         data_type: number
-        description: ""
+        description: "Clave primaria de las películas"
+        tests: 
+              - unique
+              - not_null
 
       - name: title
         data_type: varchar
-        description: ""
+        description: "Título de la película"
 
       - name: description
         data_type: varchar
-        description: ""
+        description: "Descripción de la película"
 
       - name: release_year
         data_type: number
-        description: ""
+        description: "Año de lanzamiento de la película"
 
       - name: language_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla de language y que hace referencia al idioma original de la película"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__language')
+              field: language_id
 
       - name: max_rental_days
         data_type: number
-        description: ""
+        description: "Máximo número de días de alquiler de la película"
+        tests:
+          - positive_values
 
       - name: rental_rate_price
         data_type: number
-        description: ""
+        description: "Precio por día de la película"
+        tests:
+          - positive_values
 
       - name: length_minutes
         data_type: number
-        description: ""
+        description: "Duración de la película en minutos"
+        tests:
+          - positive_values
 
       - name: replacement_cost
         data_type: number
-        description: ""
+        description: "Coste de la película si se compra"
+        tests:
+          - positve_values
 
       - name: age_rating
         data_type: varchar
@@ -339,24 +189,332 @@ models:
 
       - name: special_features
         data_type: varchar
-        description: ""
+        description: "Características extra"
 
       - name: trailers
         data_type: boolean
-        description: ""
+        description: "Si la película contiene trailers"
 
       - name: commentaries
         data_type: boolean
-        description: ""
+        description: "Si la película contiene comentarios"
 
       - name: behind_the_scenes
         data_type: boolean
-        description: ""
+        description: "Si la película contiene detrás de las escenas"
 
       - name: deleted_scenes
         data_type: boolean
-        description: ""
+        description: "Si la película contiene escenas eliminadas"
 
-      - name: _fivetran_synced
+      - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Campo con la fecha de insertado de cada dato"
+
+  - name: stg_dbt_proyecto_final__film_actor
+    description: "Tabla de unión entre las tablas de actores y películas y que contiene las ids de los actores que tiene cada película"
+    columns:
+      - name: actor_id
+        data_type: number
+        description: "Clave foránea de la tabla de actores"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__actor')
+              field: actor_id
+
+      - name: film_id
+        data_type: number
+        description: "Clave foránea de la tabla de películas"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
+
+  - name: stg_dbt_proyecto_final__film_category
+    description: "Tabla de unión entre las tablas de actores y categorías y que contiene las ids de las categorías que tiene cada película"
+    columns:
+      - name: film_id
+        data_type: number
+        description: "Clave foránea de la tabla de películas"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
+
+      - name: category_id
+        data_type: number
+        description: "Clave foránea de la tabla de categorías"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__category')
+              field: category_id
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
+
+  - name: stg_dbt_proyecto_final__language
+    description: "Tabla que contiene los diferentes idiomas que pueden tener las películas"
+    columns:
+      - name: language_id
+        data_type: number
+        description: "Clave primaria de los idiomas"
+        tests:
+          - unique 
+          - not_null
+
+      - name: language
+        data_type: varchar
+        description: "Idioma"
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
+
+  - name: stg_dbt_proyecto_final__payment
+    description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve)"
+    columns:
+      - name: payment_id
+        data_type: number
+        description: "Clave primaria de los pagos"
+        tests:
+          - not_null 
+          - unique 
+
+      - name: customer_id
+        data_type: number
+        description: "Clave foránea de la tabla clientes y que hace referencia al cliente que hace el pago"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__customer')
+              field: customer_id
+
+      - name: payment_staff_id
+        data_type: number
+        description: "Clave foránea de la tabla empleados y que hace referencia al empleado que realiza el cobro"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__staff')
+              field: staff_id
+
+      - name: rental_id
+        data_type: number
+        description: "Clave foránea de la tabla alquier y que hace referencia al alquiler que se devuelve y se paga"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__rental')
+              field: rental_id
+
+      - name: amount
+        data_type: number
+        description: "Cantidad pagada por el alquiler"
+        tests:
+          - positve_values
+
+      - name: payment_date
+        data_type: date
+        description: "Fecha del pago"
+
+      - name: data_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
+
+  - name: stg_dbt_proyecto_final__rental
+    description: "Tabla que contiene los alquieres de películas"
+    columns:
+      - name: rental_id
+        data_type: number
+        description: "Clave primaria de los alquileres"
+        tests:
+          - unique
+          - not_null
+
+      - name: rental_staff_id
+        data_type: number
+        description: "Clave foránea de la tabla empleados que hace referencia al empleado que tramita el alquiler"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__staff')
+              field: staff_id
+        
+      - name: customer_id
+        data_type: number
+        description: "Clave foránea de la tabla de clientes y que hace referencia al cliente que realiza el alquiler"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__customer')
+              field: customer_id
+
+      - name: film_id
+        data_type: number
+        description: "Clave foránea de la tabla de películas y que hace referencia a la película alquilada"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
+
+      - name: rental_date
+        data_type: date
+        description: "Fecha del alquiler"
+
+      - name: rental_time
+        data_type: time
+        description: "Hora del alquiler"
+
+      - name: target_return_date
+        data_type: date
+        description: "Día en el que hay que devolver la película"
+
+      - name: data_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
+
+  - name: stg_dbt_proyecto_final__staff
+    description: "Tabla que contiene los datos de todos los empleados"
+    columns:
+      - name: staff_id
+        data_type: number
+        description: "Clave primaria de los empleados"
+        tests:
+          - unique 
+          - not_null 
+
+      - name: first_name
+        data_type: varchar
+        description: "Nombre del empleado"
+
+      - name: last_name
+        data_type: varchar
+        description: "Apellido del empleado"
+
+      - name: address_id
+        data_type: number
+        description: "Clave foránea de la tabla de dirección y que hace referencia a la dirección del empleado"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__address')
+              field: address_id
+
+      - name: email
+        data_type: varchar
+        description: "Email del empleado"
+
+      - name: store_id
+        data_type: number
+        description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub en el que trabaja el empleado"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__store')
+              field: store_id
+
+      - name: active
+        data_type: number
+        description: "Campo que indica si un empleado está activo o no en la base de datos con un 1 o un 0 respectivamente"
+        tests:
+          - accepted_values:
+              values: [0,1]
+
+      - name: username
+        data_type: varchar
+        description: "Nombre de usuario del empleado"
+
+      - name: password
+        data_type: varchar
+        description: "Contraseña del empleado"
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
+
+  - name: stg_dbt_proyecto_final__store
+    description: "Tabla que contiene los diferentes videoclubs"
+    columns:
+      - name: store_id
+        data_type: number
+        description: "Clave primaria del videoclub"
+        tests:
+          - unique 
+          - not_null
+
+      - name: manager_staff_id
+        data_type: number
+        description: "Clave foránea de la tabla de empleados y que hace referencia al empleado que es el manager del videoclub"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__staff')
+              field: staff_id
+
+      - name: address_id
+        data_type: number
+        description: "Clave foránea de la tabla de dirección y que hace referencia a la dirección del videoclub"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__address')
+              field: address_id
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
+
+  - name: stg_dbt_proyecto_final__purchases
+    description: "Tabla que contiene las compras de películas que realiza el videoclub"
+    columns:
+      - name: purchase_id
+        data_type: number
+        description: "Clave primaria de las compras"
+
+      - name: film_id
+        data_type: number
+        description: "Clave foránea de la tabla películas y que hace referencia a la película que se compra"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
+
+      - name  : store_id
+        data_type: number
+        description: "Clave foránea de la tabla de videoclubs y que hace referencia al videoclub que compra la película"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__store')
+              field: store_id
+
+      - name: quantity
+        data_type: number
+        description: "Cantidad de unidades de la película compradas"
+        tests:
+          - positive_values
+
+      - name: amount
+        data_type: number
+        description: "Precio total de las películas"
+        tests: 
+          - positive_values
+
+      - name: purchase_date
+        data_type: date
+        description: "Fecha de compra"
+
+      - name: data_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
