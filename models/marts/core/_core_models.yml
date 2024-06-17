@@ -1,128 +1,89 @@
-
 version: 2
 
 models:
-  - name: dim_time
+  - name: fct_rentals_returns
     description: ""
     columns:
-      - name: hour
+      - name: rental_id
         data_type: number
         description: ""
 
-      - name: minute
+      - name: customer_id
         data_type: number
         description: ""
 
-      - name: second
+      - name: film_id
         data_type: number
         description: ""
 
-      - name: time_of_day
+      - name: rental_date
+        data_type: date
+        description: ""
+
+      - name: rental_time
         data_type: time
         description: ""
 
-      - name: seconds_since_midnight
+      - name: target_return_date
+        data_type: date
+        description: ""
+
+      - name: rental_state
+        data_type: varchar
+        description: ""
+
+      - name: payment_id
         data_type: number
         description: ""
 
-      - name: minutes_since_midnight
+      - name: payment_date
+        data_type: date
+        description: ""
+
+      - name: amount
         data_type: number
         description: ""
 
-  - name: dim_store
+      - name: returned
+        data_type: boolean
+        description: ""
+
+      - name: return_delay_days
+        data_type: number
+        description: ""
+
+      - name: data_load
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: fct_purchases
     description: ""
     columns:
+      - name: purchase_id
+        data_type: number
+        description: ""
+
+      - name: film_id
+        data_type: number
+        description: ""
+
       - name: store_id
         data_type: number
         description: ""
 
-      - name: first_name
-        data_type: varchar
-        description: ""
-
-      - name: last_name
-        data_type: varchar
-        description: ""
-
-      - name: full_name
-        data_type: varchar
-        description: ""
-
-      - name: address_id
+      - name: quantity
         data_type: number
         description: ""
 
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: dim_staff
-    description: ""
-    columns:
-      - name: staff_id
+      - name: amount
         data_type: number
         description: ""
 
-      - name: first_name
-        data_type: varchar
+      - name: purchase_date
+        data_type: date
         description: ""
 
-      - name: last_name
-        data_type: varchar
-        description: ""
-
-      - name: full_name
-        data_type: varchar
-        description: ""
-
-      - name: address_id
-        data_type: number
-        description: ""
-
-      - name: email
-        data_type: varchar
-        description: ""
-
-      - name: active
-        data_type: number
-        description: ""
-
-      - name: username
-        data_type: varchar
-        description: ""
-
-      - name: password
-        data_type: varchar
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: dim_addresses
-    description: ""
-    columns:
-      - name: address_id
-        data_type: number
-        description: ""
-
-      - name: address
-        data_type: varchar
-        description: ""
-
-      - name: country
-        data_type: varchar
-        description: ""
-
-      - name: city
-        data_type: varchar
-        description: ""
-
-      - name: postal_code
-        data_type: number
-        description: ""
-
-      - name: _fivetran_synced
+      - name: data_load
         data_type: timestamp_ntz
         description: ""
 
@@ -304,20 +265,132 @@ models:
         data_type: number
         description: ""
 
-      - name: no_returns
-        data_type: number
-        description: ""
-
-      - name: user_warning
-        data_type: boolean
-        description: ""
-
       - name: create_date
         data_type: date
         description: ""
 
       - name: create_time
         data_type: time
+        description: ""
+
+  - name: dim_addresses
+    description: ""
+    columns:
+      - name: address_id
+        data_type: number
+        description: ""
+
+      - name: address
+        data_type: varchar
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+      - name: city
+        data_type: varchar
+        description: ""
+
+      - name: postal_code
+        data_type: number
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: dim_time
+    description: ""
+    columns:
+      - name: hour
+        data_type: number
+        description: ""
+
+      - name: minute
+        data_type: number
+        description: ""
+
+      - name: second
+        data_type: number
+        description: ""
+
+      - name: time_of_day
+        data_type: time
+        description: ""
+
+      - name: seconds_since_midnight
+        data_type: number
+        description: ""
+
+      - name: minutes_since_midnight
+        data_type: number
+        description: ""
+
+  - name: dim_staff
+    description: ""
+    columns:
+      - name: staff_id
+        data_type: number
+        description: ""
+
+      - name: first_name
+        data_type: varchar
+        description: ""
+
+      - name: last_name
+        data_type: varchar
+        description: ""
+
+      - name: full_name
+        data_type: varchar
+        description: ""
+
+      - name: address_id
+        data_type: number
+        description: ""
+
+      - name: email
+        data_type: varchar
+        description: ""
+
+      - name: active
+        data_type: number
+        description: ""
+
+      - name: username
+        data_type: varchar
+        description: ""
+
+      - name: password
+        data_type: varchar
+        description: ""
+
+      - name: _fivetran_synced
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: dim_store
+    description: ""
+    columns:
+      - name: store_id
+        data_type: number
+        description: ""
+
+      - name: manager_first_name
+        data_type: varchar
+        description: ""
+
+      - name: manager_last_name
+        data_type: varchar
+        description: ""
+
+      - name: manager_full_name
+        data_type: varchar
+        description: ""
+
+      - name: address_id
+        data_type: number
         description: ""
 
       - name: _fivetran_synced
@@ -347,11 +420,11 @@ models:
         data_type: number
         description: ""
 
-      - name: language
+      - name: original_language
         data_type: varchar
         description: ""
 
-      - name: rental_duration_days
+      - name: max_rental_days
         data_type: number
         description: ""
 
@@ -367,94 +440,24 @@ models:
         data_type: varchar
         description: ""
 
-      - name: special_features
-        data_type: varchar
+      - name: trailers
+        data_type: boolean
+        description: ""
+
+      - name: commentaries
+        data_type: boolean
+        description: ""
+
+      - name: behind_the_scenes
+        data_type: boolean
+        description: ""
+
+      - name: deleted_scenes
+        data_type: boolean
         description: ""
 
       - name: category
         data_type: varchar
-        description: ""
-
-      - name: last_update
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: fct_purchases
-    description: ""
-    columns:
-      - name: purchase_id
-        data_type: number
-        description: ""
-
-      - name: film_id
-        data_type: number
-        description: ""
-
-      - name: store_id
-        data_type: number
-        description: ""
-
-      - name: quantity
-        data_type: number
-        description: ""
-
-      - name: amount
-        data_type: number
-        description: ""
-
-      - name: purchase_date
-        data_type: date
-        description: ""
-
-      - name: _fivetran_synced
-        data_type: timestamp_ntz
-        description: ""
-
-  - name: fct_rental
-    description: ""
-    columns:
-      - name: rental_id
-        data_type: number
-        description: ""
-
-      - name: rental_date
-        data_type: date
-        description: ""
-
-      - name: rental_time
-        data_type: time
-        description: ""
-
-      - name: rental_staff_id
-        data_type: number
-        description: ""
-
-      - name: customer_id
-        data_type: number
-        description: ""
-
-      - name: film_id
-        data_type: number
-        description: ""
-
-      - name: target_return_date
-        data_type: date
-        description: ""
-
-      - name: payment_staff_id
-        data_type: number
-        description: ""
-
-      - name: amount
-        data_type: number
-        description: ""
-
-      - name: payment_date
-        data_type: date
-        description: ""
-
-      - name: returned
-        data_type: boolean
         description: ""
 
       - name: _fivetran_synced

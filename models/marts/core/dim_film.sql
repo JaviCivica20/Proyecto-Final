@@ -10,7 +10,7 @@ final as (
         description,
         length_minutes,
         release_year,
-        language,
+        language as original_language,
         max_rental_days,
         rental_rate_price,
         replacement_cost,
