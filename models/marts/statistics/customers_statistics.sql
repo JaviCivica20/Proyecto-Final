@@ -8,6 +8,7 @@
         from {{ ref("fct_rentals_returns")}}
     ),
 
+    --- Se hace un count de los actores que ha visto un cliente
     actor_counts as (
         select
             r.customer_id,
@@ -18,6 +19,7 @@
         group by r.customer_id, f.actor_full_name
     ),
 
+    --- Se hace un rank de los actores
     ranked_actors as (
         select
             customer_id,
@@ -27,6 +29,7 @@
         from actor_counts
     ),
 
+    --- Se realizan diferentes funciones de agregación agrupadas por cliente
     total_films as (
         select 
             customer_id, 
@@ -39,6 +42,7 @@
         group by customer_id
     ),
 
+    --- Se hace un count de las categorías vistas por el cliente
     category_counts as (
         select
             r.customer_id,
@@ -49,6 +53,7 @@
         group by r.customer_id, f.category
     ),
 
+    --- Se hace un ranking de las categorías 
     ranked_categories as (
         select
             customer_id,
@@ -58,14 +63,15 @@
         from category_counts
     )
 
+    --- Se unen los datos y con un 'where rank = 1' se consiguen el actor más visto y la categoría más vista por cada cliente 
     select 
         ra.customer_id, 
-        ra.actor_full_name as favourite_actor, 
+        ra.actor_full_name as most_viewed_actor, 
         rc.category as favourite_category,
         tf.total_films_rented,
         tf.total_spent,
         coalesce(tf.total_no_returns, 0) as total_no_returns,
-        {{add_warning_column('tf.total_no_returns')}},
+        {{add_warning_column('tf.total_no_returns')}}, --- Llama a una macro que construye una columna y pone un aviso a los clientes que tienen más de 5 películas sin devolver
         tf.last_time_rented,
         tf.last_payment
     from ranked_actors ra

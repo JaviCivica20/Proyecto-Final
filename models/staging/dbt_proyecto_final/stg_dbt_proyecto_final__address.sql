@@ -8,7 +8,7 @@ renamed_casted as (
         address::varchar(100) as address,
         country::varchar(50) as country,
         city::varchar(50) as city,
-        IFF(postal_code = '', NULL, postal_code::number(10)) as postal_code,
+        IFF(postal_code = '', NULL, postal_code::number(10)) as postal_code, --- Había campos vacíos porque esa ciudad no tiene postal code
         _fivetran_synced as date_load
     from src_address
 )

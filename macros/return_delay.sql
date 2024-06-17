@@ -1,4 +1,4 @@
--- macros.sql
+-- Calcula los días de retraso al devolver una película
 
 {% macro calculate_return_delay_days(returned, target_return_date, payment_date) %}
     case 
