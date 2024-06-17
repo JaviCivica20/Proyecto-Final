@@ -20,6 +20,15 @@ models:
               field: customer_id
               to: ref('dim_customer')
 
+      - name: store_id
+        data_type: number
+        description: "Clave foránea de la tabla videoclubs que identifica el videoclub del alquiler"
+        tests:
+          - not_null 
+          - relationships:
+              field: store_id
+              to: ref('dim_store')
+
       - name: film_id
         data_type: number
         description: "Clave foránea de la tabla películas que identifica la película alquilada"
@@ -80,7 +89,7 @@ models:
         description: "Fecha en la que se cargaron los datos"
 
   - name: fct_purchases
-    description: ""
+    description: "Tabla de hechos que contiene las compras de películas que realiza el videoclub"
     columns:
       - name: purchase_id
         data_type: number

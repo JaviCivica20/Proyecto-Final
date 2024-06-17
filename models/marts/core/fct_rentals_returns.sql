@@ -10,6 +10,7 @@ with rentals as (
         select
             rental_id,
             customer_id,
+            store_id,
             film_id,
             rental_staff_id,
             rental_date,

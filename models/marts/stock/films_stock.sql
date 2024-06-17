@@ -2,7 +2,7 @@ with stg_purchase as (
     select
         store_id,
         film_id,
-        count(film_id) as film_stock
+        sum(quantity) as film_stock
     from {{ref('fct_purchases')}}
     group by 1, 2
     order by 1, 2

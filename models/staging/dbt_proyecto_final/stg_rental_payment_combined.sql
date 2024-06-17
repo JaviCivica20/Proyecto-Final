@@ -4,6 +4,7 @@ with rentals as (
         select
             r.rental_id,
             r.customer_id,
+            c.store_id,
             r.film_id,
             rental_staff_id,
             r.rental_date,
@@ -17,13 +18,12 @@ with rentals as (
             {{ calculate_return_delay_days('returned', 'target_return_date', 'payment_date') }} as return_delay_days, ---- Llama a una macro que calcula el retraso que ha habido al devolver una película
 
             greatest(r.date_load, coalesce(p.date_load, '1970-01-01')) as date_load ---- Gestiona los date_load que vienen desde las 2 fuentes para asegurarse de que siempre se inserta el más reciente 
-            
-        from {{ ref('base_dbt_proyecto_final__rental') }} r
-        left join {{ ref('base_dbt_proyecto_final__payment') }} p
-        on r.rental_id = p.rental_id
-
+        
+        from {{ ref('stg_dbt_proyecto_final__customer')}} c 
+        join {{ ref('base_dbt_proyecto_final__rental') }} r on c.customer_id = r.customer_id
+        left join {{ ref('base_dbt_proyecto_final__payment') }} p on r.rental_id = p.rental_id
     
     )
 
-    select * from rentals 
+    select * from rentals order by rental_id desc
 
