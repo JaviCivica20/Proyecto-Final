@@ -20,7 +20,7 @@ stg_film as (
         f.title,
         f.description,
         f.release_year,
-        f.language_id,
+        f.language_id as original_language,
         f.max_rental_days,
         f.rental_rate_price,
         f.length_minutes,

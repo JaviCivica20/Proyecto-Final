@@ -411,6 +411,6 @@ models:
         data_type: date
         description: "Fecha de compra"
 
-      - name: data_load
+      - name: date_load
         data_type: timestamp_ntz
         description: "Campo con la fecha de insertado de cada dato"

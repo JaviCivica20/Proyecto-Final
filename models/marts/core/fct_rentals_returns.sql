@@ -11,7 +11,7 @@ with rentals as (
             rental_id,
             customer_id,
             film_id,
-            rental_staff_id
+            rental_staff_id,
             rental_date,
             rental_time,
             target_return_date,
