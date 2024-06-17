@@ -185,7 +185,7 @@ models:
 
       - name: age_rating
         data_type: varchar
-        description: ""
+        description: "{{ doc('age_codes') }}"
 
       - name: special_features
         data_type: varchar
@@ -276,110 +276,6 @@ models:
         description: "Idioma"
 
       - name: date_load
-        data_type: timestamp_ntz
-        description: "Campo con la fecha de insertado de cada dato"
-
-  - name: stg_dbt_proyecto_final__payment
-    description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve)"
-    columns:
-      - name: payment_id
-        data_type: number
-        description: "Clave primaria de los pagos"
-        tests:
-          - not_null 
-          - unique 
-
-      - name: customer_id
-        data_type: number
-        description: "Clave foránea de la tabla clientes y que hace referencia al cliente que hace el pago"
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_dbt_proyecto_final__customer')
-              field: customer_id
-
-      - name: payment_staff_id
-        data_type: number
-        description: "Clave foránea de la tabla empleados y que hace referencia al empleado que realiza el cobro"
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_dbt_proyecto_final__staff')
-              field: staff_id
-
-      - name: rental_id
-        data_type: number
-        description: "Clave foránea de la tabla alquier y que hace referencia al alquiler que se devuelve y se paga"
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_dbt_proyecto_final__rental')
-              field: rental_id
-
-      - name: amount
-        data_type: number
-        description: "Cantidad pagada por el alquiler"
-        tests:
-          - positve_values
-
-      - name: payment_date
-        data_type: date
-        description: "Fecha del pago"
-
-      - name: data_load
-        data_type: timestamp_ntz
-        description: "Campo con la fecha de insertado de cada dato"
-
-  - name: stg_dbt_proyecto_final__rental
-    description: "Tabla que contiene los alquieres de películas"
-    columns:
-      - name: rental_id
-        data_type: number
-        description: "Clave primaria de los alquileres"
-        tests:
-          - unique
-          - not_null
-
-      - name: rental_staff_id
-        data_type: number
-        description: "Clave foránea de la tabla empleados que hace referencia al empleado que tramita el alquiler"
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_dbt_proyecto_final__staff')
-              field: staff_id
-        
-      - name: customer_id
-        data_type: number
-        description: "Clave foránea de la tabla de clientes y que hace referencia al cliente que realiza el alquiler"
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_dbt_proyecto_final__customer')
-              field: customer_id
-
-      - name: film_id
-        data_type: number
-        description: "Clave foránea de la tabla de películas y que hace referencia a la película alquilada"
-        tests:
-          - not_null
-          - relationships:
-              to: ref('stg_dbt_proyecto_final__film')
-              field: film_id
-
-      - name: rental_date
-        data_type: date
-        description: "Fecha del alquiler"
-
-      - name: rental_time
-        data_type: time
-        description: "Hora del alquiler"
-
-      - name: target_return_date
-        data_type: date
-        description: "Día en el que hay que devolver la película"
-
-      - name: data_load
         data_type: timestamp_ntz
         description: "Campo con la fecha de insertado de cada dato"
 
