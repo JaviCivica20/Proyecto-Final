@@ -360,8 +360,8 @@ sources:
             tests:
               - not_null
               - relationships:
-                  to: source('dbt_proyecto_final','customer')
-                  field: customer_id
+                  to: source('dbt_proyecto_final','film_id')
+                  field: film_id
 
           - name: return_date
             data_type: date
