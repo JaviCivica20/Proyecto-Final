@@ -1,4 +1,9 @@
-
+{{
+  config(
+    materialized='incremental',
+    unique_key='rental_id',
+  )
+}}
 
 with rentals as (
         select
@@ -22,6 +27,12 @@ with rentals as (
         from {{ ref('stg_dbt_proyecto_final__customer')}} c 
         join {{ ref('base_dbt_proyecto_final__rental') }} r on c.customer_id = r.customer_id
         left join {{ ref('base_dbt_proyecto_final__payment') }} p on r.rental_id = p.rental_id
+
+    {% if is_incremental() %}
+
+	    where greatest(r.date_load, coalesce(p.date_load, '1970-01-01')) > (select max(date_load) from {{ this }})
+
+    {% endif %}
     
     )
 

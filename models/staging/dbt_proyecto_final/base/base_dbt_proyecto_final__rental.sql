@@ -1,8 +1,18 @@
+{{
+  config(
+    materialized='incremental',
+    unique_key='rental_id',
+  )
+}}
 
 with src_rental as (
     select * from {{ source('dbt_proyecto_final', 'rental') }}
 
+{% if is_incremental() %}
 
+	where _fivetran_synced > (select max(date_load) from {{ this }})
+
+{% endif %}
 
 ),
 
