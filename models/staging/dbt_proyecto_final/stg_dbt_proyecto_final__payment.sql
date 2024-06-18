@@ -23,7 +23,6 @@ renamed_casted as (
         staff_id::number(10) as payment_staff_id,
         rental_id::number(10) as rental_id,
         amount::number(10,2) as amount,
-        amount::number(10,2) as bad_amount,
         payment_date,
         _fivetran_synced as date_load
     from src_payment
