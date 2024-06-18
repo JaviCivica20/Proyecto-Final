@@ -19,12 +19,12 @@ with rentals as (
             payment_id,
             payment_staff_id,
             payment_date, 
-            amount,
+            correct_amount as amount,
             returned,
             return_delay_days,
             date_load
 
-        from {{ ref('stg_rental_payment_combined') }} 
+        from {{ ref('int_rental_payment_combined') }} 
 
     {% if is_incremental() %}
 
