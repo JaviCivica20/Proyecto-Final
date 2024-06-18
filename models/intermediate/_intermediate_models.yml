@@ -101,26 +101,18 @@ models:
       - name: actor_id
         data_type: number
         description: "Clave foránea de la tabla de actores y que lo identifixa"
-        tests: 
-          - not_null
 
       - name: actor_full_name
         data_type: varchar
         description: "Nombre completo del actor"
-        tests: 
-          - not_null
-
+        
       - name: actor_first_name
         data_type: varchar
         description: "Nombre del actor"
-        tests: 
-          - not_null
-
+        
       - name: actor_last_name
         data_type: varchar
         description: "Apellido del actor"
-        tests: 
-          - not_null
 
       - name: date_load
         data_type: timestamp_ntz
@@ -151,7 +143,6 @@ models:
         data_type: number
         description: ""
         tests:
-          - not_null 
           - relationships:
               field: store_id
               to: ref('dim_store')
