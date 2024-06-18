@@ -140,7 +140,7 @@ models:
         tests:
           - not_null
 
-      - name: data_load
+      - name: date_load
         data_type: timestamp_ntz
         description: "Fecha en la que se cargaron los datos"
         tests:
