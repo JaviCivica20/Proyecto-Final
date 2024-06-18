@@ -10,7 +10,7 @@ final as (
         description,
         length_minutes,
         release_year,
-        language as original_language,
+        original_language,
         max_rental_days,
         rental_rate_price,
         replacement_cost,
@@ -20,7 +20,7 @@ final as (
         behind_the_scenes,
         deleted_scenes,
         category,
-        _fivetran_synced as date_load
+        date_load
     from int_actors_films
 )
 
