@@ -24,10 +24,11 @@ stg_film as (
         f.commentaries,
         f.behind_the_scenes,
         f.deleted_scenes,
-        c.name as category
+        c.name as category,
+        f.date_load
     from {{ref('stg_dbt_proyecto_final__film')}} f
-    join {{ref('stg_dbt_proyecto_final__film_category')}} fc on f.film_id = fc.film_id
-    join {{ref('stg_dbt_proyecto_final__category')}} c on fc.category_id = c.category_id
+    full join {{ref('stg_dbt_proyecto_final__film_category')}} fc on f.film_id = fc.film_id
+    full join {{ref('stg_dbt_proyecto_final__category')}} c on fc.category_id = c.category_id
 ),
 
 stg_language as (
@@ -36,7 +37,7 @@ stg_language as (
         f.language_id,
         l.language
     from {{ref('stg_dbt_proyecto_final__film')}} f
-    join {{ref('stg_dbt_proyecto_final__language')}} l on f.language_id = l.language_id
+    full join {{ref('stg_dbt_proyecto_final__language')}} l on f.language_id = l.language_id
 ),
 
 final as (
@@ -60,12 +61,12 @@ final as (
         concat(a.first_name,' ',a.last_name) as actor_full_name,
         a.first_name as actor_first_name,
         a.last_name as actor_last_name,
-        a.date_load
+        f.date_load
     from stg_actor a 
-    join stg_film_actor fa on a.actor_id = fa.actor_id
-    join stg_film f on f.film_id = fa.film_id
-    join stg_language l on f.film_id = l.film_id
+    full join stg_film_actor fa on a.actor_id = fa.actor_id
+    full join stg_film f on f.film_id = fa.film_id
+    full join stg_language l on f.film_id = l.film_id
     order by 1
 )
 
-select * from final
+select * from final 
