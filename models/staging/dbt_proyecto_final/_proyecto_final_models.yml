@@ -521,6 +521,15 @@ models:
           - relationships:
               to: ref('stg_dbt_proyecto_final__staff')
               field: staff_id
+      
+      - name: store_id
+        data_type: number
+        description: "Clave foránea de la tabla videoclubs que hace referencia a donde se realiza el alquiler"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__store')
+              field: store_id
 
       - name: customer_id
         data_type: number

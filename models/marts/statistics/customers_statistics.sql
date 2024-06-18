@@ -71,7 +71,9 @@
         tf.total_films_rented,
         tf.total_spent,
         coalesce(tf.total_no_returns, 0) as total_no_returns,
-        {{add_warning_column('tf.total_no_returns')}}, --- Llama a una macro que construye una columna y pone un aviso a los clientes que tienen más de 5 películas sin devolver
+        
+        --- Llama a una macro que construye una columna y pone un aviso a los clientes que tienen más de 5 películas sin devolver
+        {{add_warning_column('tf.total_no_returns')}}, 
         tf.last_time_rented,
         tf.last_payment
     from ranked_actors ra
