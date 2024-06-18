@@ -73,6 +73,15 @@ models:
               field: payment_id
               to: ref('stg_rental_payment_combined')
 
+      - name: payment_staff_id
+        data_type: number
+        description: "Clave foránea de la tabla empleados que identifica el empleado que realiza el cobro y devolución"
+        tests:
+          - not_null 
+          - relationships:
+              field: staff_id
+              to: ref('dim_staff')
+
       - name: payment_date
         data_type: date
         description: "Fecha del pago"
@@ -93,7 +102,7 @@ models:
         tests:
           - not_null
 
-      - name: data_load
+      - name: date_load
         data_type: timestamp_ntz
         description: "Fecha en la que se cargaron los datos"
 
