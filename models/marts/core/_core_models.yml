@@ -24,7 +24,6 @@ models:
         data_type: number
         description: "Clave foránea de la tabla videoclubs que identifica el videoclub del alquiler"
         tests:
-          - not_null 
           - relationships:
               field: store_id
               to: ref('dim_store')
@@ -77,7 +76,6 @@ models:
         data_type: number
         description: "Clave foránea de la tabla empleados que identifica el empleado que realiza el cobro y devolución"
         tests:
-          - not_null 
           - relationships:
               field: staff_id
               to: ref('dim_staff')

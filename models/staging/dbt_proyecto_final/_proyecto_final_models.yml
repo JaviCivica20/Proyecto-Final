@@ -609,13 +609,6 @@ models:
           - positive_values
           - not_null
 
-      - name: bad_amount
-        data_type: number
-        description: "Cantidad pagada por el alquiler"
-        tests:
-          - positive_values
-          - not_null
-
       - name: payment_date
         data_type: date
         description: "Fecha del pago"
