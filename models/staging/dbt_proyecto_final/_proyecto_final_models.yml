@@ -503,52 +503,42 @@ models:
         tests:
           - not_null
 
-
-  - name: stg_rental_payment_combined
-    description: "Tabla que combina los alquileres y las devoluciones (pagos)"
+  - name: stg_dbt_proyecto_final__rental
+    description: Tabla que contiene los alquieres de películas
     columns:
       - name: rental_id
         data_type: number
-        description: "Clave primaria de la tabla"
+        description: "Clave primaria de los alquileres"
         tests:
-          - not_null
           - unique
-
-      - name: customer_id
-        data_type: number
-        description: "Clave foránea de la tabla clientes que identifica al cliente que realiza el alquiler"
-        tests:
           - not_null
-          - relationships:
-              field: customer_id
-              to: ref('stg_dbt_proyecto_final__customer')
-
-      - name: store_id
-        data_type: number
-        description: "Clave foránea de la tabla videoclubs que identifica el videoclub donde se realiza el alquiler"
-        tests:
-          - not_null
-          - relationships:
-              field: store_id
-              to: ref('stg_dbt_proyecto_final__store')
-
-      - name: film_id
-        data_type: number
-        description: "Clave foránea de la tabla películas que identifica la película alquilada"
-        tests: 
-          - not_null 
-          - relationships:
-              field: film_id
-              to: ref('stg_dbt_proyecto_final__film')
 
       - name: rental_staff_id
         data_type: number
-        description: "Clave foránea de la tabla empleados que identifica al empleado que realiza la gestión del alquiler"
+        description: "Clave foránea de la tabla empleados que hace referencia al empleado que tramita el alquiler"
         tests:
           - not_null
           - relationships:
-              field: staff_id
               to: ref('stg_dbt_proyecto_final__staff')
+              field: staff_id
+
+      - name: customer_id
+        data_type: number
+        description: "Clave foránea de la tabla de clientes y que hace referencia al cliente que realiza el alquiler"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__customer')
+              field: customer_id
+
+      - name: film_id
+        data_type: number
+        description: "Clave foránea de la tabla de películas y que hace referencia a la película alquilada"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__film')
+              field: film_id
 
       - name: rental_date
         data_type: date
@@ -560,52 +550,80 @@ models:
         data_type: time
         description: "Hora del alquiler"
         tests:
-              - not_null
+          - not_null
 
       - name: target_return_date
         data_type: date
-        description: "Fecha máxima para realizar la devolución"
+        description: "Día en el que hay que devolver la película"
         tests:
-              - not_null
-
-      - name: returned
-        data_type: boolean
-        description: "True si la película ha sido devuelta y false si aún la tiene el cliente"
-        tests:
-              - not_null
-
-      - name: payment_id
-        data_type: number
-        description: "Clave foránea de la tabla de pagos que identifica al pago"
-        tests: 
-          - relationships:
-              field: payment_id
-              to: ref('base_dbt_proyecto_final__payment')
-
-      - name: payment_staff_id
-        data_type: number
-        description: "Clave foránea de la tabla empleados que identifica el empleado que gestiona la devolución y el pago"
-        tests:
-          - relationships:
-              field: staff_id
-              to: ref('stg_dbt_proyecto_final__staff')
-
-      - name: payment_date
-        data_type: date
-        description: "Fecha de la devolución"
-
-      - name: amount
-        data_type: number
-        description: "Precio del alquiler"
-
-      - name: return_delay_days
-        data_type: number
-        description: "Días de retraso en la devolución de la película"
-        tests:
-              - not_null
+          - not_null
 
       - name: date_load
         data_type: timestamp_ntz
-        description: "Fecha en la que se cargan los datos"
+        description: "Campo con la fecha de insertado de cada dato"
         tests:
-              - not_null
+          - not_null
+
+
+  - name: stg_dbt_proyecto_final__payment
+    description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve)"
+    columns:
+      - name: payment_id
+        data_type: number
+        description: "Clave primaria de los pagos"
+        tests:
+          - not_null 
+          - unique
+
+      - name: customer_id
+        data_type: number
+        description: "Clave foránea de la tabla clientes y que hace referencia al cliente que hace el pago"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__customer')
+              field: customer_id
+
+      - name: payment_staff_id
+        data_type: number
+        description: "Clave foránea de la tabla empleados y que hace referencia al empleado que realiza el cobro"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_dbt_proyecto_final__staff')
+              field: staff_id
+
+      - name: rental_id
+        data_type: number
+        description: "Clave foránea de la tabla alquier y que hace referencia al alquiler que se devuelve y se paga"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('base_dbt_proyecto_final__rental')
+              field: rental_id
+
+      - name: amount
+        data_type: number
+        description: "Cantidad pagada por el alquiler"
+        tests:
+          - positive_values
+          - not_null
+
+      - name: bad_amount
+        data_type: number
+        description: "Cantidad pagada por el alquiler"
+        tests:
+          - positive_values
+          - not_null
+
+      - name: payment_date
+        data_type: date
+        description: "Fecha del pago"
+        tests:
+          - not_null
+        
+      - name: date_load
+        data_type: timestamp_ntz
+        description: "Campo con la fecha de insertado de cada dato"
+        tests:
+          - not_null

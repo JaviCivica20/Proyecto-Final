@@ -8,5 +8,5 @@
 
 
 {{ codegen.generate_model_yaml(
-    model_names = ['finances']
+    model_names = ['int_rental_payment_combined']
 ) }}
