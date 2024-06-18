@@ -38,6 +38,14 @@ models:
               to: ref('dim_film')
               field: film_id
               
+      - name: rental_staff_id
+        data_type: number
+        description: "Clave foránea de la tabla empleados que identifica el empleado que realiza el alquiler"
+        tests:
+          - not_null 
+          - relationships:
+              field: staff_id
+              to: ref('dim_staff')
 
       - name: rental_date
         data_type: date
@@ -94,405 +102,630 @@ models:
     columns:
       - name: purchase_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la tabla compras"
+        tests:
+          - not_null
+          - unique
 
       - name: film_id
         data_type: number
-        description: ""
-
+        description: "Clave foránea de la tabla películas que identifica la película que se compra"
+        tests:
+          - not_null
+          - relationships:
+              field: film_id
+              to: ref('dim_film')
+            
       - name: store_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla videoclubs que identifica el videoclub que realiza la compra"
+        tests:
+          - not_null
 
       - name: quantity
         data_type: number
-        description: ""
+        description: "Cantidad de películas que se compran"
+        tests:
+          - not_null
 
       - name: amount
         data_type: number
-        description: ""
+        description: "Precio de la compra"
+        tests:
+          - not_null
 
       - name: purchase_date
         data_type: date
-        description: ""
+        description: "Fecha de la compra"
+        tests:
+          - not_null
 
       - name: data_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha en la que se cargaron los datos"
+        tests:
+          - not_null
 
   - name: dim_date
-    description: ""
+    description: "Tabla de fechas "
     columns:
       - name: date_day
         data_type: date
-        description: ""
+        description: "Fecha por año/mes/día"
+        tests:
+          - not_null
+          - unique
 
       - name: prior_date_day
         data_type: date
-        description: ""
+        description: "Día anterior"
+        tests:
+          - not_null
 
       - name: next_date_day
         data_type: date
-        description: ""
+        description: "Siguiente día"
+        tests:
+          - not_null
 
       - name: prior_year_date_day
         data_type: date
-        description: ""
+        description: "Año anterior con el formato año/mes/día"
+        tests:
+          - not_null
 
       - name: prior_year_over_year_date_day
         data_type: date
-        description: ""
+        description: "Año anterior del anterior con el formato año/mes/día"
+        tests:
+          - not_null
 
       - name: day_of_week
         data_type: number
-        description: ""
+        description: "Día de la semana en número"
+        tests:
+          - not_null
 
       - name: day_of_week_iso
         data_type: number
-        description: ""
+        description: "Día de la semana en número en formato ISO"
+        tests:
+          - not_null
 
       - name: day_of_week_name
         data_type: varchar
-        description: ""
+        description: "El nombre del día de la semana"
+        tests:
+          - not_null
 
       - name: day_of_week_name_short
         data_type: varchar
-        description: ""
+        description: "Nombre del día de la semana abreviado"
+        tests:
+          - not_null
 
       - name: day_of_month
         data_type: number
-        description: ""
+        description: "Número del día en el mes"
+        tests:
+          - not_null
 
       - name: day_of_year
         data_type: number
-        description: ""
+        description: "Número del día en el año"
+        tests:
+          - not_null
 
       - name: week_start_date
         data_type: date
-        description: ""
+        description: "Primer día de la semana con el formato año/mes/día"
+        tests:
+          - not_null
 
       - name: week_end_date
         data_type: date
-        description: ""
+        description: "Día final de la semana con el formato año/mes/día"
+        tests:
+          - not_null
 
       - name: prior_year_week_start_date
         data_type: date
-        description: ""
+        description: "Primer día de la semana del año anterior con el formato año/mes/día"
+        tests:
+          - not_null
 
       - name: prior_year_week_end_date
         data_type: date
-        description: ""
+        description: "Día final de la semana del año anterior con el formato año/mes/día"
+        tests:
+          - not_null
 
       - name: week_of_year
         data_type: number
-        description: ""
+        description: "Número de la semana en el año"
+        tests:
+          - not_null
 
       - name: iso_week_start_date
         data_type: date
-        description: ""
+        description: "Primer día de la semana con el formato año/mes/día e ISO"
+        tests:
+          - not_null
 
       - name: iso_week_end_date
         data_type: date
-        description: ""
+        description: "ültino día de la semana con el formato año/mes/día e ISO"
+        tests:
+          - not_null
 
       - name: prior_year_iso_week_start_date
         data_type: date
-        description: ""
+        description: "Primer día de la semana del año anterior con el formato año/mes/día e ISO"
+        tests:
+          - not_null
 
       - name: prior_year_iso_week_end_date
         data_type: date
-        description: ""
+        description: "ültimo día de la semana del año anterior con el formato año/mes/día"
+        tests:
+          - not_null
 
       - name: iso_week_of_year
         data_type: number
-        description: ""
+        description: "Número de la semana en el año en formato ISO"
+        tests:
+          - not_null
 
       - name: prior_year_week_of_year
         data_type: number
-        description: ""
+        description: "Número de la semana en el año anterior"
+        tests:
+          - not_null
 
       - name: prior_year_iso_week_of_year
         data_type: number
-        description: ""
+        description: "Número de la semana en el año anterior y en formato ISO"
+        tests:
+          - not_null
 
       - name: month_of_year
         data_type: number
-        description: ""
+        description: "Número de mes del año"
+        tests:
+          - not_null
 
       - name: month_name
         data_type: varchar
-        description: ""
+        description: "Nombre del mes"
+        tests:
+          - not_null
 
       - name: month_name_short
         data_type: varchar
-        description: ""
+        description: "Nombre del mes abreviado"
+        tests:
+          - not_null
 
       - name: month_start_date
         data_type: date
-        description: ""
+        description: "Día de comienzo del mes"
+        tests:
+          - not_null
 
       - name: month_end_date
         data_type: date
-        description: ""
+        description: "ültimo día del mes"
+        tests:
+          - not_null
 
       - name: prior_year_month_start_date
         data_type: date
-        description: ""
+        description: "Primer día del mes del año anterior"
+        tests:
+          - not_null
 
       - name: prior_year_month_end_date
         data_type: date
-        description: ""
+        description: "ültimo día del mes del año anterior"
+        tests:
+          - not_null
 
       - name: quarter_of_year
         data_type: number
-        description: ""
+        description: "Trimestre del año"
+        tests:
+          - not_null
 
       - name: quarter_start_date
         data_type: date
-        description: ""
+        description: "Fecha de comienzo del trimestre"
+        tests:
+          - not_null
 
       - name: quarter_end_date
         data_type: date
-        description: ""
+        description: "Fecha del final del trimestre"
+        tests:
+          - not_null
 
       - name: year_number
         data_type: number
-        description: ""
+        description: "Número del año"
+        tests:
+          - not_null
 
       - name: year_start_date
         data_type: date
-        description: ""
+        description: "Fecha de inicio del año"
+        tests:
+          - not_null
 
       - name: year_end_date
         data_type: date
-        description: ""
+        description: "Fecha de final de año"
+        tests:
+          - not_null
 
   - name: dim_customer
-    description: ""
+    description: "Tabla que contiene a todos los clientes"
     columns:
       - name: customer_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la tabla cliente"
+        tests:
+          - not_null 
+          - unique
 
       - name: first_name
         data_type: varchar
-        description: ""
+        description: "Nombre del cliente"
+        tests:
+          - not_null
 
       - name: last_name
         data_type: varchar
-        description: ""
+        description: "Apellido del cliente"
+        tests:
+          - not_null
 
       - name: full_name
         data_type: varchar
-        description: ""
+        description: "Nombre completo del cliente"
+        tests:
+          - not_null
 
       - name: address_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla de direcciones que identifica la dirección del cliente"
+        tests:
+          - not_null
+          - relationships:
+              field: address_id
+              to: ref('dim_address')
 
       - name: email
         data_type: varchar
-        description: ""
+        description: "Email del cliente"
+        tests:
+          - not_null
+          - correct_email
 
       - name: active
         data_type: number
-        description: ""
+        description: "1 si el cliente está activo y 0 si no"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0,1]
 
       - name: create_date
         data_type: date
-        description: ""
+        description: "Fecha de registro del cliente"
+        tests:
+          - not_null
 
       - name: create_time
         data_type: time
-        description: ""
+        description: "Hora de creación del cliente"
+        tests:
+          - not_null
+      
+      - name: date_load
+        data_type: timestamp_ntz
+        description: "Fecha de carga de los datos"
+        tests:
+          - not_null
 
   - name: dim_addresses
-    description: ""
+    description: "Tabla de direcciones"
     columns:
       - name: address_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la dirección"
+        tests:
+          - unique 
+          - not_null
 
       - name: address
         data_type: varchar
-        description: ""
+        description: "Dirección"
+        tests:
+          - not_null
 
       - name: country
         data_type: varchar
-        description: ""
+        description: "País de la dirección"
+        tests:
+          - not_null
 
       - name: city
         data_type: varchar
-        description: ""
+        description: "Ciudad de la dirección"
+        tests:
+          - not_null
 
       - name: postal_code
         data_type: number
-        description: ""
+        description: "Código postal"
 
-      - name: _fivetran_synced
+      - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha de carga de los datos"
+        tests:
+          - not_null
 
   - name: dim_time
-    description: ""
+    description: "Tabla de las horas, minutos y segundos"
     columns:
       - name: hour
         data_type: number
-        description: ""
+        description: "Hora"
+        tests:
+          - not_null
 
       - name: minute
         data_type: number
-        description: ""
+        description: "Minuto"
+        tests:
+          - not_null
 
       - name: second
         data_type: number
-        description: ""
+        description: "Segundo"
+        tests:
+          - not_null
 
       - name: time_of_day
         data_type: time
-        description: ""
+        description: "Hora completa con hora/minutos/segundos"
+        tests:
+          - not_null
 
       - name: seconds_since_midnight
         data_type: number
-        description: ""
+        description: "Segundos desde medianoche"
+        tests:
+          - not_null
 
       - name: minutes_since_midnight
         data_type: number
-        description: ""
+        description: "Minutos desde medianoche"
+        tests:
+          - not_null
 
   - name: dim_staff
-    description: ""
+    description: "Tabla de los empleados"
     columns:
       - name: staff_id
         data_type: number
-        description: ""
+        description: "Clave primaria del empleado"
+        tests:
+          - not_null
+          - unique
 
       - name: first_name
         data_type: varchar
-        description: ""
+        description: "Nombre del empleado"
+        tests:
+          - not_null
 
       - name: last_name
         data_type: varchar
-        description: ""
+        description: "Apellido del empleado"
+        tests:
+          - not_null
 
       - name: full_name
         data_type: varchar
-        description: ""
+        description: "Nombre completo del empleado"
+        tests:
+          - not_null
 
       - name: address_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla de dirección que identifica la dirección del empleado"
+        tests:
+          - not_null
+          - relationships:
+              field: address_id
+              to: ref('dim_address')
 
       - name: email
         data_type: varchar
-        description: ""
+        description: "Email del empleado"
+        tests:
+          - not_null
+          - correct_email
 
       - name: active
         data_type: number
-        description: ""
+        description: "1 si el empleado está activo y 0 si no"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [0,1]
 
       - name: username
         data_type: varchar
-        description: ""
+        description: "Nombre de usuario del empleado"
+        tests:
+          - not_null
 
       - name: password
         data_type: varchar
-        description: ""
+        description: "Contraseña del empleado"
+        tests:
+          - not_null
 
-      - name: _fivetran_synced
+      - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha de carga de los datos"
+        tests:
+          - not_null
 
   - name: dim_store
-    description: ""
+    description: "Tabla de las tiendas"
     columns:
       - name: store_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la tienda"
+        tests:
+          - not_null
+          - unique
 
       - name: manager_first_name
         data_type: varchar
-        description: ""
+        description: "Nombre del manager"
+        tests:
+          - not_null
 
       - name: manager_last_name
         data_type: varchar
-        description: ""
+        description: "Apellido del manager"
+        tests:
+          - not_null
 
       - name: manager_full_name
         data_type: varchar
-        description: ""
+        description: "Nombre completo del manager"
+        tests:
+          - not_null
 
       - name: address_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla direccíon que identifica la dirección de la tienda"
+        tests:
+          - not_null
+          - relationships:
+              field: address_id
+              to: ref('dim_address')
 
-      - name: _fivetran_synced
+      - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha de carga de los datos"
+        tests:
+          - not_null
 
   - name: dim_film
-    description: ""
+    description: "Tabla de las películas"
     columns:
       - name: film_id
         data_type: number
-        description: ""
+        description: "Clave primaria de las películas"
+        tests:
+          - not_null
+          - unique
 
       - name: title
         data_type: varchar
-        description: ""
+        description: "Título de la película"
+        tests:
+          - not_null
 
       - name: description
         data_type: varchar
-        description: ""
+        description: "Descripción de la película"
+        tests:
+          - not_null
 
       - name: length_minutes
         data_type: number
-        description: ""
+        description: "Duración de la película en minutos"
+        tests:
+          - not_null
+          - positive_values
 
       - name: release_year
         data_type: number
-        description: ""
+        description: "Año de lanzamiento de la película"
+        tests:
+          - not_null
 
       - name: original_language
         data_type: varchar
-        description: ""
+        description: "Idioma original de la película"
+        tests:
+          - not_null
 
       - name: max_rental_days
         data_type: number
-        description: ""
+        description: "Número máximo días de alquiler"
+        tests:
+          - not_null
+          - positive_values
 
       - name: rental_rate_price
         data_type: number
-        description: ""
+        description: "Precio por día del alquiler de la película"
+        tests:
+          - not_null
+          - positive_values
 
       - name: replacement_cost
         data_type: number
-        description: ""
+        description: "Coste de compra de la película"
+        tests:
+          - not_null
+          - positive_values
 
       - name: age_rating
         data_type: varchar
-        description: ""
+        description: "{{ doc('age_codes') }}"
+        tests:
+          - not_null
 
       - name: trailers
         data_type: boolean
-        description: ""
+        description: "Si la película contiene trailers"
+        tests:
+          - not_null
 
       - name: commentaries
         data_type: boolean
-        description: ""
+        description: "Si la película contiene comentarios"
+        tests:
+          - not_null
 
       - name: behind_the_scenes
         data_type: boolean
-        description: ""
+        description: "Si la película contiene detrás de las escenas"
+        tests:
+          - not_null
 
       - name: deleted_scenes
         data_type: boolean
-        description: ""
+        description: "Si la película contiene escenas eliminadas"
+        tests:
+          - not_null
 
       - name: category
         data_type: varchar
-        description: ""
+        description: "Categoría de la película"
+        tests:
+          - not_null
 
-      - name: _fivetran_synced
+      - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha de carga de los datos"
+        tests:
+          - not_null
