@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: finances
+    description: "Datamart que registra las finanzas de los videoclubs"
+    columns:
+      - name: store_id
+        data_type: number
+        description: "Clave foránea de la tabla de videoclubs"
+        tests:
+          - not_null
+          - relationships:
+              field: store_id
+              to: ref('dim_store')
+
+      - name: year
+        data_type: number
+        description: "Año por el que se hace la métrica"
+
+      - name: total_earnings
+        data_type: number
+        description: "Total de cobros"
+
+      - name: total_expenses
+        data_type: number
+        description: "Total de gastos"
+
+      - name: total_profits
+        data_type: number
+        description: "Total de beneficios"
+
+      - name: total_rentals
+        data_type: number
+        description: "Total de alquileres"
+
+      - name: total_purchases
+        data_type: number
+        description: "Total de compras"

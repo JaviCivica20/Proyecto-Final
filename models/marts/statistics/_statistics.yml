@@ -2,40 +2,61 @@ version: 2
 
 models:
   - name: customers_statistics
-    description: ""
+    description: "Datamart que contiene las estadísticas de todos los usuarios"
     columns:
       - name: customer_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la tabla"
+        tests:
+          - unique 
+          - not_null
 
-      - name: favourite_actor
+      - name: most_viewed_actor
         data_type: varchar
-        description: ""
+        description: "Actor más visto por el cliente"
+        tests:
+          - not_null
 
       - name: favourite_category
         data_type: varchar
-        description: ""
+        description: "Categoría favorita del cliente"
+        tests: 
+          - not_null
 
       - name: total_films_rented
         data_type: number
-        description: ""
+        description: "Total de películas alquiladas por el cliente"
+        tests: 
+          - not_null
+          - positive_values
 
       - name: total_spent
         data_type: number
-        description: ""
+        description: "Cantidad total gastada por el cliente"
+        tests: 
+          - not_null
+          - positive_values
 
       - name: total_no_returns
         data_type: number
-        description: ""
+        description: "Total de películas no devueltas"
+        tests: 
+          - not_null
 
       - name: user_warning
         data_type: boolean
-        description: ""
+        description: "Aviso en 'true' si el cliente tiene más de 5 películas sin devolver"
+        tests: 
+          - not_null
 
       - name: last_time_rented
         data_type: date
-        description: ""
+        description: "La última fecha de alquiler del cliente"
+        tests: 
+          - not_null
 
       - name: last_payment
         data_type: date
-        description: ""
+        description: "La última fecha de pago del cliente"
+        tests: 
+          - not_null

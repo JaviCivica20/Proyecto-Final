@@ -1,4 +1,4 @@
--- Comprueba que la fecha de devolución de una película no sea anterior a la de su pago (porque se paga cuando se devuelve)
+-- Comprueba que la fecha de alquiler de una película no sea anterior a la de su pago (porque se paga cuando se devuelve)
 
 SELECT *
 FROM {{ ref('base_dbt_proyecto_final__rental') }}

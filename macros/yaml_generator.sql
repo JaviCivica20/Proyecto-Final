@@ -8,5 +8,5 @@
 
 
 {{ codegen.generate_model_yaml(
-    model_names = ['customers_statistics']
+    model_names = ['finances']
 ) }}

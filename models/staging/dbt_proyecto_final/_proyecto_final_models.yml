@@ -414,3 +414,67 @@ models:
       - name: date_load
         data_type: timestamp_ntz
         description: "Campo con la fecha de insertado de cada dato"
+
+
+  - name: stg_rental_payment_combined
+    description: ""
+    columns:
+      - name: rental_id
+        data_type: number
+        description: ""
+
+      - name: customer_id
+        data_type: number
+        description: ""
+
+      - name: store_id
+        data_type: number
+        description: ""
+
+      - name: film_id
+        data_type: number
+        description: ""
+
+      - name: rental_staff_id
+        data_type: number
+        description: ""
+
+      - name: rental_date
+        data_type: date
+        description: ""
+
+      - name: rental_time
+        data_type: time
+        description: ""
+
+      - name: target_return_date
+        data_type: date
+        description: ""
+
+      - name: returned
+        data_type: boolean
+        description: ""
+
+      - name: payment_id
+        data_type: number
+        description: ""
+
+      - name: payment_staff_id
+        data_type: number
+        description: ""
+
+      - name: payment_date
+        data_type: date
+        description: ""
+
+      - name: amount
+        data_type: number
+        description: ""
+
+      - name: return_delay_days
+        data_type: number
+        description: ""
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: ""

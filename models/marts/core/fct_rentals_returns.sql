@@ -10,12 +10,12 @@ with rentals as (
         select
             rental_id,
             customer_id,
+            store_id,
             film_id,
             rental_staff_id,
             rental_date,
             rental_time,
             target_return_date,
-            rental_state,
             payment_id,
             payment_staff_id,
             payment_date, 

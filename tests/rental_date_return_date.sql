@@ -1,4 +1,4 @@
--- Comprueba que la fecha de devolución de una película no sea anterior a la de su alquiler
+-- Comprueba que la fecha de devolución de una película no sea anterior a la de su fecha de devolución máxima
 
 SELECT *
 FROM {{ ref('base_dbt_proyecto_final__rental') }}
