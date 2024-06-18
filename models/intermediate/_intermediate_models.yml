@@ -141,7 +141,7 @@ models:
 
       - name: store_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla tiendas que identifica la tienda donde se realiza el alquiler"
         tests:
           - relationships:
               field: store_id
@@ -149,7 +149,7 @@ models:
 
       - name: film_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla películas que identifica la película que se alquila"
         tests:
           - not_null 
           - relationships:
@@ -158,7 +158,7 @@ models:
 
       - name: rental_staff_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla de empleados que identifica al empleado que gestiona el alquiler"
         tests:
           - not_null 
           - relationships:

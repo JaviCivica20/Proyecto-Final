@@ -43,15 +43,23 @@ models:
 
     staging:
       +materialized: view
+      +docs:
+        node_color: "#616160"
       +database: "{{ env_var('DBT_ENVIRONMENTS') }}_SILVER_DB"
       proyecto_final:
         +schema: dbt_proyecto_final
       
     marts:
       +materialized: table
+      +docs:
+        node_color: "#D1A100"
       +database: "{{ env_var('DBT_ENVIRONMENTS') }}_GOLD_DB"
       core:
         +schema: core
+
+    intermediate:
+      +docs:
+        node_color: "#E05800"
 seeds:
   +schema: seed_data
   +database: "{{ env_var('DBT_ENVIRONMENTS') }}_BRONZE_DB"     
