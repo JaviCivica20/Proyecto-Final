@@ -42,18 +42,26 @@ models:
       - name: rental_date
         data_type: date
         description: "Fecha del alquiler"
+        tests:
+          - not_null
 
       - name: rental_time
         data_type: time
         description: "Hora del alquiler"
+        tests:
+          - not_null
 
       - name: target_return_date
         data_type: date
         description: "Día en el que hay que devolver la película"
+        tests:
+          - not_null
 
-      - name: data_load
+      - name: date_load
         data_type: timestamp_ntz
         description: "Campo con la fecha de insertado de cada dato"
+        tests:
+          - not_null
 
 
   - name: base_dbt_proyecto_final__payment
@@ -98,11 +106,23 @@ models:
         description: "Cantidad pagada por el alquiler"
         tests:
           - positive_values
+          - not_null
+
+      - name: bad_amount
+        data_type: number
+        description: "Cantidad pagada por el alquiler"
+        tests:
+          - positive_values
+          - not_null
 
       - name: payment_date
         data_type: date
         description: "Fecha del pago"
+        tests:
+          - not_null
         
-      - name: data_load
+      - name: date_load
         data_type: timestamp_ntz
         description: "Campo con la fecha de insertado de cada dato"
+        tests:
+          - not_null

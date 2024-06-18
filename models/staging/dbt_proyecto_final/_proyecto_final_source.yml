@@ -30,14 +30,20 @@ sources:
           - name: first_name
             data_type: varchar
             description: "Nombre del actor"
+            tests:
+              - not_null
 
           - name: last_name
             data_type: varchar
             description: "Apellido del actor"
+            tests:
+              - not_null
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
 
       - name: address
         description: "Tabla de las direcciones de los clientes, empleados y videoclubs directa desde la fuente"
@@ -52,14 +58,20 @@ sources:
           - name: address
             data_type: varchar
             description: "Nombre de la dirección"
+            tests:
+              - not_null
 
           - name: country
             data_type: varchar
             description: "País de la dirección"
+            tests:
+              - not_null
 
           - name: city
             data_type: varchar
             description: "Ciudad de la dirección"
+            tests:
+              - not_null
 
           - name: postal_code
             data_type: number
@@ -68,6 +80,8 @@ sources:
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
 
       - name: category
         description: "Tabla con las diferentes categorías que puede tener una película directa desde la fuente"
@@ -82,10 +96,14 @@ sources:
           - name: name
             data_type: varchar
             description: "Nombre de la categoría"
+            tests:
+              - not_null
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
           
       - name: customer
         description: "Tabla que contiene los datos de todos los clientes directa desde la fuente"
@@ -109,16 +127,21 @@ sources:
           - name: first_name
             data_type: varchar
             description: "Nombre del cliente"
+            tests:
+              - not_null
 
           - name: last_name
             data_type: varchar
             description: "Apellido del cliente"
+            tests:
+              - not_null
 
           - name: email
             data_type: varchar
             description: "Email del cliente"
             tests:
               - correct_email
+              - not_null
 
           - name: address_id
             data_type: number
@@ -133,16 +156,21 @@ sources:
             data_type: number
             description: "Campo que indica si un cliente está activo o no en la base de datos con un 1 o un 0 respectivamente"
             tests:
+              - not_null
               - accepted_values:
                   values: [0,1]
 
           - name: create_date
             data_type: date
             description: "Fecha en la que se registró el cliente en el videoclub"
+            tests:
+              - not_null
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
 
       - name: film
         description: "Tabla que contiene todas las películas disponibles en los videoclubs directa desde la fuente"
@@ -157,14 +185,20 @@ sources:
           - name: title
             data_type: varchar
             description: "Título de la película"
+            tests:
+              - not_null
 
           - name: description
             data_type: varchar
             description: "Descripción de la película"
+            tests:
+              - not_null
 
           - name: release_year
             data_type: number
             description: "Año de lanzamiento de la película"
+            tests:
+              - not_null
 
           - name: language_id
             data_type: varchar
@@ -180,29 +214,34 @@ sources:
             description: "Duración máxima del alquiler"
             tests:
               - positive_values
+              - not_null
 
           - name: rental_rate
             data_type: number
             description: "Precio del alquiler por día"
             tests:
               - positive_values
+              - not_null
 
           - name: length
             data_type: number
             description: "Duración de la película en minutos"
             tests:
               - positive_values
+              - not_null
 
           - name: replacement_cost
             data_type: number
             description: "Coste de la compra de la película"
             tests:
               - positive_values
+              - not_null
 
           - name: rating
             data_type: varchar
             description: "{{ doc('age_codes') }}"
             tests:
+              - not_null
               - accepted_values:
                   values: ['PG','G','NC-17','PG-13','R']
 
@@ -213,6 +252,8 @@ sources:
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
 
       - name: film_actor
         description: "Tabla de unión entre las tablas de actores y películas y que contiene las ids de los actores que tiene cada película directa desde la fuente"
@@ -238,6 +279,8 @@ sources:
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
 
       - name: film_category
         description: "Tabla de unión entre las tablas de actores y categorías y que contiene las ids de las categorías que tiene cada película directa desde la fuente"
@@ -263,6 +306,8 @@ sources:
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
             
       - name: language
         description: "Tabla que contiene los diferentes idiomas que pueden tener las películas directa desde la fuente"
@@ -277,10 +322,14 @@ sources:
           - name: name
             data_type: varchar
             description: "Idioma"
+            tests:
+              - not_null
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
       
       - name: payment
         description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve) directa desde la fuente"
@@ -324,14 +373,19 @@ sources:
             description: "Cantidad pagada por el alquiler"
             tests: 
               - positive_values
+              - not_null
 
           - name: payment_date
             data_type: date
             description: "Fecha del pago"
+            tests:
+              - not_null
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
 
       - name: rental
         description: "Tabla que contiene los alquieres de películas directa desde la fuente"
@@ -346,6 +400,8 @@ sources:
           - name: rental_date
             data_type: date
             description: "Fecha en la que se realiza el alquiler"
+            tests:
+              - not_null
 
           - name: customer_id
             data_type: number
@@ -368,6 +424,8 @@ sources:
           - name: return_date
             data_type: date
             description: "Fecha en la que se debe realizar la devolución de la película"
+            tests:
+              - not_null
 
           - name: staff_id
             data_type: number
@@ -381,6 +439,8 @@ sources:
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
 
       - name: staff
         description: "Tabla que contiene los datos de todos los empleados directa desde la fuente"
@@ -395,10 +455,14 @@ sources:
           - name: first_name
             data_type: varchar
             description: "Nombre del empleado"
+            tests:
+              - not_null
 
           - name: last_name
             data_type: varchar
             description: "Apellido del empleado"
+            tests:
+              - not_null
 
           - name: address_id
             data_type: number
@@ -428,20 +492,27 @@ sources:
             data_type: number
             description: "Campo que indica si un empleado está activo o no en la base de datos con un 1 o un 0 respectivamente"
             tests:
+              - not_null
               - accepted_values:
                   values: [0,1]
 
           - name: username
             data_type: varchar
             description: "Nombre de usuario del empleado"
+            tests:
+              - not_null
 
           - name: password
             data_type: number
             description: "Contraseña del empleado"
+            tests:
+              - not_null
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
       
       - name: store
         description: "Tabla que contiene los diferentes videoclubs directa desde la fuente"
@@ -474,6 +545,8 @@ sources:
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
         
       - name: purchases
         description: "Tabla que contiene las compras de películas que realiza el videoclub directa desde la fuente"
@@ -508,15 +581,19 @@ sources:
             description: "Cantidad de películas que se compran"
             tests:
               - positive_values
+              - not_null
 
           - name: amount
             data_type: number
             description: "Precio total de las películas"
             tests:
               - positive_values
+              - not_null
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
             description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
 
    
