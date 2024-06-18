@@ -41,6 +41,6 @@ INCREMENTAL
 
 dbt run --full-refresh --select fct_rentals_returns
 
-dbt run --models base_dbt_proyecto_final__rental stg_rental_payment_combined
+dbt run --models stg_dbt_proyecto_final__rental int_rental_payment_combined
 
-dbt run --models base_dbt_proyecto_final__payment stg_rental_payment_combined
+dbt run --models stg_dbt_proyecto_final__payment int_rental_payment_combined

@@ -20,6 +20,7 @@ renamed_casted as (
     select
         rental_id::number(10) as rental_id,
         staff_id::number(10) as rental_staff_id,
+        store_id::number(10) as store_id,
         customer_id::number(10) as customer_id,
         film_id::number(10) as film_id,
         DATE(rental_date) as rental_date,
