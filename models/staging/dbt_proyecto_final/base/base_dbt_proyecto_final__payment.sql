@@ -1,7 +1,18 @@
-
+{{
+  config(
+    materialized='incremental',
+    unique_key='payment_id',
+  )
+}}
 
 with src_payment as (
     select * from {{ source('dbt_proyecto_final', 'payment') }}
+
+{% if is_incremental() %}
+
+	where _fivetran_synced > (select max(date_load) from {{ this }})
+
+{% endif %}    
 
 ),
 

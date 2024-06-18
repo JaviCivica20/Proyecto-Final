@@ -35,8 +35,9 @@ models:
         tests:
           - not_null 
           - relationships:
-              field: film_id
               to: ref('dim_film')
+              field: film_id
+              
 
       - name: rental_date
         data_type: date
