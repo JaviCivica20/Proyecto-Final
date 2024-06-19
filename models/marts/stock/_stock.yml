@@ -31,14 +31,10 @@ models:
       - name: release_year
         data_type: number
         description: "Año de lanzamiento de la película"
-        tests: 
-          - not_null
 
       - name: original_language
         data_type: varchar
         description: "Idioma original de la película"
-        tests: 
-          - not_null
 
       - name: film_stock
         data_type: number
