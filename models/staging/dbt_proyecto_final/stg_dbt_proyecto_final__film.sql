@@ -15,7 +15,8 @@ renamed_casted as (
         replacement_cost::number(5,2) as replacement_cost,
         rating::varchar(10) as age_rating,
         special_features::varchar(100) as special_features,
-        {{ generate_special_features_conditions('special_features') }}, ---- Llama a una macro que divide las special_features en 4 columnas con true o false
+        --- Llama a una macro que divide las special_features en 4 columnas con true o false
+        {{ generate_special_features_conditions('special_features') }}, 
         _fivetran_synced as date_load
     from src_film
 )
