@@ -2,58 +2,89 @@ version: 2
 
 models:
   - name: base_dbt_proyecto_final__address
-    description: ""
+    description: "Tabla que contiene las direcciones directamente desde la source"
     columns:
       - name: address_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la dirección"
+        tests:
+          - unique
+          - not_null
 
       - name: address
         data_type: varchar
-        description: ""
+        description: "Nombre de la dirección"
+        tests:
+          - not_null
 
       - name: city_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla ciudad que identifica a la ciudad en la que está la dirección"
+        tests:
+          - not_null
+          - relationships:
+              field: city_id
+              to: ref('base_dbt_proyecto_final__city')
 
       - name: postal_code
         data_type: number
-        description: ""
+        description: "Código postal de la dirección"
 
       - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha de carga de los datos"
+        tests:
+          - not_null
 
   - name: base_dbt_proyecto_final__city
-    description: ""
+    description: "Tabla que contiene las ciudades directamente desde la source"
     columns:
       - name: city_id
         data_type: number
-        description: ""
-
+        description: "Clave primaria de la ciudad"
+        tests:
+          - unique
+          - not_null
+          
       - name: city
         data_type: varchar
-        description: ""
+        description: "Nombre de la ciudad"
+        tests:
+          - not_null
 
       - name: country_id
         data_type: number
-        description: ""
+        description: "Clave foránea de la tabla países que identifica al país donde está la ciudad"
+        tests: 
+          - not_null
+          - relationships:
+              field: country_id
+              to: ref('base_stg_dbt_proyecto_final__country')
 
       - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha de carga de los datos"
+        tests:
+          - not_null
 
   - name: base_dbt_proyecto_final__country
-    description: ""
+    description: "Tabla de los países directamente desde la source"
     columns:
       - name: country_id
         data_type: number
-        description: ""
+        description: "Clave primaria de la tabla países"
+        tests:
+          - unique
+          - not_null
 
       - name: country
         data_type: varchar
-        description: ""
+        description: "Nombre del país"
+        tests:
+          - not_null
 
       - name: date_load
         data_type: timestamp_ntz
-        description: ""
+        description: "Fecha de carga de los datos"
+        tests:
+          - not_null

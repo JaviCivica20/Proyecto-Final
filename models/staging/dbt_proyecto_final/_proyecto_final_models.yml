@@ -3,7 +3,7 @@ version: 2
 
 models:
   - name: stg_dbt_proyecto_final__actor
-    description: "Tabla que contiene una lista de actores"
+    description: "Tabla que contiene una lista de actores directamente desde la source"
     columns:
       - name: actor_id
         data_type: number
@@ -31,7 +31,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__address
-    description: "Tabla de las direcciones de los clientes, empleados y videoclubs"
+    description: "Tabla de las direcciones de los clientes, empleados y videoclubs directamente desde la source"
     columns:
       - name: address_id
         data_type: number
@@ -69,7 +69,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__category
-    description: "Tabla con las diferentes categorías que puede tener una película"
+    description: "Tabla con las diferentes categorías que puede tener una película directamente desde la source"
     columns:
       - name: category_id
         data_type: number
@@ -91,7 +91,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__customer
-    description: "Tabla que contiene los datos de todos los clientes"
+    description: "Tabla que contiene los datos de todos los clientes directamente desde la source"
     columns:
       - name: customer_id
         data_type: number
@@ -163,7 +163,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__film
-    description: "Tabla que contiene todas las películas disponibles en los videoclubs"
+    description: "Tabla que contiene todas las películas disponibles en los videoclubs directamente desde la source"
     columns:
       - name: film_id
         data_type: number
@@ -268,7 +268,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__film_actor
-    description: "Tabla de unión entre las tablas de actores y películas y que contiene las ids de los actores que tiene cada película"
+    description: "Tabla de unión entre las tablas de actores y películas y que contiene las ids de los actores que tiene cada película directamente desde la source"
     columns:
       - name: actor_id
         data_type: number
@@ -295,7 +295,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__film_category
-    description: "Tabla de unión entre las tablas de actores y categorías y que contiene las ids de las categorías que tiene cada película"
+    description: "Tabla de unión entre las tablas de actores y categorías y que contiene las ids de las categorías que tiene cada película directamente desde la source"
     columns:
       - name: film_id
         data_type: number
@@ -322,7 +322,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__language
-    description: "Tabla que contiene los diferentes idiomas que pueden tener las películas"
+    description: "Tabla que contiene los diferentes idiomas que pueden tener las películas directamente desde la source"
     columns:
       - name: language_id
         data_type: number
@@ -344,7 +344,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__staff
-    description: "Tabla que contiene los datos de todos los empleados"
+    description: "Tabla que contiene los datos de todos los empleados directamente desde la source"
     columns:
       - name: staff_id
         data_type: number
@@ -416,7 +416,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__store
-    description: "Tabla que contiene los diferentes videoclubs"
+    description: "Tabla que contiene los diferentes videoclubs directamente desde la source"
     columns:
       - name: store_id
         data_type: number
@@ -450,7 +450,7 @@ models:
               - not_null
 
   - name: stg_dbt_proyecto_final__purchases
-    description: "Tabla que contiene las compras de películas que realiza el videoclub"
+    description: "Tabla que contiene las compras de películas que realiza el videoclub directamente desde la source"
     columns:
       - name: purchase_id
         data_type: number
@@ -504,7 +504,7 @@ models:
           - not_null
 
   - name: stg_dbt_proyecto_final__rental
-    description: Tabla que contiene los alquieres de películas
+    description: "Tabla que contiene los alquieres de películas directamente desde la source"
     columns:
       - name: rental_id
         data_type: number
@@ -575,7 +575,7 @@ models:
 
 
   - name: stg_dbt_proyecto_final__payment
-    description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve)"
+    description: "Tabla que registra las devoluciones y pagos de las películas (porque se paga cuando se devuelve) directamente desde la source"
     columns:
       - name: payment_id
         data_type: number
