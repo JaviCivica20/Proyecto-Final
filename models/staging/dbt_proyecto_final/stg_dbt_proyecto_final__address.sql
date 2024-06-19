@@ -1,16 +1,33 @@
-with src_address as (
-    select * from {{ source('dbt_proyecto_final', 'address') }}
+with base_address as (
+    select *
+    from {{ref('base_dbt_proyecto_final__address')}}
 ),
 
-renamed_casted as (
-    select
-        address_id::number(10) as address_id,
-        address::varchar(100) as address,
-        country::varchar(50) as country,
-        city::varchar(50) as city,
-        IFF(postal_code = '', NULL, postal_code::number(10)) as postal_code, --- Había campos vacíos porque esa ciudad no tiene postal code
-        _fivetran_synced as date_load
-    from src_address
+base_city as (
+    select *
+    from {{ref('base_dbt_proyecto_final__city')}}
+),
+
+base_country as (
+    select *
+    from {{ref('base_dbt_proyecto_final__country')}}
+),
+
+combined as (
+    select 
+        a.address_id,
+        a.address,
+        ci.city,
+        co.country,
+        case 
+            when postal_code IS NULL and city = 'Woodridge' then  4114
+            when postal_code IS NULL and city = 'Lethbridge' then 403
+        else postal_code
+        end as postal_code,
+        a.date_load
+    from base_address a
+    join base_city ci on a.city_id = ci.city_id
+    join base_country co on ci.country_id = co.country_id 
 )
 
-select * from renamed_casted
+select * from combined
