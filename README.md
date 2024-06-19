@@ -62,8 +62,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>BUILD CORRECTA</h3>
 
-![Captura de pantalla 2024-06-19 190558](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/dd9b9fed-65b1-4a45-b0bf-5a0d3751fdd5)
-
+![x](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/2842c0e9-4444-4349-a0c6-0357db5fa6c0)
 
 
 
