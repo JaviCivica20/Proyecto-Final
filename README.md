@@ -50,6 +50,10 @@ dbt run --models stg_dbt_proyecto_final__payment int_rental_payment_combined
 
 
 
+![Captura de pantalla 2024-06-19 190558](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/dd9b9fed-65b1-4a45-b0bf-5a0d3751fdd5)
+
+
+
 
 
 
