@@ -12,10 +12,12 @@ Proyecto final del curso de Data Engineering de Cívica
 
 
 
+
 <h3>PROCESOS DE NEGOCIO</h3>
 
 
 ![Procesos de negocio](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/5922ac32-9828-464c-bbd9-22811168c508)
+
 
 
 
@@ -30,6 +32,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 
 
+
 <h3>TABLAS RELACIONALES DE N:N</h3>
 
 
@@ -39,10 +42,42 @@ Proyecto final del curso de Data Engineering de Cívica
 
 
 
+
 <h3>TABLA AISLADA</h3>
 
 
 ![actor](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/88802822-aa55-47ec-b591-fb22d3c03b59)
+
+
+
+
+
+
+
+
+
+
+INSERCIÓN DE DATOS CON ARCHIVOS CSV
+
+![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -60,7 +95,6 @@ dbt run -f -s stg_dbt_proyecto_final__payment int_rental_payment_combined
 
 
 
-![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
 
 
 
