@@ -11,6 +11,10 @@ Proyecto final del curso de Data Engineering de Cívica
 - Decisión de actores
 
 
+
+https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/34a0c900-725e-42d6-9473-637b905e4a54
+
+
 BASE_PAYMENT
 
 STG_FILM y la macro de special_features
