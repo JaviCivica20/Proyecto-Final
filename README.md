@@ -1,64 +1,75 @@
 # Proyecto Final
 Proyecto final del curso de Data Engineering de Cívica
 
+<h1>BASE DE DATOS DE VIDEOCLOUBS</h1>
+
 <h3>MODELO ENTIDAD-RELACIÓN INICIAL</h3>
 
-![diagramainicial](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/4d25ca8f-80f5-40e4-8e1a-f1731ed97336)
+
+![Captura de pantalla 2024-06-19 215059](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/b6254e72-5f2b-4e54-8a41-5a131376e1fe)
+
+<br><br>
+
+<h3>PROCESOS DE NEGOCIO</h3>
 
 
-- Decisión de address
-- Decisión de unión tabla de hechos
-- Decisión de actores
+![Procesos de negocio](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/5922ac32-9828-464c-bbd9-22811168c508)
+
+<br><br>
+
+<h3>POSIBLES DIMENSIONES</h3>
 
 
-BASE_PAYMENT
+![Dimensiones](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/6434e116-3341-4966-8238-26da97332940)
 
-STG_FILM y la macro de special_features
+<br><br>
 
-SGT_RENTAL_COMBINED y las 2 macros
-
-STG_CUSTOMER y los DATE/TIME
-
-STG_ADDRESS y los nulos
-
-FCT_RENTALS_RETURNS
-
-FCT_PURCHASES
-
-DIM_TIME Y DIM_DATE
-
-DIM_STORE
-
-DIM_FILM y el Intermediate
-
-DOCS, documentación y tests
+<h3>TABLAS RELACIONALES DE N:N</h3>
 
 
+![Tablas intermedias](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/fbb7d8d9-7730-4158-b4e9-c4fd8664b34c)
+
+<br><br>
+
+<h3>TABLA AISLADA</h3>
 
 
+![actor](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/88802822-aa55-47ec-b591-fb22d3c03b59)
 
-INCREMENTAL
+<br><br>
+<br><br>
 
-dbt run --full-refresh --select fct_rentals_returns
-
-dbt run -f -s stg_dbt_proyecto_final__rental int_rental_payment_combined
-
-dbt run -f -s stg_dbt_proyecto_final__payment int_rental_payment_combined
-
-
-<<<<<<< HEAD
-dbt run --models stg_dbt_proyecto_final__payment int_rental_payment_combined
-
-=======
-![IDE _ dbt Cloud - Google Chrome 19_06_2024 16_08_20](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/7ef3e64d-3a44-43d8-9461-7d91b455b38e)
->>>>>>> cc0c4d48e227d7c2ed774c35c8bfe22b319ef1c1
+<h3>INSERCIÓN DE DATOS CON ARCHIVOS CSV</h3>
 
 ![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
 
+<br><br>
+<br><br>
 
+<h3>LINAJE DEL PROYECTO EN DBT</h3>
 
-![Captura de pantalla 2024-06-19 190558](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/dd9b9fed-65b1-4a45-b0bf-5a0d3751fdd5)
+![Linaje](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/226c3886-8a08-4a4e-afaf-35bfb6ee0bd4)
 
+<br><br>
+<br><br>
+
+<h3>MODELO DIMENSIONAL FINAL</h3>
+
+![Dimensional](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/352676f9-d2e4-443b-82c3-caf3f18d2692)
+
+<br><br>
+<br><br>
+
+<h3>BUILD CORRECTA</h3>
+
+![x](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/2842c0e9-4444-4349-a0c6-0357db5fa6c0)
+
+<br><br>
+<br><br>
+
+<h3>INCREMENTAL</h3>
+
+https://drive.google.com/file/d/1yQAqfh5d5dqlAzGVorP1kxC_Dxb6cVy9/view?usp=sharing
 
 
 
