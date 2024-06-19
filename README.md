@@ -44,3 +44,11 @@ dbt run --full-refresh --select fct_rentals_returns
 dbt run --models stg_dbt_proyecto_final__rental int_rental_payment_combined
 
 dbt run --models stg_dbt_proyecto_final__payment int_rental_payment_combined
+
+![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
+
+
+
+
+
+
