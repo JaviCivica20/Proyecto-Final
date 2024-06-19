@@ -57,30 +57,12 @@ Proyecto final del curso de Data Engineering de Cívica
 
 ![Dimensional](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/352676f9-d2e4-443b-82c3-caf3f18d2692)
 
+<br><br>
+<br><br>
 
+<h3>BUILD CORRECTA</h3>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![Captura de pantalla 2024-06-19 190558](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/dd9b9fed-65b1-4a45-b0bf-5a0d3751fdd5)
 
 
 
@@ -93,16 +75,3 @@ dbt run -f -s fct_rentals_returns
 dbt run -f -s stg_dbt_proyecto_final__rental int_rental_payment_combined
 
 dbt run -f -s stg_dbt_proyecto_final__payment int_rental_payment_combined
-
-
-
-
-
-
-![Captura de pantalla 2024-06-19 190558](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/dd9b9fed-65b1-4a45-b0bf-5a0d3751fdd5)
-
-
-
-
-
-
