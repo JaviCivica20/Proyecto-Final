@@ -64,13 +64,12 @@ Proyecto final del curso de Data Engineering de Cívica
 
 ![x](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/2842c0e9-4444-4349-a0c6-0357db5fa6c0)
 
+<br><br>
+<br><br>
+
+<h3>INCREMENTAL</h3>
+
+https://drive.google.com/file/d/1nPE-rwt3RmuK2UBigvVGdOeUSgKkI8D_/view?usp=sharing
 
 
 
-INCREMENTAL
-
-dbt run -f -s fct_rentals_returns
-
-dbt run -f -s stg_dbt_proyecto_final__rental int_rental_payment_combined
-
-dbt run -f -s stg_dbt_proyecto_final__payment int_rental_payment_combined
