@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: base_dbt_proyecto_final__address
+    description: ""
+    columns:
+      - name: address_id
+        data_type: number
+        description: ""
+
+      - name: address
+        data_type: varchar
+        description: ""
+
+      - name: city_id
+        data_type: number
+        description: ""
+
+      - name: postal_code
+        data_type: number
+        description: ""
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: base_dbt_proyecto_final__city
+    description: ""
+    columns:
+      - name: city_id
+        data_type: number
+        description: ""
+
+      - name: city
+        data_type: varchar
+        description: ""
+
+      - name: country_id
+        data_type: number
+        description: ""
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: ""
+
+  - name: base_dbt_proyecto_final__country
+    description: ""
+    columns:
+      - name: country_id
+        data_type: number
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+      - name: date_load
+        data_type: timestamp_ntz
+        description: ""

@@ -61,21 +61,65 @@ sources:
             tests:
               - not_null
 
-          - name: country
+          - name: city_id
             data_type: varchar
-            description: "País de la dirección"
-            tests:
-              - not_null
-
-          - name: city
-            data_type: varchar
-            description: "Ciudad de la dirección"
+            description: "Clave foránea que identifica a la ciudad de la dirección"
             tests:
               - not_null
 
           - name: postal_code
             data_type: number
             description: "Código postal de la ciudad"
+
+          - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
+
+      - name: city
+        descripcion: "Tabla que contiene las ciudades"
+        columns:
+          - name: city_id
+            data_type: number
+            description: "Clave primaria de la ciudad"
+            tests: 
+              - unique
+              - not_null
+          
+          - name: city
+            data_type: varchar
+            description: "Nombre de la ciudad"
+            tests:
+              - not_null
+          
+          - name: country_id
+            data_type: number
+            description: "Clave foránea de la tabla country que identifica al país en el que está la ciudad"
+            tests:
+              - not_null
+
+          - name: _fivetran_synced
+            data_type: timestamp_ntz
+            description: "Campo con la fecha de ingesta de cada dato"
+            tests:
+              - not_null
+    
+      - name: country
+        descripcion: "Tabla que contiene los países"
+        columns:
+          - name: country_id
+            data_type: number
+            description: "Clave primaria del país"
+            tests: 
+              - unique
+              - not_null
+          
+          - name: country
+            data_type: varchar
+            description: "Nombre del país"
+            tests:
+              - not_null
 
           - name: _fivetran_synced
             data_type: timestamp_ntz
