@@ -41,10 +41,17 @@ INCREMENTAL
 
 dbt run --full-refresh --select fct_rentals_returns
 
-dbt run --models stg_dbt_proyecto_final__rental int_rental_payment_combined
+dbt run -f -s stg_dbt_proyecto_final__rental int_rental_payment_combined
 
+dbt run -f -s stg_dbt_proyecto_final__payment int_rental_payment_combined
+
+
+<<<<<<< HEAD
 dbt run --models stg_dbt_proyecto_final__payment int_rental_payment_combined
 
+=======
+![IDE _ dbt Cloud - Google Chrome 19_06_2024 16_08_20](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/7ef3e64d-3a44-43d8-9461-7d91b455b38e)
+>>>>>>> cc0c4d48e227d7c2ed774c35c8bfe22b319ef1c1
 
 ![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
 
