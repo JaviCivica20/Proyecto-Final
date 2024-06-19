@@ -1,9 +1,14 @@
 # Proyecto Final
 Proyecto final del curso de Data Engineering de Cívica
 
-<h3>MODELO ENTIDAD-RELACIÓN INICIAL</h3>
+<h2>MODELO ENTIDAD-RELACIÓN INICIAL</h2>
 
-![diagramainicial](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/4d25ca8f-80f5-40e4-8e1a-f1731ed97336)
+<h3>BASE DE DATOS DE VIDEOCLOUBS</h3>
+
+
+![Captura de pantalla 2024-06-19 215059](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/b6254e72-5f2b-4e54-8a41-5a131376e1fe)
+
+
 
 
 - Decisión de address
@@ -15,27 +20,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 
 
-BASE_PAYMENT
 
-STG_FILM y la macro de special_features
-
-SGT_RENTAL_COMBINED y las 2 macros
-
-STG_CUSTOMER y los DATE/TIME
-
-STG_ADDRESS y los nulos
-
-FCT_RENTALS_RETURNS
-
-FCT_PURCHASES
-
-DIM_TIME Y DIM_DATE
-
-DIM_STORE
-
-DIM_FILM y el Intermediate
-
-DOCS, documentación y tests
 
 
 
