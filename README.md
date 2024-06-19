@@ -39,6 +39,13 @@ Proyecto final del curso de Data Engineering de Cívica
 <br><br>
 <br><br>
 
+<h3>INSERCIÓN DE DATOS CON ARCHIVOS CSV</h3>
+
+![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
+
+<br><br>
+<br><br>
+
 <h3>LINAJE DEL PROYECTO EN DBT</h3>
 
 ![Linaje](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/226c3886-8a08-4a4e-afaf-35bfb6ee0bd4)
@@ -48,16 +55,10 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>MODELO DIMENSIONAL FINAL</h3>
 
+![Dimensional](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/352676f9-d2e4-443b-82c3-caf3f18d2692)
 
 
 
-
-<h3>INSERCIÓN DE DATOS CON ARCHIVOS CSV</h3>
-
-![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
-
-<br><br>
-<br><br>
 
 
 
