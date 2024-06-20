@@ -21,7 +21,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>RELACIÓN 1:1 entre RENTAL y PAYMENT</h3>
 
-<p style="text-align: justify;">Hay uno solo pago por alquiler y cada pago es de un único alquiler, por lo que tiene sentido que sean una sola tabla de hechos y dejar PAYMENT_ID como dimensión degenerada</p>
+<p style="text-align: justify;">Hay un solo pago por alquiler y cada pago es de un único alquiler, por lo que tiene sentido que sean una sola tabla de hechos y dejar PAYMENT_ID como dimensión degenerada</p>
 
 ![relacion rental payment](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/6ebc4f12-a795-4dbe-b6a6-5823c8139062)
 
