@@ -5,7 +5,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>MODELO ENTIDAD-RELACIÓN INICIAL</h3>
 
-Las tablas y relaciones según venían en los archivos CSV
+<p style="text-align: justify;">Las tablas y relaciones según venían en los archivos CSV</p>
 
 ![Captura de pantalla 2024-06-19 215059](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/b6254e72-5f2b-4e54-8a41-5a131376e1fe)
 
