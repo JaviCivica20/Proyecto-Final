@@ -19,7 +19,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <br><br>
 
-<h3>RELACIÓN 1:1 entre RENTAL y PAUMENT</h3>
+<h3>RELACIÓN 1:1 entre RENTAL y PAYMENT</h3>
 
 <p style="text-align: justify;">Hay uno solo pago por alquiler y cada pago es de un único alquiler, por lo que tiene sentido que sean una sola tabla de hechos</p>
 
