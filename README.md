@@ -94,7 +94,10 @@ Proyecto final del curso de Data Engineering de Cívica
 
 [https://drive.google.com/file/d/1yQAqfh5d5dqlAzGVorP1kxC_Dxb6cVy9/view?usp=sharing](https://drive.google.com/file/d/11-6qgZCQSRwjxQObszFgwZMwRPyPe_Gd/view?usp=sharing)
 
+<br><br>
+<br><br>
 
+<h3>POWER BI</h3>
 
-
+![Captura de pantalla 2024-06-20 125242](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/1d05c9d4-6672-42e0-a9c6-4b03a9748da1)
 
