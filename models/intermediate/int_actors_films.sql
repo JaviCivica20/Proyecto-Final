@@ -27,8 +27,8 @@ stg_film as (
         c.name as category,
         f.date_load
     from {{ref('stg_dbt_proyecto_final__film')}} f
-    full join {{ref('stg_dbt_proyecto_final__film_category')}} fc on f.film_id = fc.film_id
-    full join {{ref('stg_dbt_proyecto_final__category')}} c on fc.category_id = c.category_id
+    join {{ref('stg_dbt_proyecto_final__film_category')}} fc on f.film_id = fc.film_id
+    join {{ref('stg_dbt_proyecto_final__category')}} c on fc.category_id = c.category_id
 ),
 
 stg_language as (
@@ -37,7 +37,7 @@ stg_language as (
         f.language_id,
         l.language
     from {{ref('stg_dbt_proyecto_final__film')}} f
-    full join {{ref('stg_dbt_proyecto_final__language')}} l on f.language_id = l.language_id
+    join {{ref('stg_dbt_proyecto_final__language')}} l on f.language_id = l.language_id
 ),
 
 final as (
@@ -63,9 +63,9 @@ final as (
         a.last_name as actor_last_name,
         f.date_load
     from stg_actor a 
-    full join stg_film_actor fa on a.actor_id = fa.actor_id
-    full join stg_film f on f.film_id = fa.film_id
-    full join stg_language l on f.film_id = l.film_id
+    join stg_film_actor fa on a.actor_id = fa.actor_id
+    join stg_film f on f.film_id = fa.film_id
+    join stg_language l on f.film_id = l.film_id
     order by 1
 )
 

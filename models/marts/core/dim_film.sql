@@ -1,5 +1,10 @@
 with int_actors_films as (
-    select distinct
+    select *
+    from {{ref('int_actors_films')}}
+),
+
+final as (
+    Select distinct
         film_id,
         title,
         description,
@@ -16,8 +21,8 @@ with int_actors_films as (
         deleted_scenes,
         category,
         date_load
-    from {{ref('int_actors_films')}}
+    from int_actors_films
 )
 
 
-select * from int_actors_films 
+select * from final

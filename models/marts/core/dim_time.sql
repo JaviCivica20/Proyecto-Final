@@ -14,10 +14,10 @@ with
     )
 
 select
+    time_of_day,
     hour,
     minute,
     second,
-    time_of_day,
     hour * 3600 + minute * 60 + second as seconds_since_midnight,
     hour * 60 + minute as minutes_since_midnight
 from time_combinations
