@@ -90,11 +90,8 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>INCREMENTAL</h3>
 
-<<<<<<< HEAD
-=======
 <p style="text-align: justify;">Video de comprobación de que el modelo incremental funciona perfectamente</p>
 
->>>>>>> d823c2ccf9ffc851b4160703e206335524ccd533
 [https://drive.google.com/file/d/1yQAqfh5d5dqlAzGVorP1kxC_Dxb6cVy9/view?usp=sharing](https://drive.google.com/file/d/11-6qgZCQSRwjxQObszFgwZMwRPyPe_Gd/view?usp=sharing)
 
 <br><br>
