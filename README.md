@@ -45,7 +45,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>TABLA AISLADA</h3>
 
-<p style="text-align: justify;">La tabla de actores está aislada en el sentido de que no tiene cabida ni en la dimensión películas, ni como dimensión propia, ni como tabla de hechos</p>
+<p style="text-align: justify;">La tabla de actores está "aislada" en el sentido de que no tiene cabida ni en la dimensión películas, ni como dimensión propia, ni como tabla de hechos pero se usará para hacer un datamart de estadísticas de los clientes</p>
 
 ![actor](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/88802822-aa55-47ec-b591-fb22d3c03b59)
 
