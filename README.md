@@ -1,7 +1,7 @@
 # Proyecto Final
 Proyecto final del curso de Data Engineering de Cívica
 
-<h1>BASE DE DATOS DE VIDEOCLOUBS</h1>
+<h1>BASE DE DATOS DE VIDEOCLUBS</h1>
 
 <h3>MODELO ENTIDAD-RELACIÓN INICIAL</h3>
 
