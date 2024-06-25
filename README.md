@@ -13,7 +13,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>POSIBLES TABLAS DE HECHOS</h3>
 
-<p style="text-align: justify;">Identifico los procesos de negocio, a ser: RENTAL (Alquileres), PAYMENT (Pagos y, en este modelo, devoluciones de las películas) y PURCHASES (Compras de películas por parte de los videoclubs</p>
+<p style="text-align: justify;">Identifico los procesos de negocio, a ser: RENTAL (Alquileres), PAYMENT (Pagos y, en este modelo, devoluciones de las películas) y PURCHASES (Compras de películas por parte de los videoclubs)</p>
 
 ![Procesos de negocio](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/5922ac32-9828-464c-bbd9-22811168c508)
 
