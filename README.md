@@ -5,7 +5,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>MODELO ENTIDAD-RELACIÓN INICIAL</h3>
 
-<p style="text-align: justify;">Las tablas y relaciones según venían en los archivos CSV</p>
+<p style="text-align: justify;">Las tablas y relaciones según venían de la fuente</p>
 
 ![Captura de pantalla 2024-06-19 215059](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/b6254e72-5f2b-4e54-8a41-5a131376e1fe)
 
@@ -29,7 +29,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>POSIBLES DIMENSIONES</h3>
 
-<p style="text-align: justify;">Identifico las dimensiones principales, a ser: CUSTOMER (Cliente), STAFF (Empleado), STORE (Tienda), FILM (Película), ADDRESS (Dirección) y cuatro "subdimensiones" que pertenecerán a ADDRESS (CITY y COUNTRY) y FILM (LANGUAGE y CATEGORY)</p>
+<p style="text-align: justify;">Identifico las dimensiones, a ser: CUSTOMER (Cliente), STAFF (Empleado), STORE (Tienda), FILM (Película), ADDRESS (Dirección) y cuatro "subdimensiones" que pertenecerán a ADDRESS (CITY y COUNTRY) y FILM (LANGUAGE y CATEGORY)</p>
 
 ![Dimensiones](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/85c7ca15-0052-42d8-b2d5-c3b536383836)
 
@@ -72,7 +72,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>MODELO DIMENSIONAL FINAL</h3>
 
-<p style="text-align: justify;">Como queda el modelo dimensional después de todas las transformaciones</p>
+<p style="text-align: justify;">Como queda el modelo dimensional después de todas las transformaciones realizadas en la capa Silver</p>
 
 ![Dimensional](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/352676f9-d2e4-443b-82c3-caf3f18d2692)
 
@@ -81,7 +81,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>BUILD CORRECTA</h3>
 
-<p style="text-align: justify;">Hago una build para probar la construcción de todas las tablas y la comprobación de todos los test (más verde que el perfil de LinkedIn de un extraterrestre)</p>
+<p style="text-align: justify;">Hago una build para probar la construcción de todas las tablas y la comprobación de todos los test</p>
 
 ![x](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/2842c0e9-4444-4349-a0c6-0357db5fa6c0)
 
@@ -90,7 +90,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>INCREMENTAL</h3>
 
-<p style="text-align: justify;">Video de comprobación de que el modelo incremental funciona perfectamente</p>
+<p style="text-align: justify;">Video de comprobación de que el modelo incremental aplicado en las tablas de hechos y en su linaje predecesor funciona perfectamente</p>
 
 [https://drive.google.com/file/d/1yQAqfh5d5dqlAzGVorP1kxC_Dxb6cVy9/view?usp=sharing](https://drive.google.com/file/d/11-6qgZCQSRwjxQObszFgwZMwRPyPe_Gd/view?usp=sharing)
 
@@ -98,6 +98,8 @@ Proyecto final del curso de Data Engineering de Cívica
 <br><br>
 
 <h3>POWER BI</h3>
+
+Dashboard de PowerBI para hacer analítica de los datos de la capa Gold 
 
 ![Captura de pantalla 2024-06-20 125242](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/1d05c9d4-6672-42e0-a9c6-4b03a9748da1)
 
