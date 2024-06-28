@@ -1,7 +1,7 @@
-# Proyecto Final
-Proyecto final del curso de Data Engineering de Cívica
+# Proyecto Final del curso de Data Engineering de Cívica
+Transformación de una base de datos relacional a un modelo dimensional preparado para analítica usando dbt y Snowflake
 
-<h1>BASE DE DATOS DE VIDEOCLUBS</h1>
+<h1>BASE DE DATOS DE ALQUILER DE PELÍCULAS</h1>
 
 <h3>MODELO ENTIDAD-RELACIÓN INICIAL</h3>
 
@@ -54,7 +54,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>INSERCIÓN DE DATOS CON ARCHIVOS CSV</h3>
 
-<p style="text-align: justify;">La base de datos estaba en 15 archivos CSV que subí directamente a la BRONZE de mi base de datos en Snowflake</p>
+<p style="text-align: justify;">La base de datos estaba en 15 archivos CSV que subí directamente a la capa BRONZE de mi base de datos en Snowflake</p>
 
 ![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
 
@@ -72,7 +72,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>MODELO DIMENSIONAL FINAL</h3>
 
-<p style="text-align: justify;">Como queda el modelo dimensional después de todas las transformaciones realizadas en la capa Silver</p>
+<p style="text-align: justify;">Como queda el modelo dimensional después de todas las transformaciones realizadas en la capa SILVER</p>
 
 ![Dimensional](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/352676f9-d2e4-443b-82c3-caf3f18d2692)
 
@@ -81,7 +81,7 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>BUILD CORRECTA</h3>
 
-<p style="text-align: justify;">Hago una build para probar la construcción de todas las tablas y la comprobación de todos los test</p>
+<p style="text-align: justify;">Hago una build para probar la construcción de todas las tablas y la comprobación de todos los test aplicados a los mdelos</p>
 
 ![x](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/2842c0e9-4444-4349-a0c6-0357db5fa6c0)
 
@@ -90,16 +90,42 @@ Proyecto final del curso de Data Engineering de Cívica
 
 <h3>INCREMENTAL</h3>
 
-<p style="text-align: justify;">Video de comprobación de que el modelo incremental aplicado en las tablas de hechos y en su linaje predecesor funciona perfectamente</p>
+<p style="text-align: justify;">Comprobación de que el modelo incremental aplicado en las tablas de hechos y en su linaje predecesor funciona perfectamente</p>
 
-[https://drive.google.com/file/d/1yQAqfh5d5dqlAzGVorP1kxC_Dxb6cVy9/view?usp=sharing](https://drive.google.com/file/d/11-6qgZCQSRwjxQObszFgwZMwRPyPe_Gd/view?usp=sharing)
+Insertamos 3 nuevas filas en la tabla de alquileres
+
+![Captura de pantalla 2024-06-28 114547](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d41bc28e-7ff8-464e-bbd0-48403f165c82)
+
+Hacemos dbt run de la stage y de la intermediate que preceden a la tabla de hechos
+
+![Captura de pantalla 2024-06-28 114655](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/906a8627-a210-4ec9-8b12-6b7c520314b9)
+
+Vemos como salen las 3 nuevas filas en la preview de dbt pero con los campos de pago en null
+
+![Captura de pantalla 2024-06-28 114723](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/a6e87350-d2d6-4309-aa45-8b6fff81a1ed)
+
+Después de construir el modelo ya no salen las nuevas filas
+
+![Captura de pantalla 2024-06-28 114821](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/e09a9689-6062-47d3-bca0-2ae677f8b48f)
+
+Insertamos 2 pagos para 2 de los 3 alquileres insertados previamente
+
+![Captura de pantalla 2024-06-28 115725](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/eb5c5b29-d873-41dc-97e2-954c0e032bbf)
+
+Ejecutamos el stage y la intermediate como hicimos anteriormente
+
+![Captura de pantalla 2024-06-28 115751](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/adce2b05-73cc-4d37-bd1f-db6fcea51c17)
+
+Y podemos comprobar como ya si hay pago para los 2 alquileres correspondientes
+
+![Captura de pantalla 2024-06-28 115808](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/88d69fc1-ae00-48a3-b109-df820fd878b3)
 
 <br><br>
 <br><br>
 
 <h3>POWER BI</h3>
 
-Dashboard de PowerBI para hacer analítica de los datos de la capa Gold 
+Dashboard de PowerBI para hacer analítica de los datos de la capa GOLD (modelo dimensional) 
 
 ![Captura de pantalla 2024-06-20 125242](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/1d05c9d4-6672-42e0-a9c6-4b03a9748da1)
 
