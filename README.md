@@ -54,7 +54,7 @@ Transformación de una base de datos relacional a un modelo dimensional preparad
 
 <h3>INSERCIÓN DE DATOS CON ARCHIVOS CSV</h3>
 
-<p style="text-align: justify;">La base de datos estaba en 15 archivos CSV que subí directamente a la capa BRONZE de mi base de datos en Snowflake</p>
+<p style="text-align: justify;">La base de datos estaba en 15 archivos CSV que fueron subidos directamente a la capa BRONZE de mi base de datos en Snowflake</p>
 
 ![Captura de pantalla 2024-06-19 023710](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d3176289-1af1-4184-87f8-c116e6f9c382)
 
