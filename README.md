@@ -37,7 +37,7 @@ Transformación de una base de datos relacional a un modelo dimensional preparad
 
 <h3>TABLAS RELACIONALES DE N:N</h3>
 
-<p style="text-align: justify;">Hay dos tablas intermedias de relaciones N:N, de las cuales, FILM_CATEGORY no tiene sentido porque la relación es N:1 en FILM respecto a CATEGORY</p>
+<p style="text-align: justify;">Hay dos tablas intermedias de relaciones N:N, de las cuales, FILM_CATEGORY no tiene sentido porque la relación es N:1 en FILM respecto a CATEGORY en este modelo</p>
 
 ![Tablas intermedias](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/fbb7d8d9-7730-4158-b4e9-c4fd8664b34c)
 
