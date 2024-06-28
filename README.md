@@ -92,6 +92,8 @@ Transformación de una base de datos relacional a un modelo dimensional preparad
 
 <p style="text-align: justify;">Comprobación de que el modelo incremental aplicado en las tablas de hechos y en su linaje predecesor funciona perfectamente</p>
 
+<br><br>
+
 Insertamos 3 nuevas filas en la tabla de alquileres
 
 ![Captura de pantalla 2024-06-28 114547](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/d41bc28e-7ff8-464e-bbd0-48403f165c82)
