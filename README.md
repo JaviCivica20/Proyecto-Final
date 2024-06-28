@@ -29,7 +29,7 @@ Transformación de una base de datos relacional a un modelo dimensional preparad
 
 <h3>POSIBLES DIMENSIONES</h3>
 
-<p style="text-align: justify;">Identifico las dimensiones, a ser: CUSTOMER (Cliente), STAFF (Empleado), STORE (Tienda), FILM (Película), ADDRESS (Dirección) y cuatro "subdimensiones" que pertenecerán a ADDRESS (CITY y COUNTRY) y FILM (LANGUAGE y CATEGORY)</p>
+<p style="text-align: justify;">Identifico las dimensiones, a ser: CUSTOMER (Cliente), STAFF (Empleado), STORE (Tienda), FILM (Película), ADDRESS (Dirección) y cuatro "subdimensiones" que se unirán en SILVER a ADDRESS (CITY y COUNTRY) y FILM (LANGUAGE y CATEGORY)</p>
 
 ![Dimensiones](https://github.com/JaviCivica20/Proyecto-Final/assets/170645442/85c7ca15-0052-42d8-b2d5-c3b536383836)
 
